@@ -1,1 +1,140 @@
 // Specific CSS for your home-page
+.header {
+  // width: 100vw;
+  // position: fixed;
+  top: 0;
+  height: 6rem;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  padding-left: 2em;
+  color: #415a77;
+  background: #e7ecef;
+  font-size: 1.5rem;
+  // backdrop-filter: blur(.5rem);
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  a
+  {
+    text-decoration: none;
+    color: #415a77;
+  }
+  // justify-content: space-evenly;
+  #div1 {
+  width: 85%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  & span{
+    padding: 1em;
+  }
+  }
+  #div2 {
+  width: 15%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  & span{
+    padding: 1em;
+  }
+  }
+}
+
+// .navbar{
+//   width: 100vw;
+//   background-color:rgba(61, 6, 80, 0.772);
+//   display: flex;
+//   justify-content: space-between;
+//   & ul{
+//     list-style-type: none;
+//     #logo {
+//       width: 30%;
+//     }
+//     & li{
+//       float: left;
+//       padding: 1em;
+//     }
+
+//   }
+
+// }
+
+/* The navigation menu */
+.navbar {
+  overflow: hidden;
+  background-color: #ffffff;
+  // width: 100vw;
+  // display: flex;
+}
+
+.nav-div1{
+  width: 20%;
+  display: flex;
+  justify-content: flex-start;
+}
+.nav-div2{
+  width: 80%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 1em;
+}
+/* Navigation links */
+.navbar a {
+  float: left;
+  font-size: 1.5rem;
+  color: #415a77;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The subnavigation menu */
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+/* Subnav button */
+.subnav .subnavbtn {
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  color: #415a77;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+/* Add a red background color to navigation links on hover */
+.navbar a:hover, .subnav:hover .subnavbtn {
+  color: #1b263b;
+}
+
+/* Style the subnav content - positioned absolute */
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  // background-color: rgb(120, 119, 119);
+  width: 100%;
+  z-index: 1;
+}
+
+/* Style the subnav links */
+.subnav-content a {
+  float: left;
+  color: #415a77;
+  text-decoration: none;
+}
+
+/* Add a grey background color on hover */
+.subnav-content a:hover {
+  // background-color: #000000;
+  color: #1b263b;
+}
+
+/* When you move the mouse over the subnav container, open the subnav content */
+.subnav:hover .subnav-content {
+  display: flex;
+  justify-content: center;
+
+}
