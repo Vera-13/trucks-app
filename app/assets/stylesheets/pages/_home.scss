@@ -18,6 +18,12 @@
   {
     text-decoration: none;
     color: #415a77;
+
+  }
+
+   a:hover {
+    text-decoration: underline;
+    color: #1b263b;
   }
   // justify-content: space-evenly;
   #div1 {
@@ -61,6 +67,11 @@
 .navbar {
   overflow: hidden;
   background-color: #ffffff;
+
+  & .logo {
+    max-width: 100%;
+    height: auto;
+  }
   // width: 100vw;
   // display: flex;
 }
@@ -82,7 +93,7 @@
   font-size: 1.5rem;
   color: #415a77;
   text-align: center;
-  padding: 14px 16px;
+  padding: 0.2em 0.9em;
   text-decoration: none;
 }
 
@@ -98,7 +109,7 @@
   border: none;
   outline: none;
   color: #415a77;
-  padding: 14px 16px;
+  padding: 0.2em 0.9em;
   background-color: inherit;
   font-family: inherit;
   margin: 0;
@@ -137,4 +148,34 @@
   display: flex;
   justify-content: center;
 
+}
+
+.footer{
+  bottom: 0;
+  height: 10rem;
+  padding: 2em;
+  color: white;
+  background: #8e9aaf;
+  font-size: 1.6rem;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  a {
+  color: white;
+  text-decoration: none;
+  }
+  .div{
+    width: 33%;
+  }
+  & span{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-content: center;
+    & .fa-solid {
+      align-content: center;
+      padding-right: 1em;
+      font-size: 2em;
+    }
+  }
 }
