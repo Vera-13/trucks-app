@@ -1,7 +1,5 @@
 // Specific CSS for your home-page
 .header {
-  // width: 100vw;
-  // position: fixed;
   top: 0;
   height: 6rem;
   padding-top: 2em;
@@ -10,7 +8,6 @@
   color: #415a77;
   background: #e7ecef;
   font-size: 1.5rem;
-  // backdrop-filter: blur(.5rem);
   display: flex;
   align-content: center;
   flex-wrap: wrap;
@@ -43,26 +40,6 @@
   }
   }
 }
-
-// .navbar{
-//   width: 100vw;
-//   background-color:rgba(61, 6, 80, 0.772);
-//   display: flex;
-//   justify-content: space-between;
-//   & ul{
-//     list-style-type: none;
-//     #logo {
-//       width: 30%;
-//     }
-//     & li{
-//       float: left;
-//       padding: 1em;
-//     }
-
-//   }
-
-// }
-
 /* The navigation menu */
 .navbar {
   overflow: hidden;
@@ -178,4 +155,125 @@
       font-size: 2em;
     }
   }
+}
+
+.carousel {
+  position: relative;
+  overflow: hidden; /* Ensures no overflow from slides */
+  width: 100%; /* Make it full-width of the viewport */
+  height: auto;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%; /* Handles cloned slides seamlessly */
+}
+
+.carousel-slide {
+  flex: 0 0 100%; /* Each slide takes 100% of the carousel container's width */
+  max-width: 100%; /* Prevent slides from exceeding container width */
+  height: 100vh; /* Ensures the height adjusts based on content */
+  position: relative;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: auto;
+}
+
+.carousel-content {
+  opacity: 0; /* Initially hidden */
+  transform: translate(-50%, calc(-50% + 20px)); /* Centered and slightly shifted down */
+  animation: fadeInUp 1s ease-out var(--delay, 0s) forwards; /* Fade-in with delay */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  color: white;
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, calc(-50% + 20px)); /* Start slightly shifted */
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%); /* End fully centered */
+  }
+}
+
+
+.carousel-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background: transparent;
+  border: 2px solid white;
+  color: white;
+  cursor: pointer;
+}
+
+.carousel-prev, .carousel-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: white;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 10;
+  opacity: 0; /* Initially hidden */
+  pointer-events: none; /* Disable interaction when hidden */
+  transition: opacity 0.3s ease; /* Smooth fade-in effect */
+}
+
+.carousel:hover .carousel-prev,
+.carousel:hover .carousel-next {
+  opacity: 1; /* Show buttons on hover */
+  pointer-events: auto; /* Enable interaction on hover */
+}
+
+.carousel-prev {
+  left: 10px;
+}
+
+.carousel-next {
+  right: 10px;
+}
+
+/* Carousel container */
+
+
+
+
+/* Images inside slides */
+.carousel-slide img {
+  width: 100%; /* Make the image take the full width of the slide */
+  height: auto; /* Keep the aspect ratio */
+  display: block; /* Remove any unwanted inline spacing */
+}
+
+/* Optional: Carousel content */
+.carousel-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+}
+
+.container-call{
+  width: 100%;
+  height: 10rem;
+  background-color:rgba(222, 222, 222, 0.5);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  p{
+    margin: 0;
+  }
+
 }
