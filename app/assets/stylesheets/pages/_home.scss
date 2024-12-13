@@ -1,4 +1,8 @@
 // Specific CSS for your home-page
+.container-page{
+  max-width: 100vw;
+
+}
 .header {
   top: 0;
   height: 6rem;
@@ -7,7 +11,7 @@
   padding-left: 2em;
   color: #415a77;
   background: #e7ecef;
-  font-size: 1.5rem;
+  font-size: clamp(0.6rem, 1.5vw, 1.4rem);
   display: flex;
   align-content: center;
   flex-wrap: wrap;
@@ -28,7 +32,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   & span{
-    padding: 1em;
+    padding: .5em;
   }
   }
   #div2 {
@@ -36,7 +40,7 @@
   justify-content: space-evenly;
   flex-wrap: wrap;
   & span{
-    padding: 1em;
+    padding: .5em;
   }
   }
 }
@@ -133,35 +137,42 @@
   padding: 2em;
   color: white;
   background: #8e9aaf;
-  font-size: 1.6rem;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  overflow: hidden;
   a {
   color: white;
   text-decoration: none;
   }
   .div{
     width: 33%;
+    font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+    container-type: inline-size;
+
   }
   & span{
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    flex-direction: column;
+    text-align: center;
     align-content: center;
+
     & .fa-solid {
+      align-self: center;
       align-content: center;
       padding-right: 1em;
-      font-size: 2em;
+      // font-size: 2em;
+      font-size: clamp(0.7rem, 1.5vw, 2rem)
     }
   }
 }
 
+
+
 .carousel {
   position: relative;
   overflow: hidden; /* Ensures no overflow from slides */
-  width: 100%; /* Make it full-width of the viewport */
-  height: 100vh;
 }
 
 .carousel-track {
@@ -181,18 +192,22 @@
   width: 100%;
   height: auto;
   object-fit: cover;
+  filter: brightness(50%);
 }
 
 .carousel-content {
   opacity: 0; /* Initially hidden */
   transform: translate(-50%, calc(-50% + 20px)); /* Centered and slightly shifted down */
-  animation: fadeInUp 1s ease-out var(--delay, 0s) forwards; /* Fade-in with delay */
+  animation: fadeInUp 2s ease-out var(--delay, 1s) forwards; /* Fade-in with delay */
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   text-align: center;
   color: white;
+  text-shadow:rgba(0, 0, 0, 0.5)
+
 }
+
 
 @keyframes fadeInUp {
   0% {
@@ -244,27 +259,7 @@
   right: 10px;
 }
 
-/* Carousel container */
 
-
-
-
-/* Images inside slides */
-.carousel-slide img {
-  width: 100%; /* Make the image take the full width of the slide */
-  height: auto; /* Keep the aspect ratio */
-  display: block; /* Remove any unwanted inline spacing */
-}
-
-/* Optional: Carousel content */
-.carousel-content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  color: white;
-}
 
 .container-call{
   width: 100%;
@@ -277,4 +272,29 @@
     margin: 0;
   }
 
+}
+
+
+
+
+@media only screen and (max-width: 600px)  {
+  .header{
+    padding: 0.5em;
+  }
+  #div1{
+    display: flex;
+    flex-direction: column;
+  }
+  #div2{
+    display: flex;
+    flex-direction: column;
+  }
+  .footer{
+    height: auto;
+    padding: 0.9em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 }
