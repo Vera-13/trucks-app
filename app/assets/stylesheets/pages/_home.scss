@@ -161,7 +161,7 @@
   position: relative;
   overflow: hidden; /* Ensures no overflow from slides */
   width: 100%; /* Make it full-width of the viewport */
-  height: auto;
+  height: 100vh;
 }
 
 .carousel-track {
@@ -173,13 +173,14 @@
 .carousel-slide {
   flex: 0 0 100%; /* Each slide takes 100% of the carousel container's width */
   max-width: 100%; /* Prevent slides from exceeding container width */
-  height: 100vh; /* Ensures the height adjusts based on content */
+  /* Ensures the height adjusts based on content */
   position: relative;
 }
 
 .carousel-slide img {
   width: 100%;
   height: auto;
+  object-fit: cover;
 }
 
 .carousel-content {
