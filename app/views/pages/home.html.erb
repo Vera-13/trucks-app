@@ -63,32 +63,22 @@
         </div>
     </div>
   </section>
-  # <div class="container-shop">
-  #   <h2>TRUCKS OF NEVADA SEMI TRUCK REPAIR SHOP</h2>
-  #   <h3>Bring your heavy duty commercial truck to our repair shop in Las Vegas.
-  #         We provide the best maintenance and repairs.
-  #   </h3>
-  #   <div class="container-cards">
-  #     <div class="card1">
-  #         <h2>GREAT TEAM</h2>
-  #         <p>Expect great customer service from the first phone call, to your first visit and all the subsequent visits.</p>
-  #     </div>
-  #     <div class="card2">
-  #         <h2>WIDE RANGE OF SERVICES</h2>
-  #         <p>Diagnostic, Oil Change or Engine Repairs... We can handle it all in our repair shop.</p>
-  #     </div>
-  #     <div class="card3">
-  #         <h2>ROADSIDE ASSISTANCE</h2>
-  #         <p>Major breakdown around Las Vegas? Call us 24/7 and our Mobile Semi Truck Assistance will be on their way to you.</p>
-  #     </div>
-  #   </div>
-  # </div>
+
 
   <section class="services-section" data-controller="services">
     <div class="service-images">
         <!-- Image 1 -->
-        <div class="image-container">
+        <div class="image-container overlay-container">
             <img src="image1.jpg" alt="Truck Repair">
+            <div class="overlay">
+            <h3>Aftertreatment</h3>
+            <a href="#"
+               class="read-more"
+               data-action="click->services#readMoreClicked"
+               data-services-target="readMore">
+               READ MORE
+            </a>
+        </div>
         </div>
 
         <!-- Image 2 with Overlay -->
@@ -106,13 +96,31 @@
         </div>
 
         <!-- Image 3 -->
-        <div class="image-container">
+        <div class="image-container overlay-container">
             <img src="image3.jpg" alt="Engine Repair">
+            <div class="overlay">
+            <h3>Aftertreatment</h3>
+            <a href="#"
+               class="read-more"
+               data-action="click->services#readMoreClicked"
+               data-services-target="readMore">
+               READ MORE
+            </a>
+        </div>
         </div>
 
         <!-- Image 4 -->
-        <div class="image-container">
+        <div class="image-container overlay-container">
             <img src="image4.jpg" alt="Road Assistance">
+            <div class="overlay">
+            <h3>Aftertreatment</h3>
+            <a href="#"
+               class="read-more"
+               data-action="click->services#readMoreClicked"
+               data-services-target="readMore">
+               READ MORE
+            </a>
+        </div>
         </div>
     </div>
 
@@ -129,19 +137,38 @@
 </section>
 
   <div class="container-logo">
-    <p><a href="">Diagnostic & Inspection </a></p>
-    <p><a href="">Aftertreatment</a></p>
-    <p><a href="">Oil Change & Maintenance</a></p>
-    <p><a href="">Roadside Assistance</a></p>
+  <section class="logo-carousel-section" data-controller="logo-carousel">
+  <div class="carousel-container">
+    <div class="carousel-track" data-logo-carousel-target="tracks">
+      <!-- Logo Items -->
+      <div class="carousel-item">
+        <img src="volvo.png" alt="Volvo Logo" />
+      </div>
+      <div class="carousel-item">
+        <img src="freightliner.png" alt="Freightliner Logo" />
+      </div>
+      <div class="carousel-item">
+        <img src="peterbilt.png" alt="Peterbilt Logo" />
+      </div>
+      <div class="carousel-item">
+        <img src="international.png" alt="International Logo" />
+      </div>
+      <div class="carousel-item">
+        <img src="mack.png" alt="Mack Logo" />
+      </div>
+      <div class="carousel-item">
+        <img src="bridgestone.png" alt="Bridgestone Logo" />
+      </div>
+    </div>
+  </div>
 
-    <p>VISIT OUR REPAIR SHOP AND TALK TO OUR SPECIALISTS</p>
-    <button>CONTACT US</button>
-    <ul>
-      <li>logo</li>
-      <li>logo</li>
-      <li>logo</li>
-      <li>logo</li>
-    </ul>
+  <!-- Carousel Navigation -->
+  <div class="carousel-navigation">
+    <button class="prev" data-action="click->logo-carousel#prevSlide">&lt;</button>
+    <button class="next" data-action="click->logo-carousel#nextSlide">&gt;</button>
+  </div>
+</section>
+
   </div>
 
 </div>

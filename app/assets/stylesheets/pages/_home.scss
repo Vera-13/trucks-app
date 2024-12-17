@@ -447,6 +447,64 @@
   background-color: #0055aa;
 }
 
+.logo-carousel-section {
+  background-color: #f9f9f9;
+  padding: 20px 0;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 150px;
+  margin: 0 15px;
+  text-align: center;
+}
+
+.carousel-item img {
+  max-width: 100px;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-item img:hover {
+  opacity: 1;
+}
+
+.carousel-navigation {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  transform: translateY(-50%);
+}
+
+.carousel-navigation button {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-navigation button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+
 
 @media only screen and (max-width: 600px)  {
   .header{
