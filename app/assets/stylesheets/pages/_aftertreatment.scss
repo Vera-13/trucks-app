@@ -1,0 +1,80 @@
+.aftertreatment {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    .left,
+    .right {
+      flex: 1;
+      min-width: 300px;
+
+      h2 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      p {
+        line-height: 1.6;
+        color: #555;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    .right {
+      display: flex;
+      flex-direction: column;
+
+      .images {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+        }
+      }
+
+      .how-it-works {
+        .tabs {
+          display: flex;
+          margin-bottom: 1rem;
+
+          .tab {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+            cursor: pointer;
+            text-align: center;
+            border-radius: 4px;
+
+            &.active {
+              background-color: #007bff;
+              color: #fff;
+              border-color: #007bff;
+            }
+          }
+        }
+
+        .details {
+
+          .detail {
+            display: none;
+
+            &.active {
+              display: block;
+              ul{
+                list-style-type: none !important;
+              }
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
