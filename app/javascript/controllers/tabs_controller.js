@@ -17,4 +17,5 @@ export default class extends Controller {
       detail.classList.toggle("active", detail.dataset.tabsName === tabName);
     });
   }
+
 }

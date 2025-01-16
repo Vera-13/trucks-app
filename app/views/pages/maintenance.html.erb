@@ -1,40 +1,74 @@
-<h1>OIL CHANGE</h1>
-<p>
-  Every vehicle manufacturer has a recommendation on types and grades of engine oil to use. They also give some guidelines as to how often the oils should be changed. We leave that completely up to the customer, we just make some recommendations.
+<section class="service-section">
+  <div class="container" data-controller="tabs">
+    <!-- Service Header -->
+    <h2 class="service-title">Oil Change & Maintenance</h2>
 
-Majority Specialists and scientists agree that synthetic oils offer numerous advantages overtraditional products. Under extreme operating conditions, synthetics offer better protection of engine and engine components. Also, the use of synthetics means a longer lubricant service life and fewer oil changes. Using a total synthetic lubricant family of products can improve fuel economy savings by as much as 5 percent annually.
-</p>
+    <!-- Image Section -->
+    <div class="service-images">
+      <img src="image1.jpg" alt="Mechanic Working" />
+      <img src="image2.jpg" alt="Engine Maintenance" />
+    </div>
 
-<h2>DETAILS</h2>
-<%# tabel %>
-<p>
-Recommended Engine Oil:	Chevron 400 Delo 15W40
-Synthetic Engine Oil:	Chevron 400 Delo 10W30
-Oil Filters:	Volvo OEM, Donaldson, Fleetguard
-Fuel Filters:	Original or Manufacturer recommended
-Heavy Duty Lube:	Transmission, Fifth Wheels, Steering Gear, Wheel Bearings
+    <!-- Service Details -->
+    <div class="service-details">
+      <h3>Oil Change</h3>
+      <div class="underline"></div>
+      <p>
+      Every vehicle manufacturer has a recommendation on types and grades of engine oil to use. They also give some guidelines as to how often the oils should be changed. We leave that completely up to the customer, we just make some recommendations.
 
-</p>
+      Majority Specialists and scientists agree that synthetic oils offer numerous advantages overtraditional products. Under extreme operating conditions, synthetics offer better protection of engine and engine components. Also, the use of synthetics means a longer lubricant service life and fewer oil changes. Using a total synthetic lubricant family of products can improve fuel economy savings by as much as 5 percent annually.
+      </p>
+    </div>
 
-<h2>MAINTENANCE</h2>
-<p>
-  Aside from regular oil & fuel filter change, any semi truck has a maintenance schedule on multiple parts. Based on the maintenance manual of your make and model we can perform a variety of services.
-  <ul>
-    <li>Air & Cabin Filter</li>
-    <li>Coolant Flush & Coolant Filter</li>
-    <li>Valve Adjustment</li>
-    <li>Belts and Tubes</li>
-    <li>DPF & Fuel Injector Cleaning</li>
-    <li>Diesel Exhaust Filter (DEF) PUMP Filter</li>
-  </ul>
-</p>
-<h2>POPULAR QUESTIONS</h2>
-<p>
+    <!-- Tab Section -->
+    <div class="tabs">
+      <button data-action="click->tabs#showTab" data-tabs-target="detailsTab">Details</button>
+      <button data-action="click->tabs#showTab" data-tabs-target="maintenanceTab">Maintenance</button>
+      <button data-action="click->tabs#showTab" data-tabs-target="questionsTab">Popular Questions</button>
+    </div>
 
-What parts do you use for your service?
-We use only original or manufacturer recommended brands for all our parts. OEM parts will ensure a long engine life, better mpg and less repair time in the future
-</p>
-<p>
-  Do I really need maintenance regularly?
-  Even if your semi truck doesn't show any signs of problems, any part will fail. Preventive maintenance will help you avoid breakdown costs like towing and roadside assistance, as well as keeping a $25 part damaging a $2500 one
-</p>
+    <!-- Tab Content -->
+    <div class="tab-content">
+      <!-- Details Tab -->
+      <div data-tabs-target="detailsTab" class="tab active">
+        <table>
+          <tr>
+            <th>Recommended Engine Oil</th>
+            <td>Chevron 400 Delo 15W40</td>
+          </tr>
+          <tr>
+            <th>Synthetic Engine Oil</th>
+            <td>Chevron 400 Delo 10W30</td>
+          </tr>
+          <tr>
+            <th>Oil Filters</th>
+            <td>Volvo OEM, Donaldson, Fleetguard</td>
+          </tr>
+          <tr>
+            <th>Fuel Filters</th>
+            <td>Original or Manufacturer recommended</td>
+          </tr>
+          <tr>
+            <th>Heavy Duty Lube</th>
+            <td>Transmission, Fifth Wheels, Steering Gear, Wheel Bearings</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Maintenance Tab -->
+      <div data-tabs-target="maintenanceTab" class="tab">
+        <ul>
+          <li>Air & Cabin Filter</li>
+          <li>Coolant Flush & Coolant Filter</li>
+          <li>Valve Adjustment</li>
+        </ul>
+      </div>
+
+      <!-- Questions Tab -->
+      <div data-tabs-target="questionsTab" class="tab">
+        <h4>What parts do you use for your service?</h4>
+        <p>We use only original or manufacturer-recommended brands...</p>
+      </div>
+    </div>
+  </div>
+</section>
