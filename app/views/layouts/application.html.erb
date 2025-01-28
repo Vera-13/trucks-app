@@ -40,46 +40,44 @@
       </span>
       </div>
     </div>
-    <div class="navbar">
+
+    <div class="navbar" data-controller="navbar">
       <div class="nav-div1">
         <%= link_to root_path, class: "navbar-brand" do %>
-        <%= image_tag "logo.png", class: "logo"%>
+          <%= image_tag "logo.png", class: "logo"%>
         <% end %>
       </div>
 
-      <div class="nav-div2">
+      <button class="hamburger" data-action="click->navbar#toggle">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <div class="nav-div2" data-navbar-target="menu">
         <%= link_to root_path do %>
           Home
         <% end%>
 
         <div class="subnav">
-          <button class="subnavbtn">Services <i class="fa fa-caret-down"></i></button>
-          <div class="subnav-content">
-            <%= link_to diagnostic_path do %>
-            Diagnostic & Inspection
-            <% end%>
-            <%= link_to aftertreatment_path do %>
-            Aftertreatment
-            <% end%>
-            <%= link_to maintenance_path do %>
-            Oil Change & Maintenance
-            <% end%>
+          <%= link_to services_path class: "navbar-brand" do %>
+            <button class="subnavbtn" >
+              Services <i class="fa fa-caret-down"></i>
+            </button>
+          <% end %>
+          <div class="subnav-content" data-navbar-target="dropdown">
+            <%= link_to diagnostic_path do %> Diagnostics & Inspection <% end%>
+            <%= link_to aftertreatment_path do %> Aftertreatment <% end%>
+            <%= link_to maintenance_path do %> Oil Change & Maintenance <% end%>
           </div>
         </div>
-        <%= link_to roadside_assistance_path do %>
-          Roadside Assistance
-        <% end%>
-        <%= link_to fleet_services_path do %>
-          Fleet Services
-        <% end%>
-        <%= link_to blog_path do %>
-          Blog
-        <% end%>
-        <%= link_to about_path do %>
-          About Us
-        <% end%>
+
+        <%= link_to roadside_assistance_path do %> Roadside Assistance <% end%>
+        <%= link_to fleet_services_path do %> Fleet Services <% end%>
+        <%= link_to about_path do %> About Us <% end%>
       </div>
     </div>
+
+
+
     <%= yield %>
       <div class="footer">
         <div class="div">

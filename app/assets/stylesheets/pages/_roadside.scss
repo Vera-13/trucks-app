@@ -137,7 +137,8 @@
     text-align: left;
 
     h2 {
-      font-size: 2rem;
+      // font-size: 2rem;
+      font-size: clamp(1rem, 2.5vw, 2rem);
       color: #333;
       margin-bottom: 0.5rem;
     }
@@ -197,5 +198,14 @@
 @media only screen and (max-width: 716px){
   .emergency-banner .banner-content {
     justify-content: center;
+  }
+  .emergency-services .content .services-list{
+    display: flex;
+    flex-direction: column;
+  }
+  .content{
+    h2{
+      padding-top: 1em;
+    }
   }
 }

@@ -44,92 +44,144 @@
   }
   }
 }
-/* The navigation menu */
+
 .navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
-  background-color: #ffffff;
+  .nav-div1 {
+        .navbar-brand {
+          display: flex;
+          align-items: center;
 
-  & .logo {
-    max-width: 100%;
-    height: auto;
+          .logo {
+            width: 9rem;
+          }
+        }
+      }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
   }
-  // width: 100vw;
-  // display: flex;
+
+  .nav-div2 {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #004080;
+      }
+    }
+
+    .subnav {
+      position: relative;
+
+      .subnavbtn {
+        background: none;
+        border: none;
+        color: #333;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        i {
+          margin-left: 0.5rem;
+        }
+
+        &:hover {
+          color: #004080;
+        }
+      }
+
+      .subnav-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        border-radius: 4px;
+        z-index: 1000;
+        width: max-content;
+
+        a {
+          display: block;
+          padding: 0.5rem 1rem;
+          color: #333;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: background 0.3s ease;
+
+          &:hover {
+            background-color: #f0f0f0;
+            color: #004080;
+          }
+        }
+      }
+      &:hover .subnav-content {
+                display: block;
+              }
+    }
+  }
+
+  // Responsive Styles
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+      z-index: 999;
+    }
+
+    .nav-div2 {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #fff;
+      position: absolute;
+      top: 5rem;
+      left: 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+
+      &.active {
+        display: flex !important;
+        z-index: 998;
+      }
+    }
+
+    .subnav-content {
+      position: relative;
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
 }
 
-.nav-div1{
-  width: 20%;
-  display: flex;
-  justify-content: flex-start;
-}
-.nav-div2{
-  width: 80%;
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 1em;
-}
-/* Navigation links */
-.navbar a {
-  float: left;
-  font-size: clamp(0.5rem, 1.5vw, 1.3rem);
-  color: #415a77;
-  text-align: center;
-  padding: 0.2em 0.9em;
-  text-decoration: none;
-}
 
-/* The subnavigation menu */
-.subnav {
-  float: left;
 
-}
 
-/* Subnav button */
-.subnav .subnavbtn {
-  font-size: clamp(0.5rem, 1.5vw, 1.4rem);
-  border: none;
-  outline: none;
-  color: #415a77;
-  padding: 0.2em 0.9em;
-  background-color: inherit;
-  font-family: inherit;
-  margin: 0;
-}
 
-/* Add a red background color to navigation links on hover */
-.navbar a:hover, .subnav:hover .subnavbtn {
-  color: #1b263b;
-}
 
-/* Style the subnav content - positioned absolute */
-.subnav-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: white;
-  width: 100%;
-  z-index: 1;
-}
 
-/* Style the subnav links */
-.subnav-content a {
-  float: left;
-  color: #415a77;
-  text-decoration: none;
-}
-
-/* Add a grey background color on hover */
-.subnav-content a:hover {
-  // background-color: #000000;
-  color: #1b263b;
-}
-
-/* When you move the mouse over the subnav container, open the subnav content */
-.subnav:hover .subnav-content {
-  display: flex;
-  justify-content: center;
-
-}
 
 .footer{
   bottom: 0;
@@ -323,6 +375,8 @@
   max-width: 300px;
   text-align: center;
   padding: 20px;
+  border: none;
+  border-radius: 5px;
 }
 
 .card img {
@@ -459,39 +513,7 @@
 
 
 
-@media only screen and (max-width: 600px)  {
-  .header{
-    padding: 0.5em;
-  }
-  #div1{
-    display: flex;
-    flex-direction: column;
-  }
-  #div2{
-    display: flex;
-    flex-direction: column;
-  }
-  .footer{
-    height: auto;
-    padding: 0.9em;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-  .navbar{
-    height: auto;
-    display: flex;
-    flex-direction: row;
-  }
-  .container-call{
-    display: flex;
-    justify-content: column;
-  }
-  .service-images{
-    flex-wrap: wrap;
-  }
-}
+
 
 .logos--airbnb {
   display: inline-block;
@@ -569,5 +591,50 @@
 
   .dot:hover {
     background-color: #555; // Optional hover effect
+  }
+}
+
+
+@media only screen and (max-width: 600px)  {
+  .header{
+    padding: 0.5em;
+  }
+
+  .logo {
+    width: 5rem;
+  }
+  #div1{
+    display: flex;
+    flex-direction: column;
+  }
+  #div2{
+    display: flex;
+    flex-direction: column;
+  }
+  .footer{
+    height: auto;
+    padding: 0.9em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .navbar{
+    height: auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .hamburger {
+    display: block;
+  }
+  .nav-div2{
+    flex-direction: column;
+  }
+  .container-call{
+    display: flex;
+    justify-content: column;
+  }
+  .service-images{
+    flex-wrap: wrap;
   }
 }

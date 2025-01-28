@@ -1,5 +1,5 @@
 <section class="service-section">
-  <div class="container" data-controller="tabs">
+  <div class="container">
     <!-- Service Header -->
     <h2 class="service-title">Oil Change & Maintenance</h2>
 
@@ -13,6 +13,7 @@
     <div class="service-details">
       <h3>Oil Change</h3>
       <div class="underline"></div>
+
       <p>
       Every vehicle manufacturer has a recommendation on types and grades of engine oil to use. They also give some guidelines as to how often the oils should be changed. We leave that completely up to the customer, we just make some recommendations.
 
@@ -20,18 +21,13 @@
       </p>
     </div>
 
-    <!-- Tab Section -->
-    <div class="tabs">
-      <button data-action="click->tabs#showTab" data-tabs-target="detailsTab">Details</button>
-      <button data-action="click->tabs#showTab" data-tabs-target="maintenanceTab">Maintenance</button>
-      <button data-action="click->tabs#showTab" data-tabs-target="questionsTab">Popular Questions</button>
-    </div>
 
-    <!-- Tab Content -->
-    <div class="tab-content">
-      <!-- Details Tab -->
-      <div data-tabs-target="detailsTab" class="tab active">
-        <table>
+    <section class="details-section">
+      <div class="">
+        <h2>Details</h2>
+        <div class="underline"></div>
+
+        <table class="details-table">
           <tr>
             <th>Recommended Engine Oil</th>
             <td>Chevron 400 Delo 15W40</td>
@@ -54,21 +50,42 @@
           </tr>
         </table>
       </div>
+    </section>
 
-      <!-- Maintenance Tab -->
-      <div data-tabs-target="maintenanceTab" class="tab">
+    <section class="maintenance-popular">
+      <div class="maintenance">
+        <h2>Maintenance</h2>
+        <div class="underline"></div>
+
+        <p>
+          Aside from regular oil & fuel filter change, any semi truck has a maintenance schedule on multiple parts. Based on the maintenance manual of your make and model we can perform a variety of services.
+        </p>
         <ul>
-          <li>Air & Cabin Filter</li>
-          <li>Coolant Flush & Coolant Filter</li>
-          <li>Valve Adjustment</li>
+          <li> Air & Cabin Filter</li>
+          <li> Coolant Flush & Coolant Filter</li>
+          <li> Valve Adjustment</li>
+          <li> Belts and Tubes</li>
+          <li> DPF & Fuel Injector Cleaning</li>
+          <li> Diesel Exhaust Filter (DEF) PUMP Filter</li>
         </ul>
       </div>
-
-      <!-- Questions Tab -->
-      <div data-tabs-target="questionsTab" class="tab">
-        <h4>What parts do you use for your service?</h4>
-        <p>We use only original or manufacturer-recommended brands...</p>
+      <div class="popular-questions" data-controller="accordion">
+        <h2>Popular Questions</h2>
+        <div class="underline"></div>
+        <div class="question">
+          <div class="question-title" data-action="click->accordion#toggle">What parts do you use for your service?</div>
+          <div class="question-content" data-accordion-target="content">
+            We use only original or manufacturer-recommended brands for all our parts. OEM parts will ensure a long engine life, better mpg, and less repair time in the future.
+          </div>
+        </div>
+        <div class="question">
+          <div class="question-title" data-action="click->accordion#toggle">Do I really need maintenance regularly?</div>
+          <div class="question-content" data-accordion-target="content">
+            Even if your semi truck doesn't show any signs of problems, any part will fail. Preventive maintenance will help you avoid breakdown costs like towing and roadside assistance, as well as keeping a $25 part from damaging a $2500 one.
+          </div>
+        </div>
       </div>
-    </div>
+    </section>
+
   </div>
 </section>
