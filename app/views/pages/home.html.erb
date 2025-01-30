@@ -5,7 +5,11 @@
         <img src="image1.jpg" alt="Slide 1">
         <div class="carousel-content">
           <h2>PEACE OF MIND ON THE ROAD</h2>
-          <button class="carousel-button">HEAVY DUTY SERVICES</button>
+
+          <%= link_to services_path,
+          class: "carousel-button" do %>
+          HEAVY DUTY SERVICES
+        <% end %>
         </div>
       </div>
       <div class="carousel-slide" data-carousel-target="slide">
@@ -66,20 +70,20 @@
   </section>
 
 
-  <section class="services-section" data-controller="services">
+  <section class="services-section">
     <div class="service-images">
         <!-- Image 1 -->
         <div class="image-container overlay-container">
             <img src="image1.jpg" alt="Truck Repair">
             <div class="overlay">
-            <h3>Dignostics & Inspection</h3>
-            <a href="#"
-               class="read-more"
-               data-action="click->services#readMoreClicked"
-               data-services-target="readMore">
-               READ MORE
-            </a>
-        </div>
+              <h3>Dignostics & Inspection</h3>
+
+              <%= link_to diagnostic_path,
+                class: "read-more" do %>
+                READ MORE
+              <% end %>
+
+            </div>
         </div>
 
         <!-- Image 2 with Overlay -->
@@ -87,12 +91,10 @@
             <img src="image2.jpg" alt="Aftertreatment">
             <div class="overlay">
                 <h3>Aftertreatment</h3>
-                <a href="#"
-                   class="read-more"
-                   data-action="click->services#readMoreClicked"
-                   data-services-target="readMore">
-                   READ MORE
-                </a>
+                <%= link_to aftertreatment_path,
+                class: "read-more" do %>
+                READ MORE
+              <% end %>
             </div>
         </div>
 
@@ -101,12 +103,10 @@
             <img src="image3.jpg" alt="Engine Repair">
             <div class="overlay">
             <h3>Oil Change and Maintenance</h3>
-            <a href="#"
-               class="read-more"
-               data-action="click->services#readMoreClicked"
-               data-services-target="readMore">
-               READ MORE
-            </a>
+            <%= link_to maintenance_path,
+                class: "read-more" do %>
+                READ MORE
+              <% end %>
         </div>
         </div>
 
@@ -115,12 +115,10 @@
             <img src="image4.jpg" alt="Road Assistance">
             <div class="overlay">
             <h3>Roadside Assistance</h3>
-            <a href="#"
-               class="read-more"
-               data-action="click->services#readMoreClicked"
-               data-services-target="readMore">
-               READ MORE
-            </a>
+            <%= link_to roadside_assistance_path,
+                class: "read-more" do %>
+                READ MORE
+              <% end %>
         </div>
         </div>
     </div>

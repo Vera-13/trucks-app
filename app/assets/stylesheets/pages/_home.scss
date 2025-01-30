@@ -104,6 +104,9 @@
   color: white;
   cursor: pointer;
   font-size: clamp(0.5rem, 1.5vw, 2rem);
+  a{
+    text-decoration: none;
+  }
 }
 
 .carousel-prev, .carousel-next {
