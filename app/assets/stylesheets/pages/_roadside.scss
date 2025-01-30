@@ -27,7 +27,7 @@
 }
 
 .emergency-banner .call-button {
-  background-color: #0056b3;
+  background-color: $blue;
   color: #fff;
   text-decoration: none;
   padding: 0.75rem 1.5rem;
@@ -37,7 +37,7 @@
 }
 
 .emergency-banner .call-button:hover {
-  background-color: #003d80;
+  background-color: $darkblue;
 }
 
 /* We Are Here Section */
@@ -57,7 +57,7 @@
 .we-are-here .underline {
   width: 50px;
   height: 3px;
-  background-color: #0056b3;
+  background-color: $blue;
   margin: 0.5rem auto;
 }
 
@@ -85,7 +85,7 @@
   // height: 60px;
   // margin-bottom: 1rem;
   font-size: 2rem;
-  color: #0056b3;
+  color: $blue;
 }
 
 .we-are-here .feature h3 {
@@ -99,7 +99,7 @@
 .we-are-here .feature .underline {
   width: 50px;
   height: 3px;
-  background-color: #0056b3;
+  background-color: $blue;
   margin: 0.5rem auto 1.5rem;
 }
 
@@ -146,7 +146,7 @@
     .underline {
       width: 50px;
       height: 3px;
-      background-color: #0056b3;
+      background-color: $blue;
       margin-bottom: 1.5rem;
     }
 
@@ -169,7 +169,7 @@
         color: #333;
 
         .check-icon {
-          color: #0056b3;
+          color: $blue;
           font-weight: bold;
           margin-right: 0.5rem;
         }
@@ -178,7 +178,7 @@
 
     .call-button {
       display: inline-block;
-      background-color: #0056b3;
+      background-color: $blue;
       color: #fff;
       text-decoration: none;
       padding: 0.75rem 1.5rem;
@@ -189,7 +189,7 @@
       transition: background-color 0.3s ease;
 
       &:hover {
-        background-color: #003d80;
+        background-color: $darkblue;
       }
     }
   }

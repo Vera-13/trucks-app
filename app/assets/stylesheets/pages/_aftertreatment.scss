@@ -7,7 +7,7 @@
     .underline {
       width: 50px;
       height: 3px;
-      background-color: #0056b3;
+      background-color: $blue;
       margin-bottom: 1rem;
     }
     .left,
@@ -59,9 +59,9 @@
             border-radius: 4px;
 
             &.active {
-              background-color: #007bff;
+              background-color: $blue;
               color: #fff;
-              border-color: #007bff;
+              border-color: $blue;
             }
           }
         }
@@ -75,6 +75,15 @@
               display: block;
               ul{
                 list-style-type: none !important;
+                li {
+                  &::before {
+                    content: "✔";
+                    color: $blue;
+                    font-weight: bold;
+                    margin-right: 0.5rem;
+                  }
+                }
+
               }
             }
           }

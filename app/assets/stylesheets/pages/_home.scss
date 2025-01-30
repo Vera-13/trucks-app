@@ -218,13 +218,10 @@
 /* Hexagon Icon Styling (Optional placeholder) */
 .hex-icon {
   display: inline-block;
-  // width: 80px;
-  // height: 80px;
-  // background: url('https://placehold.co/80x80') no-repeat center center;
   background-size: contain;
   font-size: 2rem;
   margin-bottom: 15px;
-  color: #415a77;
+  color: $blue;
 }
 
 .services-section {
@@ -287,10 +284,9 @@
 .overlay .read-more {
   text-decoration: none;
   color: #fff;
-  background-color: #003366;
+  background-color: $blue;
   padding: 8px 16px;
   border-radius: 5px;
-  font-weight: bold;
 }
 
 .overlay-container:hover .overlay {

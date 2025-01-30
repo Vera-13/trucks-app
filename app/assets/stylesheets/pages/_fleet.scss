@@ -20,11 +20,11 @@
         margin-bottom: 1rem;
 
         strong {
-          color: #0056b3;
+          color: $blue;
         }
 
         a {
-          color: #0056b3;
+          color: $blue;
           text-decoration: none;
 
           &:hover {
@@ -43,7 +43,7 @@
       .underline {
         width: 50px;
         height: 3px;
-        background-color: #0056b3;
+        background-color: $blue;
         margin-bottom: 1rem;
       }
 
@@ -60,7 +60,7 @@
           margin-bottom: 0.5rem;
 
           .check-icon {
-            color: #0056b3;
+            color: $blue;
             font-weight: bold;
             margin-right: 0.5rem;
           }
@@ -69,7 +69,7 @@
 
       .browse-services-btn {
         display: inline-block;
-        background-color: #0056b3;
+        background-color: $blue;
         color: #fff;
         text-decoration: none;
         padding: 0.75rem 1.5rem;

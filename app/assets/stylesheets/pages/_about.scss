@@ -15,7 +15,7 @@
     text-align: center;
     .icon {
       font-size: 2rem;
-      color: #0056b3;
+      color: $blue;
       margin-bottom: 1rem;
     }
 
@@ -31,7 +31,7 @@
       margin-bottom: 0;
 
       a {
-        color: #0056b3;
+        color: $blue;
         text-decoration: none;
 
         &:hover {
@@ -59,7 +59,7 @@
   .underline {
     width: 50px;
     height: 3px;
-    background-color: #0056b3;
+    background-color: $blue;
     margin: 0.5rem auto 1.5rem;
   }
 
@@ -98,7 +98,7 @@
       .icon {
         margin-bottom: 1rem;
         font-size: 3rem;
-        color:#003d80;
+        color: $blue;
       }
 
       h3 {
@@ -111,7 +111,7 @@
       .underline {
         width: 50px;
         height: 3px;
-        background-color: #0056b3;
+        background-color: $blue;
         margin: 0.5rem auto 1.5rem;
       }
 
@@ -127,7 +127,7 @@
     .cta-button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
-      background-color: #0056b3;
+      background-color: $blue;
       color: #fff;
       text-decoration: none;
       font-weight: bold;
@@ -135,7 +135,7 @@
       transition: background-color 0.2s;
 
       &:hover {
-        background-color: #003d80;
+        background-color: $darkblue;
       }
     }
   }
