@@ -4,8 +4,8 @@
   padding-top: 2em;
   padding-bottom: 2em;
   padding-left: 2em;
-  color: #415a77;
-  background: #e7ecef;
+  color: $darkblue;
+  background: $light-gray;
   font-size: clamp(0.6rem, 1.5vw, 1.4rem);
   display: flex;
   align-content: center;
@@ -13,14 +13,13 @@
   a
   {
     text-decoration: none;
-    color: #415a77;
+    color: $darkblue;
 
   }
 
    a:hover {
     text-decoration: underline;
-    color: #1b263b;
-  }
+    }
   // justify-content: space-evenly;
   #div1 {
   width: 85%;

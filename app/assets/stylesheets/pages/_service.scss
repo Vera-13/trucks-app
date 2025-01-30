@@ -45,6 +45,9 @@
         transform: translateY(-5px);
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
       }
+      a{
+        text-decoration: none;
+      }
 
       img {
         width: 100%;
@@ -82,7 +85,7 @@
 .trailer-repairs {
   text-align: center;
   margin: 2rem auto;
-  padding: 0 1rem;
+  padding: 1rem 1rem;
 
   .repairs-header {
     margin-bottom: 2rem;
@@ -113,6 +116,11 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background-color: white;
 
     .repair-item {
       text-align: left;

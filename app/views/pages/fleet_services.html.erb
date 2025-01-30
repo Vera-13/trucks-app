@@ -8,7 +8,7 @@
       <p>
         We offer a full range of services to semi truck fleets. You already cover
         most of the maintenance on your fleet? Contact us to find out more
-        about our specialized services like <a href="#">Roadside Assistance</a>.
+        about our specialized services like <%= link_to "Roadside Assistance", roadside_assistance_path %>.
       </p>
       <h3>WHY CHOOSE US</h3>
       <div class="underline"></div>
@@ -19,7 +19,10 @@
         <li><span class="check-icon">✔</span> We get the job done right — the first time</li>
         <li><span class="check-icon">✔</span> Fast service on most repairs and maintenance</li>
       </ul>
-      <a href="#" class="browse-services-btn">BROWSE SERVICES</a>
+
+      <%= link_to services_path, class: "browse-services-btn" do %>
+        BROWSE SERVICES
+        <% end %>
     </div>
     <div class="images">
       <div class="main-image">
