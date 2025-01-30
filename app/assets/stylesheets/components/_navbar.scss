@@ -1,12 +1,243 @@
-.navbar-lewagon {
+.header {
+  top: 0;
+  height: 6rem;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  padding-left: 2em;
+  color: #415a77;
+  background: #e7ecef;
+  font-size: clamp(0.6rem, 1.5vw, 1.4rem);
+  display: flex;
+  align-content: center;
+  flex-wrap: wrap;
+  a
+  {
+    text-decoration: none;
+    color: #415a77;
+
+  }
+
+   a:hover {
+    text-decoration: underline;
+    color: #1b263b;
+  }
+  // justify-content: space-evenly;
+  #div1 {
+  width: 85%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  & span{
+    padding: .5em;
+  }
+  }
+  #div2 {
+  width: 15%;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  & span{
+    padding: .5em;
+  }
+  }
+}
+
+.navbar {
+  display: flex;
   justify-content: space-between;
-  background: white;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  .nav-div1 {
+        .navbar-brand {
+          display: flex;
+          align-items: center;
+
+          .logo {
+            width: 9rem;
+          }
+        }
+      }
+
+  .hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  .nav-div2 {
+    display: flex;
+    // align-items: center;
+    gap: 1.5rem;
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+
+      &:hover {
+        color: #004080;
+      }
+    }
+
+    .subnav {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+
+      .subnavbtn {
+        background: none;
+        border: none;
+        color: #333;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+
+        i {
+          margin-left: 0.5rem;
+        }
+
+        &:hover {
+          color: #004080;
+        }
+      }
+
+      .subnav-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 1rem;
+        border-radius: 4px;
+        z-index: 1000;
+        width: max-content;
+
+        a {
+          display: block;
+          padding: 0.5rem 1rem;
+          color: #333;
+          text-decoration: none;
+          font-size: 0.9rem;
+          transition: background 0.3s ease;
+
+          &:hover {
+            background-color: #f0f0f0;
+            color: #004080;
+          }
+        }
+      }
+      &:hover .subnav-content {
+                display: block;
+              }
+    }
+  }
+
+  // Responsive Styles
+  @media (max-width: 768px) {
+    .hamburger {
+      display: block;
+      z-index: 999;
+    }
+
+    .nav-div2 {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      background-color: #fff;
+      position: absolute;
+      top: 5rem;
+      left: 0;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+
+      &.active {
+        display: flex !important;
+        z-index: 998;
+      }
+    }
+
+    .subnav-content {
+      position: relative;
+      display: none;
+
+      &.active {
+        display: block;
+      }
+    }
+  }
 }
 
-.navbar-lewagon .navbar-collapse {
-  flex-grow: 0;
+.nav-div2 a.active,
+.nav-div2 .subnavbtn.active {
+  color: #004080; /* Change text color */
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.subnav-content a.active {
+
+  color: #004080;
+
+}
+
+.subnav.open .subnav-content {
+  display: block; /* Keeps subnav open */
+}
+
+.subnavbtn.active {
+  color: #004080;
+}
+
+.subnav-content a.active {
+
+  color: #004080;
+
+}
+
+/* Breadcrumb-style section */
+.breadcrumb-section {
+  background: #f8f8f8;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  color: #666;
+  span.active{
+    color: #004080;
+    text-transform: uppercase;
+  }
+}
+
+.breadcrumb-section a {
+  text-decoration: none;
+  color: #333;
+  font-weight: normal;
+}
+
+.breadcrumb-section a.active {
+  font-weight: bold;
+  color: #004080;
+
+}
+
+
+
+@media only screen and (max-width: 600px)  {
+  .header{
+    padding: 0.5em;
+  }
+  .navbar{
+    height: auto;
+    display: flex;
+    flex-direction: row;
+  }
+  .hamburger {
+    display: block;
+  }
+  .nav-div2{
+    flex-direction: column;
+  }
+
 }

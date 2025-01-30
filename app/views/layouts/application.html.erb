@@ -53,29 +53,52 @@
       </button>
 
       <div class="nav-div2" data-navbar-target="menu">
-        <%= link_to root_path do %>
+        <%= link_to root_path, class: "#{'active' if current_page?(root_path)}" do %>
           Home
-        <% end%>
+        <% end %>
 
         <div class="subnav">
-          <%= link_to services_path class: "navbar-brand" do %>
-            <button class="subnavbtn" >
-              Services <i class="fa fa-caret-down"></i>
-            </button>
+          <%= link_to services_path, class: "#{'active' if current_page?(services_path)}" do %>
+           Services
           <% end %>
+          <button class="subnavbtn">
+           <i class="fa fa-caret-down"></i>
+          </button>
           <div class="subnav-content" data-navbar-target="dropdown">
-            <%= link_to diagnostic_path do %> Diagnostics & Inspection <% end%>
-            <%= link_to aftertreatment_path do %> Aftertreatment <% end%>
-            <%= link_to maintenance_path do %> Oil Change & Maintenance <% end%>
+            <%= link_to diagnostic_path, class: "#{'active' if current_page?(diagnostic_path)}" do %> Diagnostics & Inspection <% end%>
+            <%= link_to aftertreatment_path, class: "#{'active' if current_page?(aftertreatment_path)}" do %> Aftertreatment <% end%>
+            <%= link_to maintenance_path, class: "#{'active' if current_page?(maintenance_path)}" do %> Oil Change & Maintenance <% end%>
           </div>
         </div>
 
-        <%= link_to roadside_assistance_path do %> Roadside Assistance <% end%>
-        <%= link_to fleet_services_path do %> Fleet Services <% end%>
-        <%= link_to about_path do %> About Us <% end%>
+
+        <%= link_to roadside_assistance_path, class: "#{'active' if current_page?(roadside_assistance_path)}" do %>
+          Roadside Assistance
+        <% end%>
+
+        <%= link_to fleet_services_path, class: "#{'active' if current_page?(fleet_services_path)}" do %>
+          Fleet Services
+        <% end%>
+
+        <%= link_to about_path, class: "#{'active' if current_page?(about_path)}" do %>
+          About Us
+        <% end%>
       </div>
+
     </div>
 
+    <% if current_page?(diagnostic_path) || current_page?(aftertreatment_path) || current_page?(maintenance_path) %>
+      <div class="breadcrumb-section">
+        YOU ARE HERE:
+        <%= link_to "HOME", root_path %> /
+        <%= link_to "SERVICES", services_path %> /
+        <span class="active">
+          <% if current_page?(diagnostic_path) %> Diagnostics & Inspection <% end %>
+          <% if current_page?(aftertreatment_path) %> Aftertreatment <% end %>
+          <% if current_page?(maintenance_path) %> Oil Change & Maintenance <% end %>
+        </span>
+      </div>
+    <% end %>
 
 
     <%= yield %>

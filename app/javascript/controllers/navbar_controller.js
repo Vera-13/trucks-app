@@ -7,8 +7,4 @@ export default class extends Controller {
     this.menuTarget.classList.toggle("active")
   }
 
-  // toggleDropdown(event) {
-  //   event.preventDefault()
-  //   this.dropdownTarget.classList.toggle("active")
-  // }
 }
