@@ -1,14 +1,23 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TrucksApp</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title><%= content_for?(:title) ? yield(:title) : "Trucks of Nevada | Semi-Truck Repair" %></title>
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Trucks of Nevada">
+  <meta name="robots" content="index, follow">
+
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= display_meta_tags %> <!-- This will render the meta tags dynamically from ApplicationController -->
+
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+
+  <%= favicon_link_tag 'favicon.ico' %>
+</head>
+
 
   <body>
     <div class="header">
@@ -44,7 +53,7 @@
     <div class="navbar" data-controller="navbar">
       <div class="nav-div1">
         <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "logo.png", class: "logo"%>
+          <%= image_tag "trucks_of_nevada_logo.png", class: "logo"%>
         <% end %>
       </div>
 
