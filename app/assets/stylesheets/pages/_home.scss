@@ -22,7 +22,7 @@
   }
   .div{
     width: 33%;
-    font-size: clamp(0.7rem, 1.5vw, 1.5rem);
+    font-size: clamp(0.9rem, 1.5vw, 1.5rem);
     container-type: inline-size;
 
   }
@@ -358,11 +358,14 @@ a.carousel-button{
   }
   .footer{
     height: auto;
-    padding: 0.9em;
+    padding-bottom: 0.9em;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+  }
+  .footer .div{
+    width: 100%;
   }
   .container-call{
     display: flex;

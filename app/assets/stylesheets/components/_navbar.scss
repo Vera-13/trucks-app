@@ -1,12 +1,12 @@
 .header {
   top: 0;
-  height: 6rem;
+  min-height: 6rem;
   padding-top: 2em;
   padding-bottom: 2em;
   padding-left: 2em;
   color: $darkblue;
   background: $light-gray;
-  font-size: clamp(0.6rem, 1.5vw, 1.4rem);
+  font-size: clamp(0.9rem, 1.5vw, 1.4rem);
   display: flex;
   align-content: center;
   flex-wrap: wrap;
@@ -231,6 +231,7 @@
 @media only screen and (max-width: 600px)  {
   .header{
     padding: 0.5em;
+    height: auto;
   }
   .navbar{
     height: auto;
