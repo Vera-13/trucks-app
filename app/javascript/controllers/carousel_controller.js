@@ -7,18 +7,32 @@ export default class extends Controller {
   };
 
   connect() {
+    if (this.slideTargets.length === 0) return;
     this.currentIndex = 1; // Start at the first real slide
     this.totalSlides = this.slideTargets.length;
 
     this.cloneSlides(); // Clone slides for seamless looping
     this.startAutoSlide();
+    this.jumpWithoutTransition(); // Ensure correct position on load
+    document.addEventListener("visibilitychange", this.handleVisibilityChange);
 
     this.trackTarget.style.transition = "none"; // Prevent animation during the initial setup
     this.trackTarget.style.transform = `translateX(-100%)`; // Start at the first real slide
   }
+  handleVisibilityChange = () => {
+    if (document.visibilityState === "visible") {
+      this.jumpWithoutTransition();
+      this.startAutoSlide();
+    } else {
+      this.stopAutoSlide();
+    }
+  };
 
   disconnect() {
-    this.stopAutoSlide();
+    if (document.visibilityState !== "hidden") {
+      this.stopAutoSlide();
+    }
+    document.removeEventListener("visibilitychange", this.handleVisibilityChange);
   }
 
   cloneSlides() {
@@ -45,6 +59,7 @@ export default class extends Controller {
   }
 
   jumpWithoutTransition() {
+    if (!this.trackTarget) return;
     this.trackTarget.style.transition = "none"; // Disable animation
     const offset = -this.currentIndex * 100;
     this.trackTarget.style.transform = `translateX(${offset}%)`;

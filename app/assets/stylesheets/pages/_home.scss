@@ -75,13 +75,13 @@
   transform: translate(-50%, calc(-50% + 20px)); /* Centered and slightly shifted down */
   animation: fadeInUp 2s ease-out var(--delay, 1s) forwards; /* Fade-in with delay */
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   text-align: center;
   color: white;
-  // h2{
-  //   font-size: clamp(2rem, 1.5vw, 5rem);
-  // }
+  h2{
+    font-size: clamp(1rem, 4vw, 3rem);
+  }
 
 
 }
@@ -100,8 +100,9 @@
 
 
 .carousel-button {
-  margin-top: 20px;
-  padding: 10px 20px;
+  margin-top: 1rem;
+  // padding: 10px 20px;
+  padding: 0.6rem 1.25rem;
   background: transparent;
   border: 2px solid white;
   color: white;
@@ -373,5 +374,11 @@ a.carousel-button{
   }
   .service-images{
     flex-wrap: wrap;
+  }
+  .carousel-button{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 0;
   }
 }
