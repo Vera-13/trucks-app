@@ -308,11 +308,18 @@ a.carousel-button{
 }
 
 .brand-logo {
-  flex: 0 0 calc(100% / 4); // Each item takes 1/4 of the visible width
+  flex: 0 0 calc(100% / 3); // Each item takes 1/4 of the visible width
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
+
+   img {
+    max-width: 90%;
+    max-height: 100%;
+    object-fit: contain;
+    display: block;
+  }
 }
 
 .slider-dots {
@@ -343,6 +350,8 @@ a.carousel-button{
     background-color: #555; // Optional hover effect
   }
 }
+
+
 
 
 @media only screen and (max-width: 600px)  {
