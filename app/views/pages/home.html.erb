@@ -2,164 +2,114 @@
   <div class="carousel" data-controller="carousel">
     <div class="carousel-track" data-carousel-target="track">
       <div class="carousel-slide" data-carousel-target="slide">
-        <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738767841/Trucks-app/carousel1_dnstn3.jpg" alt="Slide 1">
+        <%= cl_image_tag("Trucks-app/carousel1_dnstn3", fetch_format: :auto, quality: :auto, alt: "Slide 1") %>
         <div class="carousel-content">
           <h2>PEACE OF MIND ON THE ROAD</h2>
           <br>
-          <%= link_to services_path,
-            class: "carousel-button" do %>
-            HEAVY DUTY SERVICES
-          <% end %>
+          <%= link_to "HEAVY DUTY SERVICES", services_path, class: "carousel-button" %>
         </div>
       </div>
       <div class="carousel-slide" data-carousel-target="slide">
-        <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1745944545/carousel-img-3_z5k4tb.jpg" alt="Slide 2">
+        <%= cl_image_tag("carousel-img-3_z5k4tb", fetch_format: :auto, quality: :auto, alt: "Slide 2") %>
         <div class="carousel-content">
           <h2>YOUR PARTNER IN RELIABILITY</h2>
           <br>
-          <%= link_to services_path,
-            class: "carousel-button" do %>
-            LEARN MORE
-          <% end %>
+          <%= link_to "LEARN MORE", services_path, class: "carousel-button" %>
         </div>
       </div>
       <div class="carousel-slide" data-carousel-target="slide">
-        <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766849/Trucks-app/carousel3_ovpuiv.jpg" alt="Slide 3">
+        <%= cl_image_tag("Trucks-app/carousel3_ovpuiv", fetch_format: :auto, quality: :auto, alt: "Slide 3") %>
         <div class="carousel-content">
           <h2>ROADSIDE ASSISTANCE NEAR <br>LAS VEGAS</h2>
           <br>
-          <%= link_to roadside_assistance_path,
-            class: "carousel-button" do %>
-            OUR SERVICES
-          <% end %>
+          <%= link_to "OUR SERVICES", roadside_assistance_path, class: "carousel-button" %>
         </div>
       </div>
     </div>
-  <button class="carousel-prev" data-action="carousel#prev">❮</button>
-  <button class="carousel-next" data-action="carousel#next">❯</button>
+    <button class="carousel-prev" data-action="carousel#prev">❮</button>
+    <button class="carousel-next" data-action="carousel#next">❯</button>
   </div>
 
   <section class="emergency-banner">
     <div class="banner-content">
       <p>CALL AND TALK TO OUR SERVICE ADVISOR</p>
       <a href="tel:+17023332463" class="call-button">CLICK TO CALL</a>
-
     </div>
   </section>
 
   <section class="section">
     <h1>TRUCKS OF NEVADA SEMI TRUCK REPAIR SHOP</h1>
     <p>Bring your heavy duty commercial truck to our repair shop in Las Vegas.<br>We provide the best maintenance and repairs.</p>
-
     <div class="cards">
-        <!-- Card 1 -->
-        <div class="card">
-            <div class="hex-icon">
-            <i class="fa-solid fa-people-group"></i></div>
-            <h2>GREAT TEAM</h2>
-            <p>Expect great customer service from the first phone call, to your first visit and all the subsequent visits.</p>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card">
-            <div class="hex-icon">
-            <i class="fa-solid fa-screwdriver-wrench"></i></div>
-            <h2>WIDE RANGE OF SERVICES</h2>
-            <p>Diagnostic, Oil Change or Engine Repairs... We can handle it all in our repair shop.</p>
-        </div>
-
-        <!-- Card 3 -->
-        <div class="card">
-            <div class="hex-icon">
-            <i class="fa-solid fa-truck-fast"></i></div>
-            <h2>ROADSIDE ASSISTANCE</h2>
-            <p>Major breakdown around Las Vegas? Call us 24/7 and our Mobile Semi Truck Assistance will be on their way to you.</p>
-        </div>
+      <div class="card">
+        <div class="hex-icon"><i class="fa-solid fa-people-group"></i></div>
+        <h2>GREAT TEAM</h2>
+        <p>Expect great customer service from the first phone call to your first visit.</p>
+      </div>
+      <div class="card">
+        <div class="hex-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+        <h2>WIDE RANGE OF SERVICES</h2>
+        <p>Diagnostic, Oil Change or Engine Repairs... We can handle it all.</p>
+      </div>
+      <div class="card">
+        <div class="hex-icon"><i class="fa-solid fa-truck-fast"></i></div>
+        <h2>ROADSIDE ASSISTANCE</h2>
+        <p>Major breakdown around Las Vegas? Call us 24/7.</p>
+      </div>
     </div>
   </section>
-
 
   <section class="services-section">
     <div class="service-images">
-        <!-- Image 1 -->
-        <div class="image-container overlay-container">
-            <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738767860/Trucks-app/overlay1_pdx8zg.jpg" alt="Truck Repair">
-            <div class="overlay">
-              <h3>Dignostics & Inspection</h3>
-
-              <%= link_to diagnostic_path,
-                class: "read-more" do %>
-                READ MORE
-              <% end %>
-
-            </div>
+      <div class="image-container overlay-container">
+        <%= cl_image_tag("Trucks-app/overlay1_pdx8zg", fetch_format: :auto, quality: :auto, alt: "Diagnostics") %>
+        <div class="overlay">
+          <h3>Diagnostics & Inspection</h3>
+          <%= link_to "READ MORE", diagnostic_path, class: "read-more" %>
         </div>
-
-        <!-- Image 2 with Overlay -->
-        <div class="image-container overlay-container">
-            <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766846/Trucks-app/overlay2_ezmpo1.jpg" alt="Aftertreatment">
-            <div class="overlay">
-                <h3>Aftertreatment</h3>
-                <%= link_to aftertreatment_path,
-                class: "read-more" do %>
-                READ MORE
-              <% end %>
-            </div>
+      </div>
+      <div class="image-container overlay-container">
+        <%= cl_image_tag("Trucks-app/overlay2_ezmpo1", fetch_format: :auto, quality: :auto, alt: "Aftertreatment") %>
+        <div class="overlay">
+          <h3>Aftertreatment</h3>
+          <%= link_to "READ MORE", aftertreatment_path, class: "read-more" %>
         </div>
-
-        <!-- Image 3 -->
-        <div class="image-container overlay-container">
-            <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766855/Trucks-app/overlay3_fwumkb.jpg" alt="Engine Repair">
-            <div class="overlay">
-            <h3>Oil Change and Maintenance</h3>
-            <%= link_to maintenance_path,
-                class: "read-more" do %>
-                READ MORE
-              <% end %>
+      </div>
+      <div class="image-container overlay-container">
+        <%= cl_image_tag("Trucks-app/overlay3_fwumkb", fetch_format: :auto, quality: :auto, alt: "Maintenance") %>
+        <div class="overlay">
+          <h3>Oil Change and Maintenance</h3>
+          <%= link_to "READ MORE", maintenance_path, class: "read-more" %>
         </div>
+      </div>
+      <div class="image-container overlay-container">
+        <%= cl_image_tag("overlay4_ajwr5b", fetch_format: :auto, quality: :auto, alt: "Roadside") %>
+        <div class="overlay">
+          <h3>Roadside Assistance</h3>
+          <%= link_to "READ MORE", roadside_assistance_path, class: "read-more" %>
         </div>
-
-        <!-- Image 4 -->
-        <div class="image-container overlay-container">
-            <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738770395/overlay4_ajwr5b.jpg" alt="Road Assistance">
-            <div class="overlay">
-            <h3>Roadside Assistance</h3>
-            <%= link_to roadside_assistance_path,
-                class: "read-more" do %>
-                READ MORE
-              <% end %>
-        </div>
-        </div>
+      </div>
     </div>
   </section>
-  <section class="emergency-banner">
-      <div class="banner-content">
-        <p>VISIT OUR REPAIR SHOP AND TALK TO OUR SPECIALISTS</p>
-        <a href="tel:+17023332463" class="call-button">CLICK TO CALL</a>
-      </div>
+
+  <section class="logos" data-controller="logo-section">
+    <div class="slider">
+      <ul class="brands" data-logo-section-target="track">
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img1_bpsoc3", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img2_v9yp9z", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img3_vmjldw", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img4_ensz0z", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img5_we9aki", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img6_akxrnl", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img7_yzw8sx", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img8_jn76xr", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img9_gl80qe", fetch_format: :auto, quality: :auto) %></li>
+      </ul>
+    </div>
+    <div class="slider-dots" data-logo-section-target="dots">
+      <span data-action="click->logo-section#goToSlide" data-index="0" class="dot active"></span>
+      <span data-action="click->logo-section#goToSlide" data-index="1" class="dot"></span>
+      <span data-action="click->logo-section#goToSlide" data-index="2" class="dot"></span>
+    </div>
   </section>
-
-
- <section class="logos" data-controller="logo-section">
-  <div class="slider">
-    <ul class="brands" data-logo-section-target="track">
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766842/Trucks-app/img1_bpsoc3.jpg"></li>
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766842/Trucks-app/img2_v9yp9z.jpg"></li>
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766842/Trucks-app/img3_vmjldw.jpg"></li>
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766842/Trucks-app/img4_ensz0z.jpg"></li>
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766843/Trucks-app/img5_we9aki.jpg"></li>
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766843/Trucks-app/img6_akxrnl.jpg"></li>
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766843/Trucks-app/img7_yzw8sx.jpg"></li>
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766844/Trucks-app/img8_jn76xr.jpg"></li>
-      <li class="brand-logo"><img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766844/Trucks-app/img9_gl80qe.jpg"></li>
-    </ul>
-  </div>
-
-  <div class="slider-dots" data-logo-section-target="dots">
-    <span data-action="click->logo-section#goToSlide" data-index="0" class="dot active"></span>
-    <span data-action="click->logo-section#goToSlide" data-index="1" class="dot"></span>
-    <span data-action="click->logo-section#goToSlide" data-index="2" class="dot"></span>
-  </div>
-</section>
-
 </div>
