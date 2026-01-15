@@ -92,24 +92,25 @@
     </div>
   </section>
 
-  <section class="logos" data-controller="logo-section">
-    <div class="slider">
-      <ul class="brands" data-logo-section-target="track">
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img1.jpg", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img2.jpg", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img3.jpg", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img4.jpg", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img5.jpg", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img6.jpg", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img7.jpg", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img8.jpg", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= ik_image_tag("Trucks/img9.jpg", fetch_format: :auto, quality: :auto) %></li>
-      </ul>
-    </div>
-    <div class="slider-dots" data-logo-section-target="dots">
-      <span data-action="click->logo-section#goToSlide" data-index="0" class="dot active"></span>
-      <span data-action="click->logo-section#goToSlide" data-index="1" class="dot"></span>
-      <span data-action="click->logo-section#goToSlide" data-index="2" class="dot"></span>
-    </div>
-  </section>
+ <section class="logos" data-controller="logo-section">
+  <div class="slider">
+    <ul class="brands" data-logo-section-target="track">
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img1.jpg", transformation: [{ crop: "at_max" }]) %></li>
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img2.jpg") %></li>
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img3.jpg") %></li>
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img4.jpg") %></li>
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img5.jpg") %></li>
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img6.jpg") %></li>
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img7.jpg") %></li>
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img8.jpg") %></li>
+      <li class="brand-logo"><%= ik_image_tag("Trucks/img9.jpg") %></li>
+    </ul>
+  </div>
+
+  <div class="slider-dots" data-logo-section-target="dots">
+    <span data-action="click->logo-section#goToSlide" data-index="0" class="dot active"></span>
+    <span data-action="click->logo-section#goToSlide" data-index="1" class="dot"></span>
+    <span data-action="click->logo-section#goToSlide" data-index="2" class="dot"></span>
+  </div>
+</section>
 </div>

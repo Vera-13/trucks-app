@@ -4,64 +4,72 @@ export default class extends Controller {
   static targets = ["track", "dots"]
 
   connect() {
+    // 1. Store original items
+    this.originalItems = Array.from(this.trackTarget.children)
+    if (this.originalItems.length === 0) return
+
     this.currentIndex = 0
-    this.items = Array.from(this.trackTarget.children)
+    
+    // 2. Clone items for the infinite loop effect
+    this.originalItems.forEach(item => {
+      const clone = item.cloneNode(true)
+      this.trackTarget.appendChild(clone)
+    })
 
-    window.addEventListener("load", () => this.initialize())
-    window.addEventListener("resize", () => this.onResize())
+    this.onResize = this.onResize.bind(this)
+    window.addEventListener("resize", this.onResize)
+    
+    // Initialize
+    this.initializeSlider()
   }
 
-  disconnect() {
-    window.removeEventListener("resize", this.onResize)
-  }
-
-  initialize() {
-    if (!this.items.length) return
-
+  initializeSlider() {
     this.setItemsPerGroup()
-    this.itemWidth = this.items[0].offsetWidth
-    this.totalItems = this.items.length
-    this.trackTarget.style.width = `${this.itemWidth * this.totalItems}px`
+    this.updateTrackPosition(false)
     this.updateDots()
   }
 
   setItemsPerGroup() {
     const width = window.innerWidth
-
-    if (width < 640) {
-      this.itemsPerGroup = 1 // 📱 phones
-    } else if (width < 1024) {
-      this.itemsPerGroup = 2 // 💻 tablets
-    } else {
-      this.itemsPerGroup = 3 // 🖥️ desktops
-    }
+    if (width < 640) this.itemsPerGroup = 1
+    else if (width < 1024) this.itemsPerGroup = 2
+    else this.itemsPerGroup = 4 // Show 4 images
   }
 
-  onResize() {
-    const prevItemsPerGroup = this.itemsPerGroup
-    this.setItemsPerGroup()
-    if (prevItemsPerGroup !== this.itemsPerGroup) {
-      this.initialize() // recalc widths & dots
-    }
-  }
-
+  // The method called by the dots
   goToSlide(event) {
-    const index = parseInt(event.currentTarget.dataset.index, 10)
-    this.currentIndex = index * this.itemsPerGroup
-    this.updateTrackPosition()
+    const dotIndex = parseInt(event.currentTarget.dataset.index, 10)
+    this.currentIndex = dotIndex * this.itemsPerGroup
+    
+    this.updateTrackPosition(true)
     this.updateDots()
   }
 
-  updateTrackPosition() {
-    const offset = -this.currentIndex * this.itemWidth
+  updateTrackPosition(animated = true) {
+    const firstItem = this.trackTarget.firstElementChild
+    if (!firstItem) return
+
+    // Get exact width of one logo
+    const itemWidth = firstItem.getBoundingClientRect().width
+    const offset = -this.currentIndex * itemWidth
+    
+    this.trackTarget.style.transition = animated ? "transform 0.5s ease-in-out" : "none"
     this.trackTarget.style.transform = `translateX(${offset}px)`
-    this.trackTarget.style.transition = "transform 0.5s ease"
   }
 
   updateDots() {
-    const activeIndex = Math.floor(this.currentIndex / this.itemsPerGroup)
+    const activeDotIndex = Math.floor(this.currentIndex / this.itemsPerGroup)
     this.dotsTarget.querySelectorAll(".dot").forEach((dot, i) => {
-      dot.classList.toggle("active", i === activeIndex)
+      dot.classList.toggle("active", i === activeDotIndex)
     })
+  }
+
+  onResize() {
+    this.setItemsPerGroup()
+    this.updateTrackPosition(false)
+  }
+
+  disconnect() {
+    window.removeEventListener("resize", this.onResize)
   }
 }

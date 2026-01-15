@@ -281,21 +281,16 @@ a.carousel-button{
   opacity: 1;
 }
 
-.logos {
-  min-height: 20rem;
-  background-color: white;
-  display: grid;
-  place-items: center;
-}
 
 .slider {
   position: relative;
   width: 100%; // Adjust to fit the layout
-  height: 14rem;
+  height: 12rem;
   background-color: white;
   display: flex;
   align-items: center;
   overflow: hidden;
+
 
 }
 
@@ -305,22 +300,9 @@ a.carousel-button{
   transition: transform 0.5s ease-in-out; // Smooth scrolling effect
   margin: 0;
   padding: 0;
+
 }
 
-.brand-logo {
-  flex: 0 0 calc(100% / 3); // Each item takes 1/4 of the visible width
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-
-   img {
-    max-width: 90%;
-    max-height: 100%;
-    object-fit: contain;
-    display: block;
-  }
-}
 
 .slider-dots {
   // position: absolute;
@@ -348,6 +330,92 @@ a.carousel-button{
 
   .dot:hover {
     background-color: #555; // Optional hover effect
+  }
+}
+
+// .brands {
+//   display: flex;
+//   flex-wrap: nowrap; /* Keep all logos in one long horizontal line */
+//   width: 100%;       /* The JS translateX handles the rest */
+//   padding: 0;
+//   margin: 0;
+//   list-style: none;
+//   width: max-content;
+// }
+// .brand-logo {
+//   /* Change from 33.333% to 25% */
+//   flex: 0 0 25%; 
+//   height: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   padding: 0 20px; /* Reduced padding slightly to fit 4 comfortably */
+
+//   img {
+//     max-width: 100%;
+//     max-height: 80%; /* Adjusted to give logos more breathing room */
+//     object-fit: contain;
+//     display: block;
+//   }
+// }
+
+// /* Update your Responsive Breakpoints too */
+// @media (max-width: 1200px) {
+//   .brand-logo { flex: 0 0 33.333%; } /* 3 per slide on smaller desktops */
+// }
+
+// @media (max-width: 768px) {
+//   .brand-logo { flex: 0 0 50%; } /* 2 per slide on tablets */
+// }
+
+// @media (max-width: 480px) {
+//   .brand-logo { flex: 0 0 100%; } /* 1 per slide on phones */
+// }
+
+.logos {
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 12rem;
+    overflow: hidden; /* Hides the cloned items */
+    display: flex;
+    align-items: center;
+    background-color: white;
+  }
+
+  .brands {
+    display: flex !important; 
+    flex-wrap: nowrap !important; /* Keeps images in one long line */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: max-content; /* Important: prevents the container from shrinking */
+  }
+
+  .brand-logo {
+    flex: 0 0 25vw; /* 4 images = 100/4 */
+    width: 25vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+
+    img {
+      max-width: 100%;
+      height: auto;
+      max-height: 80%;
+      object-fit: contain;
+    }
+  }
+
+  /* Responsive: Tablets (2 images) */
+  @media (max-width: 1024px) {
+    .brand-logo { flex: 0 0 50vw; width: 50vw; }
+  }
+
+  /* Responsive: Phones (1 image) */
+  @media (max-width: 640px) {
+    .brand-logo { flex: 0 0 50vw; width: 100vw; }
   }
 }
 
