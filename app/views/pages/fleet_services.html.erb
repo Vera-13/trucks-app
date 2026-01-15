@@ -27,14 +27,26 @@
         BROWSE SERVICES
         <% end %>
     </div>
-    <div class="images">
-      <div class="main-image">
-        <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766842/Trucks-app/fleet1_vt1jrc.jpg" alt="Truck Fleet">
-      </div>
-      <div class="additional-images">
-        <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766858/Trucks-app/fleet2_xudwvf.jpg" alt="Truck Maintenance">
-        <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766842/Trucks-app/fleet3_hpgwca.jpg" alt="Fleet Trailers">
-      </div>
-    </div>
+   <div class="images">
+  <div class="main-image">
+    <%# The main image is larger, so we give it a wider width %>
+    <%= ik_image_tag("Trucks/fleet1.jpg", 
+        transformation: [{ width: 1000, quality: 80 }], 
+        alt: "Truck Fleet") 
+    %>
+  </div>
+  <div class="additional-images">
+    <%= ik_image_tag("Trucks/fleet2.jpg", 
+        transformation: [{ width: 500, quality: 80 }], 
+        loading: "lazy", 
+        alt: "Truck Maintenance") 
+    %>
+    <%= ik_image_tag("Trucks/fleet3.jpg", 
+        transformation: [{ width: 500, quality: 80 }], 
+        loading: "lazy", 
+        alt: "Fleet Trailers") 
+    %>
+  </div>
+</div>
   </div>
 </section>

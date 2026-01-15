@@ -13,7 +13,13 @@
   <div class="services-cards">
       <div class="service-card">
         <%= link_to diagnostic_path do %>
-          <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738767854/Trucks-app/services1_mhzgpg.jpg" alt="Diagnostics & Inspection" />
+          <%= ik_image_tag("Trucks/services1.jpg", 
+        transformation: [
+          { width: 400, height: 300, crop: "at_max", quality: 80 }
+        ], 
+        loading: "lazy", 
+        alt: "Diagnostics & Inspection") 
+    %>
           <div class="service-card-content">
             <h3>Diagnostics & Inspection</h3>
             <span class="card-link">></span>
@@ -23,7 +29,13 @@
 
     <div class="service-card">
       <%= link_to aftertreatment_path do %>
-        <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738767857/Trucks-app/services2_ztli9x.jpg" alt="Aftertreatment" />
+        <%= ik_image_tag("Trucks/services2.jpg", 
+        transformation: [
+          { width: 400, height: 300, crop: "at_max", quality: 80 }
+        ], 
+        loading: "lazy", 
+        alt: "Aftertreatment") 
+    %>
         <div class="service-card-content">
           <h3>Aftertreatment</h3>
           <span class="card-link">></span>
@@ -32,7 +44,13 @@
     </div>
     <div class="service-card">
       <%= link_to maintenance_path do %>
-        <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766862/Trucks-app/services3_bltcbm.jpg" alt="Oil Change & Maintenance" />
+        <%= ik_image_tag("Trucks/services3.jpg", 
+        transformation: [
+          { width: 400, height: 300, crop: "at_max", quality: 80 }
+        ], 
+        loading: "lazy", 
+        alt: "Oil Change & Maintenance") 
+    %>
         <div class="service-card-content">
           <h3>Oil Change & Maintenance</h3>
           <span class="card-link">></span>

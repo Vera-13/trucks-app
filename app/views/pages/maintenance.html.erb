@@ -8,9 +8,19 @@
 
     <!-- Image Section -->
     <div class="service-images">
-      <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738767817/Trucks-app/oil1_jg5qz0.jpg" alt="Mechanic Working" />
-      <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738767831/Trucks-app/oil2_cemeyd.jpg" alt="Engine Maintenance" />
-    </div>
+  
+  <%= ik_image_tag("Trucks/oil1.jpg", 
+      transformation: [{ width: 600, quality: 80 }], 
+      loading: "lazy", 
+      alt: "Mechanic Working") 
+  %>
+  
+  <%= ik_image_tag("Trucks/oil2.jpg", 
+      transformation: [{ width: 600, quality: 80 }], 
+      loading: "lazy", 
+      alt: "Engine Maintenance") 
+  %>
+</div>
 
     <!-- Service Details -->
     <div class="service-details">

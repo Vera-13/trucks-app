@@ -31,12 +31,13 @@
         </p>
       </div>
       <div class="right">
-        <div class="images">
-          <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766847/Trucks-app/aftertreatment1_llyuhc.jpg" alt="Aftertreatment system 1">
-          <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766848/Trucks-app/aftertreatment2_m8y8yy.jpg" alt="Aftertreatment system 2">
-          <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738766851/Trucks-app/aftertreatment3_tmpetj.jpg" alt="Aftertreatment system 3">
-          <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738767860/Trucks-app/overlay1_pdx8zg.jpg" alt="Aftertreatment system 3">
-        </div>
+       
+      <div class="images">
+        <%= ik_image_tag("Trucks/aftertreatment1.jpg", transformation: [{ width: 500, quality: 80 }], loading: "lazy", alt: "Aftertreatment system 1") %>
+        <%= ik_image_tag("Trucks/aftertreatment2.jpg", transformation: [{ width: 500, quality: 80 }], loading: "lazy", alt: "Aftertreatment system 2") %>
+        <%= ik_image_tag("Trucks/aftertreatment3.jpg", transformation: [{ width: 500, quality: 80 }], loading: "lazy", alt: "Aftertreatment system 3") %>
+        <%= ik_image_tag("Trucks/aftertreatment4.jpg", transformation: [{ width: 500, quality: 80 }], loading: "lazy", alt: "Aftertreatment system 4") %>
+      </div>
 
         <div class="how-it-works" data-controller="tabs">
         <br>

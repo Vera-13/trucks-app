@@ -2,7 +2,7 @@
   <div class="carousel" data-controller="carousel">
     <div class="carousel-track" data-carousel-target="track">
       <div class="carousel-slide" data-carousel-target="slide">
-        <%= cl_image_tag("Trucks-app/carousel1_dnstn3", fetch_format: :auto, quality: :auto, alt: "Slide 1") %>
+        <%= ik_image_tag("/Trucks/carousel1.jpg", fetch_format: :auto, quality: :auto, alt: "Slide 1") %>
         <div class="carousel-content">
           <h2>PEACE OF MIND ON THE ROAD</h2>
           <br>
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="carousel-slide" data-carousel-target="slide">
-        <%= cl_image_tag("carousel-img-3_z5k4tb", fetch_format: :auto, quality: :auto, alt: "Slide 2") %>
+        <%= ik_image_tag("Trucks/carousel2.jpg", fetch_format: :auto, quality: :auto, alt: "Slide 2") %>
         <div class="carousel-content">
           <h2>YOUR PARTNER IN RELIABILITY</h2>
           <br>
@@ -18,7 +18,7 @@
         </div>
       </div>
       <div class="carousel-slide" data-carousel-target="slide">
-        <%= cl_image_tag("Trucks-app/carousel3_ovpuiv", fetch_format: :auto, quality: :auto, alt: "Slide 3") %>
+        <%= ik_image_tag("Trucks/carousel3.jpg", fetch_format: :auto, quality: :auto, alt: "Slide 3") %>
         <div class="carousel-content">
           <h2>ROADSIDE ASSISTANCE NEAR <br>LAS VEGAS</h2>
           <br>
@@ -62,28 +62,28 @@
   <section class="services-section">
     <div class="service-images">
       <div class="image-container overlay-container">
-        <%= cl_image_tag("Trucks-app/overlay1_pdx8zg", fetch_format: :auto, quality: :auto, alt: "Diagnostics") %>
+        <%= ik_image_tag("Trucks/overlay1.jpg", fetch_format: :auto, quality: :auto, alt: "Diagnostics") %>
         <div class="overlay">
           <h3>Diagnostics & Inspection</h3>
           <%= link_to "READ MORE", diagnostic_path, class: "read-more" %>
         </div>
       </div>
       <div class="image-container overlay-container">
-        <%= cl_image_tag("Trucks-app/overlay2_ezmpo1", fetch_format: :auto, quality: :auto, alt: "Aftertreatment") %>
+        <%= ik_image_tag("Trucks/overlay2.jpg", fetch_format: :auto, quality: :auto, alt: "Aftertreatment") %>
         <div class="overlay">
           <h3>Aftertreatment</h3>
           <%= link_to "READ MORE", aftertreatment_path, class: "read-more" %>
         </div>
       </div>
       <div class="image-container overlay-container">
-        <%= cl_image_tag("Trucks-app/overlay3_fwumkb", fetch_format: :auto, quality: :auto, alt: "Maintenance") %>
+        <%= ik_image_tag("Trucks/overlay3.jpg", fetch_format: :auto, quality: :auto, alt: "Maintenance") %>
         <div class="overlay">
           <h3>Oil Change and Maintenance</h3>
           <%= link_to "READ MORE", maintenance_path, class: "read-more" %>
         </div>
       </div>
       <div class="image-container overlay-container">
-        <%= cl_image_tag("overlay4_ajwr5b", fetch_format: :auto, quality: :auto, alt: "Roadside") %>
+        <%= ik_image_tag("Trucks/overlay4.jpg", fetch_format: :auto, quality: :auto, alt: "Roadside") %>
         <div class="overlay">
           <h3>Roadside Assistance</h3>
           <%= link_to "READ MORE", roadside_assistance_path, class: "read-more" %>
@@ -95,15 +95,15 @@
   <section class="logos" data-controller="logo-section">
     <div class="slider">
       <ul class="brands" data-logo-section-target="track">
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img1_bpsoc3", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img2_v9yp9z", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img3_vmjldw", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img4_ensz0z", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img5_we9aki", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img6_akxrnl", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img7_yzw8sx", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img8_jn76xr", fetch_format: :auto, quality: :auto) %></li>
-        <li class="brand-logo"><%= cl_image_tag("Trucks-app/img9_gl80qe", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img1.jpg", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img2.jpg", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img3.jpg", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img4.jpg", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img5.jpg", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img6.jpg", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img7.jpg", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img8.jpg", fetch_format: :auto, quality: :auto) %></li>
+        <li class="brand-logo"><%= ik_image_tag("Trucks/img9.jpg", fetch_format: :auto, quality: :auto) %></li>
       </ul>
     </div>
     <div class="slider-dots" data-logo-section-target="dots">

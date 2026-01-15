@@ -51,7 +51,14 @@
 <section class="emergency-services">
   <div class="container">
     <div class="image">
-      <img src="https://res.cloudinary.com/du6wgzzge/image/upload/v1738839133/roadside_l3ksgo.jpg" alt="Emergency Services">
+
+       <%= ik_image_tag("Trucks/roadside.jpg", 
+        transformation: [
+          { crop: "at_max", quality: 80 }
+        ], 
+        loading: "lazy", 
+        alt: "Emergency Services") 
+    %>
     </div>
     <div class="content">
       <h2>EMERGENCY SERVICES</h2>
