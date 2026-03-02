@@ -18,19 +18,16 @@
   <%= favicon_link_tag 'favicon.ico' %>
 
   <% if Rails.env.production? %>
-    <!-- Google tag (gtag.js) -->
-      <script async src="https://www.googletagmanager.com/gtag/js?id=G-C34J9TNX1Y"></script>
-      <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-359263349"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
-        // Google Analytics 4
-        gtag('config', 'G-C34J9TNX1Y');
-
-        // Google Ads
-        gtag('config', 'AW-359263349');
-      </script>
+      // This connects both your Analytics and your Ads to the same tag
+      gtag('config', 'G-C34J9TNX1Y');
+      gtag('config', 'AW-359263349');
+    </script>
   <% end %>
 
 </head>
