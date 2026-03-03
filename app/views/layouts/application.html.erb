@@ -24,10 +24,29 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // This connects both your Analytics and your Ads to the same tag
+      // Basic Configs
       gtag('config', 'G-C34J9TNX1Y');
       gtag('config', 'AW-359263349');
-      gtag('config', 'AW-359263349/FWPACNbo5oAcEPXYp6sB', {'phone_conversion_number':'(702) 333-2463'})
+
+      // Phone Tracking Logic wrapped for Rails Turbo/Turbolinks
+      var setupPhoneTracking = function() {
+        gtag('config', 'AW-359263349/FWPACNbo5oAcEPXYp6sB', {
+          'phone_conversion_number': '(702) 333-2463',
+          'phone_conversion_callback': function(display_number, non_formatted_number) {
+            // This targets the specific link you created
+            var elements = document.querySelectorAll('a[href^="tel:+17023332463"]');
+            for (var i = 0; i < elements.length; i++) {
+              elements[i].href = "tel:" + non_formatted_number;
+              elements[i].innerHTML = display_number;
+            }
+          }
+        });
+      };
+
+      // Fire on initial load AND every Turbo page change
+      document.addEventListener("turbo:load", setupPhoneTracking);
+      // Compatibility for older Rails versions using Turbolinks
+      document.addEventListener("turbolinks:load", setupPhoneTracking);
     </script>
   <% end %>
 
