@@ -25,19 +25,17 @@
     gtag('js', new Date());
 
     gtag('config', 'G-C34J9TNX1Y');
-    gtag('config', 'AW-359263349');
 
     var setupPhoneTracking = function() {
-      gtag('config', 'AW-359263349/FWPACNbo5oAcEPXYp6sB', {
-        'phone_conversion_number': '(702) 333-2463',
+      // Swapping in your specific conversion label and number
+      gtag('config', 'AW-359263349/CONVERSION_LABEL', {
+        'phone_conversion_number': '7023332463',
         'phone_conversion_callback': function(display_number, non_formatted_number) {
           var elements = document.getElementsByClassName('phone-number');
           for (var i = 0; i < elements.length; i++) {
-            // 1. Always update the href so the phone actually dials the Google number
             elements[i].href = "tel:" + non_formatted_number;
-
-            // 2. Smart Replace: Only overwrite the text if it contains the original number
-            // This preserves "CLICK TO CALL" buttons
+            
+            // Note: Keep the formatted string here if that's what's in your HTML
             if (elements[i].innerHTML.includes("(702) 333-2463")) {
               elements[i].innerHTML = display_number;
             }
@@ -46,14 +44,11 @@
       });
     };
 
-    // Run immediately for the first load
-    setupPhoneTracking();
-
-    // Re-run whenever Turbo/Turbolinks swaps the page content
     document.addEventListener("turbo:load", setupPhoneTracking);
     document.addEventListener("turbolinks:load", setupPhoneTracking);
   </script>
 <% end %>
+
 
 </head>
 
