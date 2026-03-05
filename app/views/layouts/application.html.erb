@@ -36,7 +36,7 @@
             elements[i].href = "tel:" + non_formatted_number;
             
             // Note: Keep the formatted string here if that's what's in your HTML
-            if (elements[i].innerHTML.includes("(702) 333-2463")) {
+            if (elements[i].innerHTML.includes("(702) 333-2463") || elements[i].innerHTML.includes("CLICK TO CALL")) {
               elements[i].innerHTML = display_number;
             }
           }
