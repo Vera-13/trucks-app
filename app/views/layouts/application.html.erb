@@ -42,6 +42,20 @@
           }
         }
       });
+
+      // === THE GA4 CLICK TRACKER HERE ===
+      var elements = document.getElementsByClassName('phone-number');
+      for (var i = 0; i < elements.length; i++) {
+        // We use { once: true } to prevent duplicate event listeners if Turbo fires twice
+        elements[i].addEventListener('click', function() {
+          gtag('event', 'phone_call_click', {
+            'event_category': 'Contact',
+            'event_label': 'Website Phone Click',
+            'value': 1.0
+          });
+        }, { once: true });
+      }
+      // ======================================
     };
 
     document.addEventListener("turbo:load", setupPhoneTracking);
