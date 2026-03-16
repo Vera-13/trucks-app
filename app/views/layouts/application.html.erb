@@ -17,25 +17,28 @@
 
   <%= favicon_link_tag 'favicon.ico' %>
 
-  <% if Rails.env.production? %>
+<% if Rails.env.production? %>
   <script async src="https://www.googletagmanager.com/gtag/js?id=AW-359263349"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
+    // Initialize GA4 and Google Ads base
     gtag('config', 'G-C34J9TNX1Y');
+    gtag('config', 'AW-359263349');
 
     var setupPhoneTracking = function() {
-      // Swapping in your specific conversion label and number
-      gtag('config', 'AW-359263349/CONVERSION_LABEL', {
-        'phone_conversion_number': '7023332463',
+      // 1. PHONE NUMBER SWAPPING (Google Ads)
+      // Updated with your specific Conversion Label and Number
+      gtag('config', 'AW-359263349/jnwaCIeuh9cZEPXYp6sB', {
+        'phone_conversion_number': '(702) 333-2463',
         'phone_conversion_callback': function(display_number, non_formatted_number) {
           var elements = document.getElementsByClassName('phone-number');
           for (var i = 0; i < elements.length; i++) {
             elements[i].href = "tel:" + non_formatted_number;
             
-            // Note: Keep the formatted string here if that's what's in your HTML
+            // Replaces original text with the Google forwarding number
             if (elements[i].innerHTML.includes("(702) 333-2463") || elements[i].innerHTML.includes("CLICK TO CALL")) {
               elements[i].innerHTML = display_number;
             }
@@ -43,21 +46,19 @@
         }
       });
 
-      // === THE GA4 CLICK TRACKER HERE ===
+      // 2. CLICK TRACKING (GA4)
       var elements = document.getElementsByClassName('phone-number');
       for (var i = 0; i < elements.length; i++) {
-        // We use { once: true } to prevent duplicate event listeners if Turbo fires twice
         elements[i].addEventListener('click', function() {
           gtag('event', 'phone_call_click', {
             'event_category': 'Contact',
-            'event_label': 'Website Phone Click',
-            'value': 1.0
+            'event_label': 'Website Phone Click'
           });
         }, { once: true });
       }
-      // ======================================
     };
 
+    // Handle Rails Turbo/Turbolinks lifecycle
     document.addEventListener("turbo:load", setupPhoneTracking);
     document.addEventListener("turbolinks:load", setupPhoneTracking);
   </script>
