@@ -7,7 +7,7 @@
   position: -webkit-sticky; /* Support for Safari */
   position: sticky;
   top: 0;                   /* Sticks to the very top of the viewport */
-  z-index: 999;            /* Ensures it stays above carousels and images */
+  z-index: 996;            /* Ensures it stays above carousels and images */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow so it pops when scrolling */
   // --- STICKY ADDITIONS END ---
 
