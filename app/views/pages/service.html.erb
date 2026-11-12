@@ -1,0 +1,108 @@
+<% photo = page_photo(@service.slug) %>
+<section class="page-hero <%= "has-photo" if photo %>" <% if photo %>style="<%= hero_photo_style(photo) %>"<% end %>>
+  <div class="wrap">
+    <p class="eyebrow"><%= link_to "Services", services_path %> / <%= @service.name %></p>
+    <h1><%= @service.h1 %></h1>
+    <p class="lede"><%= @service.lede %></p>
+    <%= phone_link "Call Now (702) 333-2463", class: "btn-call" %>
+  </div>
+</section>
+
+<% shop = shop_photo(@service.slug) %>
+<section class="band">
+  <div class="wrap">
+    <% if shop %>
+      <%= image_tag shop, alt: "#{@service.name} at Trucks of Nevada", class: "service-photo" %>
+    <% end %>
+    <div class="split">
+    <div>
+      <h2>What drivers call about</h2>
+      <ul class="check-list">
+        <% @service.problems.each do |problem| %>
+          <li><%= problem %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="panel">
+      <h2>What we do</h2>
+      <ul class="plain-list">
+        <% @service.included.each do |item| %>
+          <li><%= item %></li>
+        <% end %>
+      </ul>
+    </div>
+    </div>
+  </div>
+</section>
+
+<% if @service.steps.present? %>
+  <section class="band band-dark">
+    <div class="wrap">
+      <h2>How we clean a DPF</h2>
+      <ol class="steps">
+        <% @service.steps.each do |step| %>
+          <li><%= step %></li>
+        <% end %>
+      </ol>
+    </div>
+  </section>
+<% end %>
+
+<% if @service.fleets.present? %>
+  <section class="band <%= "band-dark" if @service.steps.blank? %>">
+    <div class="wrap narrow">
+      <h2>Fleets and owner-operators</h2>
+      <p><%= @service.fleets %></p>
+    </div>
+  </section>
+<% end %>
+
+<% if @service.faqs.present? %>
+  <section class="band">
+    <div class="wrap">
+      <div class="faqs-block">
+        <h2>Frequently asked questions</h2>
+        <div class="faqs">
+          <% @service.faqs.each do |question, answer| %>
+            <details>
+              <summary><%= question %></summary>
+              <p><%= answer %></p>
+            </details>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script type="application/ld+json">
+    <%= raw({
+      "@context" => "https://schema.org",
+      "@type" => "FAQPage",
+      "mainEntity" => @service.faqs.map { |question, answer|
+        {
+          "@type" => "Question",
+          "name" => question,
+          "acceptedAnswer" => { "@type" => "Answer", "text" => answer }
+        }
+      }
+    }.to_json) %>
+  </script>
+<% end %>
+
+<% if @service.showcase %>
+  <section class="band">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>The rest of the shop</h2>
+        <p>These are the other jobs we do in the shop and on the road.</p>
+      </div>
+      <div class="card-grid">
+        <% SiteContent.services.reject { |service| service.slug == @service.slug }.each_with_index do |service, index| %>
+          <%= link_to public_send("#{service.slug.tr("-", "_")}_path"), class: "service-card service-card-compact" do %>
+            <span class="card-icon"><i class="<%= service.icon %>"></i></span>
+            <span class="card-body"><strong><%= service.name %></strong></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </section>
+<% end %>

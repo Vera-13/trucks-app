@@ -1,111 +1,31 @@
-<% content_for :title, "Commercial Truck Services | Trucks of Nevada" %>
-<% set_meta_tags title: "Commercial Truck Services", description: "We provide professional commercial truck system repairs in Las Vegas, NV." %>
-
-<section class="emergency-banner">
-  <div class="banner-content">
-    <p>NEED EMERGENCY ROADSIDE ASSISTANCE NOW?</p>
-    <a href="tel:+17023332463" class="call-button phone-number">CLICK TO CALL</a>
+<% used_photos = [] %>
+<% photo = take_photo("services", used_photos) %>
+<section class="page-hero <%= "has-photo" if photo %>" <% if photo %>style="<%= hero_photo_style(photo) %>"<% end %>>
+  <div class="wrap">
+    <p class="eyebrow">Las Vegas</p>
+    <h1>Commercial truck services</h1>
+    <p class="lede">Mechanical repair for semis, trailers, box trucks, motor homes, and cranes. We do not do tires, alignment, or body work.</p>
+    <%= phone_link "Call Now (702) 333-2463", class: "btn-call" %>
   </div>
 </section>
 
-<section class="truck-services">
-  <div class="services-header">
-    <h1>Commercial Truck Services</h1>
-    <div class="underline"></div>
-    <p>
-      We can cover all your needs for your semi truck. <br />
-      From regular maintenance like oil & lube services, to engine and suspension repairs or adjustments.
-    </p>
-  </div>
-  <div class="services-cards">
-      <div class="service-card">
-        <%= link_to diagnostic_path do %>
-          <%= ik_image_tag("Trucks/services1.jpg", 
-        transformation: [
-          { width: 400, height: 300, crop: "at_max", quality: 80 }
-        ], 
-        loading: "lazy", 
-        alt: "Diagnostics & Inspection") 
-    %>
-          <div class="service-card-content">
-            <h3>Diagnostics & Inspection</h3>
-            <span class="card-link">></span>
-            </div>
+<section class="band">
+  <div class="wrap">
+    <div class="card-grid">
+      <% SiteContent.services.each do |service| %>
+        <%= link_to public_send("#{service.slug.tr("-", "_")}_path"), class: "service-card" do %>
+          <% photo = shop_photo(service.slug) %>
+          <% if photo %>
+            <%= image_tag photo, alt: photo_alt(photo), class: "card-photo" %>
+          <% else %>
+            <span class="card-icon"><i class="<%= service.icon %>"></i></span>
+          <% end %>
+          <span class="card-body">
+            <strong><%= service.name %></strong>
+            <em><%= service.summary %></em>
+          </span>
         <% end %>
-      </div>
-
-    <div class="service-card">
-      <%= link_to aftertreatment_path do %>
-        <%= ik_image_tag("Trucks/services2.jpg", 
-        transformation: [
-          { width: 400, height: 300, crop: "at_max", quality: 80 }
-        ], 
-        loading: "lazy", 
-        alt: "Aftertreatment") 
-    %>
-        <div class="service-card-content">
-          <h3>Aftertreatment</h3>
-          <span class="card-link">></span>
-          </div>
       <% end %>
-    </div>
-    <div class="service-card">
-      <%= link_to maintenance_path do %>
-        <%= ik_image_tag("Trucks/services3.jpg", 
-        transformation: [
-          { width: 400, height: 300, crop: "at_max", quality: 80 }
-        ], 
-        loading: "lazy", 
-        alt: "Oil Change & Maintenance") 
-    %>
-        <div class="service-card-content">
-          <h3>Oil Change & Maintenance</h3>
-          <span class="card-link">></span>
-          </div>
-      <% end %>
-    </div>
-  </div>
-</section>
-
-<section class="trailer-repairs">
-  <div class="repairs-header">
-    <h2>TRAILER REPAIRS</h2>
-    <div class="underline"></div>
-    <p>Dry Van, Reefer, Flat Bed or Step Deck<br />Service your trailer with <strong>Trucks of Nevada</strong></p>
-  </div>
-
-  <div class="repairs-content">
-    <div class="repair-item">
-      <div class="repair-icon">
-        <!-- Icon: Shield -->
-        <i class="fas fa-shield-alt"></i>
-      </div>
-      <h3>ANNUAL INSPECTION</h3>
-      <p>Stay in compliance with the DOT with tractor and trailer annual inspection. Most inspections are performed in less than an hour.</p>
-    </div>
-    <div class="repair-item">
-      <div class="repair-icon">
-        <!-- Icon: Exclamation -->
-        <i class="fas fa-exclamation-circle"></i>
-      </div>
-      <h3>BRAKE DRUMS AND PADS</h3>
-      <p>One of the most important parts on your trailer, are the brakes. Good brakes will greatly impact your stopping distance and risks of jackknife.</p>
-    </div>
-    <div class="repair-item">
-      <div class="repair-icon">
-        <!-- Icon: Truck -->
-        <i class="fas fa-truck"></i>
-      </div>
-      <h3>SUSPENSION REPAIR</h3>
-      <p>Bad suspension on your trailer will increase instability on the road, cause tire damage, and increase the risk of accidents.</p>
-    </div>
-    <div class="repair-item">
-      <div class="repair-icon">
-        <!-- Icon: Gauge -->
-        <i class="fas fa-tachometer-alt"></i>
-      </div>
-      <h3>AIR & ELECTRICAL LINES</h3>
-      <p>Air Leaks and Electrical issues are the most usual problems on trailers, but they still pose a safety risk for truck drivers.</p>
     </div>
   </div>
 </section>

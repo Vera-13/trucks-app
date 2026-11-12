@@ -1,0 +1,44 @@
+<% photo = page_photo("contact") %>
+<section class="page-hero <%= "has-photo" if photo %>" <% if photo %>style="<%= hero_photo_style(photo) %>"<% end %>>
+  <div class="wrap">
+    <p class="eyebrow">Call first if the truck is down</p>
+    <h1>Contact the shop</h1>
+    <p class="lede">Calling is the fastest way to reach us. Use the form if you'd rather we call you back.</p>
+    <%= phone_link "Call Now (702) 333-2463", class: "btn-call" %>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap split">
+    <div class="panel">
+      <h2>Send a note</h2>
+      <%= form_with url: contact_path, scope: :inquiry, method: :post, class: "contact-form" do |form| %>
+        <label for="inquiry_name">Name</label>
+        <%= form.text_field :name, required: true, id: "inquiry_name", autocomplete: "name" %>
+        <label for="inquiry_phone">Phone</label>
+        <%= form.telephone_field :phone, required: true, id: "inquiry_phone", autocomplete: "tel" %>
+        <label for="inquiry_truck_issue">What is the truck doing?</label>
+        <%= form.text_area :truck_issue, required: true, id: "inquiry_truck_issue", rows: 5 %>
+        <div class="consent-row">
+          <%= form.check_box :privacy_ack, required: true, id: "inquiry_privacy_ack" %>
+          <div>
+            <label class="visually-hidden" for="inquiry_privacy_ack">Agreement to be contacted about this repair</label>
+            <p>The shop may use my name, phone number, and what I write about the truck to call me back about this repair. This is not a signup for ads or promotional texts. I have read the <%= link_to "Privacy Policy", privacy_policy_path %> and <%= link_to "Terms of Service", terms_path %>.</p>
+          </div>
+        </div>
+        <%= form.submit "Send this to the shop", class: "btn-call btn-submit" %>
+      <% end %>
+    </div>
+    <div>
+      <h2>Shop</h2>
+      <p>
+        <a href="https://www.google.com/maps/search/?api=1&query=1260+Rockpebble+Ave,+North+Las+Vegas,+NV+89030" target="_blank" rel="noopener noreferrer">
+          1260 Rockpebble Ave<br>North Las Vegas, NV 89030
+        </a>
+      </p>
+      <p><%= phone_link "(702) 333-2463" %></p>
+      <p><a href="mailto:info@trucksofnevada.com">info@trucksofnevada.com</a></p>
+      <p>Monday–Friday 8:30am – 5:30pm<br>Roadside dispatch 24/7</p>
+    </div>
+  </div>
+</section>

@@ -1,19 +1,19 @@
 class ApplicationController < ActionController::Base
-  before_action :set_meta_tags
+  before_action :prepare_meta_tags
 
   private
 
-  def set_meta_tags
-    super( # 👈 This calls the built-in `set_meta_tags` method instead of itself
-      title: "Trucks of Nevada | Semi-Truck Repair in Las Vegas",
-      description: "Trucks of Nevada is your trusted truck and semi-truck repair shop in Las Vegas, NV. We provide diagnostics, maintenance, aftertreatment, and roadside assistance.",
-      keywords: "semi-truck repair, truck maintenance, diesel repair, Las Vegas truck repair, heavy-duty truck service",
+  def prepare_meta_tags
+    set_meta_tags(
+      title: "Semi-Truck Repair in Las Vegas",
+      description: "Trucks of Nevada is a family-owned truck and trailer repair shop in Las Vegas. Diagnostics, DPF cleaning, maintenance, and 24/7 roadside assistance.",
+      keywords: "semi-truck repair, trailer repair, DPF cleaning, Las Vegas truck repair, roadside assistance",
+      canonical: "https://trucksofnevada.com#{request.path}",
       og: {
-        title: "Trucks of Nevada | Expert Semi-Truck Repair",
-        description: "Professional semi-truck repair services in Las Vegas, NV. We handle diagnostics, oil changes, aftertreatment, and roadside assistance.",
+        title: "Trucks of Nevada | Semi-Truck Repair in Las Vegas",
+        description: "Family-owned semi-truck repair in Las Vegas. Call (702) 333-2463.",
         type: "website",
-        url: request.original_url,
-
+        url: "https://trucksofnevada.com#{request.path}"
       },
       twitter: {
         card: "summary_large_image",

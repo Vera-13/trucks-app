@@ -1,0 +1,34 @@
+<div class="cookie-banner" data-cookie-consent-target="banner" hidden role="dialog" aria-labelledby="cookie-banner-title" aria-describedby="cookie-banner-copy">
+  <div class="cookie-banner-summary">
+    <h2 id="cookie-banner-title">Cookies</h2>
+    <p id="cookie-banner-copy">
+      A session cookie keeps the contact form secure. Analytics and advertising cookies, including Google call tracking, stay off unless you accept them.
+      Read the <%= link_to "Cookie Policy", cookie_policy_path %> and <%= link_to "Privacy Policy", privacy_policy_path %>.
+    </p>
+    <div class="cookie-actions">
+      <button type="button" class="btn-cookie" data-action="cookie-consent#acceptAll">Accept</button>
+      <button type="button" class="btn-cookie" data-action="cookie-consent#rejectAll">Reject</button>
+      <button type="button" class="btn-cookie btn-cookie-quiet" data-action="cookie-consent#openSettings">Settings</button>
+    </div>
+  </div>
+
+  <div class="cookie-panel" data-cookie-consent-target="panel" hidden>
+    <h3>Cookie settings</h3>
+    <label class="cookie-choice">
+      <input type="checkbox" checked disabled>
+      <span><strong>Essential.</strong> Session cookie and this saved choice. Always on, because the form and your decision need them.</span>
+    </label>
+    <label class="cookie-choice">
+      <input type="checkbox" data-cookie-consent-target="analytics">
+      <span><strong>Analytics.</strong> Google Analytics 4. Page visits, device, and roughly where a visit came from.</span>
+    </label>
+    <label class="cookie-choice">
+      <input type="checkbox" data-cookie-consent-target="ads">
+      <span><strong>Advertising.</strong> Google Ads measurement. This can swap the on-page phone number for a Google forwarding number so ad calls can be counted.</span>
+    </label>
+    <div class="cookie-actions">
+      <button type="button" class="btn-cookie" data-action="cookie-consent#saveSettings">Save choices</button>
+      <button type="button" class="btn-cookie btn-cookie-quiet" data-action="cookie-consent#rejectAll">Reject non-essential</button>
+    </div>
+  </div>
+</div>

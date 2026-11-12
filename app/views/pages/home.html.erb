@@ -1,116 +1,136 @@
-<div class="container-page">
-  <div class="carousel" data-controller="carousel">
-    <div class="carousel-track" data-carousel-target="track">
-      <div class="carousel-slide" data-carousel-target="slide">
-        <%= ik_image_tag("/Trucks/carousel1.jpg", fetch_format: :auto, quality: :auto, alt: "Slide 1") %>
-        <div class="carousel-content">
-          <h2>Fast Diagnostics, Experienced Technicians, Same-Day Service</h2>
-          <br>
-          <%= link_to "HEAVY DUTY SERVICES", services_path, class: "carousel-button" %>
-        </div>
-      </div>
-      <div class="carousel-slide" data-carousel-target="slide">
-        <%= ik_image_tag("Trucks/carousel2.jpg", fetch_format: :auto, quality: :auto, alt: "Slide 2") %>
-        <div class="carousel-content">
-          <h2>Semi Truck Repair & Diesel Mechanics in Las Vegas</h2>
-          <br>
-          <%= link_to "LEARN MORE", services_path, class: "carousel-button" %>
-        </div>
-      </div>
-      <div class="carousel-slide" data-carousel-target="slide">
-        <%= ik_image_tag("Trucks/carousel3.jpg", fetch_format: :auto, quality: :auto, alt: "Slide 3") %>
-        <div class="carousel-content">
-          <h2>ROADSIDE ASSISTANCE NEAR <br>LAS VEGAS</h2>
-          <br>
-          <%= link_to "OUR SERVICES", roadside_assistance_path, class: "carousel-button" %>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-prev" data-action="carousel#prev">❮</button>
-    <button class="carousel-next" data-action="carousel#next">❯</button>
-  </div>
-
-  <section class="emergency-banner">
-    <div class="banner-content">
-      <p>CALL FOR IMMEDIATE SERVICE</p>
-      <a href="tel:+17023332463" class="call-button phone-number">CLICK TO CALL</a>
-    </div>
-  </section>
-
-  <section class="section">
-    <h1>TRUCKS OF NEVADA SEMI TRUCK REPAIR SHOP</h1>
-    <p>Bring your heavy duty commercial truck to our repair shop in Las Vegas.<br>We provide the best maintenance and repairs.</p>
-    <div class="cards">
-      <div class="card">
-        <div class="hex-icon"><i class="fa-solid fa-people-group"></i></div>
-        <h2>GREAT TEAM</h2>
-        <p>Expect great customer service from the first phone call to your first visit.</p>
-      </div>
-      <div class="card">
-        <div class="hex-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-        <h2>WIDE RANGE OF SERVICES</h2>
-        <p>Diagnostic, Oil Change or Engine Repairs... We can handle it all.</p>
-      </div>
-      <div class="card">
-        <div class="hex-icon"><i class="fa-solid fa-truck-fast"></i></div>
-        <h2>ROADSIDE ASSISTANCE</h2>
-        <p>Major breakdown around Las Vegas? Call us 24/7.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="services-section">
-    <div class="service-images">
-      <div class="image-container overlay-container">
-        <%= ik_image_tag("Trucks/overlay1.jpg", fetch_format: :auto, quality: :auto, alt: "Diagnostics") %>
-        <div class="overlay">
-          <h3>Diagnostics & Inspection</h3>
-          <%= link_to "READ MORE", diagnostic_path, class: "read-more" %>
-        </div>
-      </div>
-      <div class="image-container overlay-container">
-        <%= ik_image_tag("Trucks/overlay2.jpg", fetch_format: :auto, quality: :auto, alt: "Aftertreatment") %>
-        <div class="overlay">
-          <h3>Aftertreatment</h3>
-          <%= link_to "READ MORE", aftertreatment_path, class: "read-more" %>
-        </div>
-      </div>
-      <div class="image-container overlay-container">
-        <%= ik_image_tag("Trucks/overlay3.jpg", fetch_format: :auto, quality: :auto, alt: "Maintenance") %>
-        <div class="overlay">
-          <h3>Oil Change and Maintenance</h3>
-          <%= link_to "READ MORE", maintenance_path, class: "read-more" %>
-        </div>
-      </div>
-      <div class="image-container overlay-container">
-        <%= ik_image_tag("Trucks/overlay4.jpg", fetch_format: :auto, quality: :auto, alt: "Roadside") %>
-        <div class="overlay">
-          <h3>Roadside Assistance</h3>
-          <%= link_to "READ MORE", roadside_assistance_path, class: "read-more" %>
-        </div>
-      </div>
-    </div>
-  </section>
-
- <section class="logos" data-controller="logo-section">
-  <div class="slider">
-    <ul class="brands" data-logo-section-target="track">
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img1.jpg", transformation: [{ crop: "at_max" }]) %></li>
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img2.jpg") %></li>
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img3.jpg") %></li>
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img4.jpg") %></li>
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img5.jpg") %></li>
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img6.jpg") %></li>
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img7.jpg") %></li>
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img8.jpg") %></li>
-      <li class="brand-logo"><%= ik_image_tag("Trucks/img9.jpg") %></li>
-    </ul>
-  </div>
-
-  <div class="slider-dots" data-logo-section-target="dots">
-    <span data-action="click->logo-section#goToSlide" data-index="0" class="dot active"></span>
-    <span data-action="click->logo-section#goToSlide" data-index="1" class="dot"></span>
-    <span data-action="click->logo-section#goToSlide" data-index="2" class="dot"></span>
+<% used_photos = [] %>
+<% hero = take_photo("home", used_photos) %>
+<section class="hero <%= "has-photo" if hero %>" <% if hero %>style="<%= hero_photo_style(hero) %>"<% end %>>
+  <div class="wrap hero-copy">
+    <h1>Your Trusted Truck &amp; Trailer Repair Shop in Las Vegas</h1>
+    <p class="lede">Fast Diagnostics, Experienced Technicians, Same-Day Service</p>
+    <%= phone_link "Call Now (702) 333-2463", class: "btn-call" %>
   </div>
 </section>
-</div>
+
+<section class="trust">
+  <div class="wrap trust-grid">
+    <p><i class="fa-solid fa-users"></i> Family Owned</p>
+    <p><i class="fa-solid fa-certificate"></i> ASE-Certified Mechanics</p>
+    <p><i class="fa-solid fa-bolt"></i> Same-Day Repairs</p>
+    <p><i class="fa-solid fa-road"></i> 24/7 Roadside</p>
+    <p><i class="fa-solid fa-award"></i> 10+ years experience</p>
+    <p><%= link_to reviews_path do %><i class="fa-solid fa-comments"></i> Top Google Reviews<% end %></p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Reliable Semi Truck and Trailer Repairs that get you back on the road</h2>
+      <p>From routine maintenance to complex repairs, Trucks of Nevada is your trusted partner in keeping your business moving. Our experienced technicians are committed to identifying problems accurately, delivering quality repairs, and getting your truck back on the road as quickly as possible.</p>
+    </div>
+    <div class="card-grid">
+      <% SiteContent.featured.each do |service| %>
+        <%= link_to public_send("#{service.slug.tr("-", "_")}_path"), class: "service-card" do %>
+          <% photo = shop_photo(service.slug) %>
+          <% if photo %>
+            <%= image_tag photo, alt: photo_alt(photo), class: "card-photo" %>
+          <% else %>
+            <span class="card-icon"><i class="<%= service.icon %>"></i></span>
+          <% end %>
+          <span class="card-body">
+            <strong><%= service.name %></strong>
+            <em>See this repair</em>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+    <p class="section-link"><%= link_to "All services", services_path %></p>
+  </div>
+</section>
+
+<section class="bay-reel" aria-label="In the bay" data-controller="bay-reel">
+  <div class="bay-reel-line" aria-hidden="true"></div>
+  <div class="bay-reel-viewport">
+    <div class="bay-reel-track" data-bay-reel-target="track">
+      <% tilts = [-3.2, 2.6, -1.4, 3.8, -2.5, 1.7, -4, 2.9, -1.8, 3.2, -2.8, 1.2] %>
+      <% bay_reel_photos.each_with_index do |(path, alt), index| %>
+        <figure class="polaroid" style="--tilt: <%= tilts[index % tilts.length] %>deg">
+          <span class="polaroid-clip" aria-hidden="true"></span>
+          <%= image_tag path, alt: alt %>
+        </figure>
+      <% end %>
+    </div>
+  </div>
+</section>
+
+<%= render "shared/call_band",
+      title: "Broke down on the side of the road?",
+      text: "Call us. Roadside help is available 24/7 on I-15, US-95, and US-93, and across Las Vegas, Henderson, and North Las Vegas." %>
+
+<section class="band band-dark">
+  <div class="wrap split">
+    <div>
+      <h2>Get Your Truck Back on the Road Today!</h2>
+      <p>We proudly serve owner-operators and fleets with reliable truck and trailer repair services. We specialize in advanced diagnostics, diesel engine repairs, electrical systems, aftertreatment, and truck and trailer maintenance. With over 10 years experience, we focus on honest service, quality repairs, and keeping your trucks moving.</p>
+      <%= link_to "About the shop", about_path, class: "text-link" %>
+    </div>
+    <ul class="check-list">
+      <li>Major Commercial Truck Brands: Volvo, Freightliner, Kenworth, International, Peterbilt, Mack &amp; More</li>
+      <li>Additional Vehicles Serviced: Commercial Box Trucks, Diesel-Powered Motorhomes, Cranes, More</li>
+      <li>Efficient Turnaround: Same-day repairs available when service requirements and parts availability allow.</li>
+      <li>Mobile Repair Services: On-site assistance available within approximately 100 miles of our shop.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="quote-band">
+  <div class="wrap"
+    data-controller="quote-cycle"
+    data-action="mouseenter->quote-cycle#pause mouseleave->quote-cycle#resume">
+    <div class="quote-head">
+      <div>
+        <p class="eyebrow">Drivers on Google</p>
+        <p class="star-row star-row-lg" aria-label="5 out of 5">
+          <% 5.times do %><span class="star" style="--fill: 100%"></span><% end %>
+        </p>
+      </div>
+      <%= link_to GoogleReviews::PROFILE_URL, class: "google-cta quote-google", target: "_blank", rel: "noopener noreferrer" do %>
+        <%= image_tag "icons/google-g.svg", alt: "" %>
+        <span>
+          Leave a review
+          <small>On the shop’s Google listing</small>
+        </span>
+      <% end %>
+    </div>
+    <div class="quote-stage" data-quote-cycle-target="stage">
+      <% GoogleReviews.reviews.select { |review| ["Taras Yevtushyk", "Constantin Cascaval", "Melford Maxie"].include?(review[:author]) }.each_with_index do |review, index| %>
+        <blockquote class="quote-slide <%= "is-on" if index.zero? %>" data-quote-cycle-target="slide" <%= "aria-hidden=true" unless index.zero? %>>
+          <p><%= review[:body] %></p>
+          <footer>
+            <cite><%= review[:author] %></cite>
+            <time datetime="<%= review[:date] %>"><%= Date.parse(review[:date]).strftime("%B %-d, %Y") %></time>
+          </footer>
+        </blockquote>
+      <% end %>
+    </div>
+    <%= link_to "Read the Google reviews", reviews_path, class: "text-link" %>
+  </div>
+</section>
+
+<section class="makes">
+  <div class="wrap">
+    <ul class="make-logos">
+      <% [
+        ["Volvo", "brands/volvo.svg"],
+        ["Freightliner", "brands/freightliner.png", true],
+        ["Kenworth", "brands/kenworth.png", true],
+        ["International", "brands/international.svg", true],
+        ["Peterbilt", "brands/peterbilt.svg"],
+        ["Mack", "brands/mack.svg"],
+        ["Western Star", "brands/western-star.svg"],
+        ["Hino", "brands/hino.svg", true],
+        ["Isuzu", "brands/isuzu.svg", true]
+      ].each do |name, file, wide| %>
+        <li class="<%= "is-wide" if wide %>"><%= image_tag file, alt: name %></li>
+      <% end %>
+    </ul>
+    <p class="makes-note">And more. Don’t see your truck? <%= phone_link "Just call (702) 333-2463" %>.</p>
+  </div>
+</section>

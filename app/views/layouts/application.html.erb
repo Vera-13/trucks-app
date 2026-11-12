@@ -1,202 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title><%= content_for?(:title) ? yield(:title) : "Trucks of Nevada | Semi-Truck Repair" %></title>
-
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="author" content="Trucks of Nevada">
   <meta name="robots" content="index, follow">
 
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
-  <%= display_meta_tags %> <!-- This will render the meta tags dynamically from ApplicationController -->
+  <% if (share_photo = page_photo("home")) %>
+    <% share_image = public_asset(share_photo) %>
+    <% set_meta_tags og: { image: share_image }, twitter: { image: share_image } %>
+  <% end %>
+  <%= display_meta_tags site: "Trucks of Nevada", reverse: true, separator: "|" %>
 
   <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= yield :head %>
   <%= javascript_importmap_tags %>
+  <%= favicon_link_tag "favicon.ico" %>
 
-  <%= favicon_link_tag 'favicon.ico' %>
-
-<% if Rails.env.production? %>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-359263349"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    // Initialize GA4 and Google Ads base
-    gtag('config', 'G-C34J9TNX1Y');
-    gtag('config', 'AW-359263349');
-
-    var setupPhoneTracking = function() {
-      // 1. PHONE NUMBER SWAPPING (Google Ads)
-      // Updated with your specific Conversion Label and Number
-      gtag('config', 'AW-359263349/jnwaCIeuh9cZEPXYp6sB', {
-        'phone_conversion_number': '(702) 333-2463',
-        'phone_conversion_callback': function(display_number, non_formatted_number) {
-          var elements = document.getElementsByClassName('phone-number');
-          for (var i = 0; i < elements.length; i++) {
-            elements[i].href = "tel:" + non_formatted_number;
-            
-            // Replaces original text with the Google forwarding number
-            if (elements[i].innerHTML.includes("(702) 333-2463") || elements[i].innerHTML.includes("CLICK TO CALL")) {
-              elements[i].innerHTML = display_number;
-            }
-          }
-        }
-      });
-
-      // 2. CLICK TRACKING (GA4)
-      var elements = document.getElementsByClassName('phone-number');
-      for (var i = 0; i < elements.length; i++) {
-        elements[i].addEventListener('click', function() {
-          gtag('event', 'phone_call_click', {
-            'event_category': 'Contact',
-            'event_label': 'Website Phone Click'
-          });
-        }, { once: true });
-      }
-    };
-
-    // Handle Rails Turbo/Turbolinks lifecycle
-    document.addEventListener("turbo:load", setupPhoneTracking);
-    document.addEventListener("turbolinks:load", setupPhoneTracking);
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AutoRepair",
+      "@id": "https://trucksofnevada.com/#shop",
+      "name": "Trucks of Nevada",
+      "image": "<%= public_asset("trucks_of_nevada_logo.png") %>",
+      "telephone": "+1-702-333-2463",
+      "email": "info@trucksofnevada.com",
+      "url": "https://trucksofnevada.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "1260 Rockpebble Ave",
+        "addressLocality": "North Las Vegas",
+        "addressRegion": "NV",
+        "postalCode": "89030",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "08:30",
+        "closes": "17:30"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 36.2302,
+        "longitude": -115.1257
+      },
+      "areaServed": ["Las Vegas", "Henderson", "North Las Vegas", "Boulder City", "Pahrump"]
+    }
   </script>
-<% end %>
-
+  <% if @breadcrumbs.present? %>
+    <script type="application/ld+json"><%= raw breadcrumb_json(@breadcrumbs) %></script>
+  <% end %>
 
 </head>
-
-
-  <body>
-    <div class="header">
-      <div id="div1">
-          <span>
-          <i class="fa-solid fa-clock"></i>
-          Mon - Fri: 9:30am - 5.30pm
-        </span>
-        <span>
-          <i class="fa-solid fa-envelope"></i>
-          <%= link_to "info@trucksofnevada.com", "mailto:info@trucksofnevada.com" %>
-        </span>
-        <span>
-          <i class="fa-solid fa-clock"></i>
-          Road Assist - 24HR
-        </span>
-          <span>
-          <i class="fa-solid fa-phone"></i>
-          <%= link_to "(702) 333-2463", "tel:+17023332463", class: "phone-number"%>
-        </span>
-      </div>
-      <div id="div2">
-        <span>
-          <%= link_to "https://www.facebook.com/people/Trucks-of-Nevada/100068634909107/", target: "_blank" do%>
-          <i class="fa-brands fa-facebook"></i>
-          <%end%>
-        </span>
-
-        <span>
-          <%= link_to "https://www.instagram.com/trucksofnevada/", target: "_blank" do%>
-          <i class="fa-brands fa-square-instagram"></i>
-          <%end%>
-        </span>
-
-        <span>
-        <a href="https://www.google.com/maps/search/?api=1&query=1260+Rockpebble+Ave,+North+Las+Vegas,+NV+89030" target="_blank">
-        <i class="fa-solid fa-map-location-dot"></i>
-        </a>
-        </span>
+<body
+  data-controller="cookie-consent"
+  data-cookie-consent-enabled-value="<%= Rails.env.production? %>"
+  data-cookie-consent-ads-id-value="AW-359263349"
+  data-cookie-consent-ga-id-value="G-C34J9TNX1Y"
+  data-cookie-consent-conversion-value="AW-359263349/jnwaCIeuh9cZEPXYp6sB"
+  data-cookie-consent-phone-value="(702) 333-2463"
+>
+  <div class="utility-bar">
+    <div class="wrap utility-inner">
+      <p><i class="fa-solid fa-clock"></i> Mon–Fri 8:30AM – 5:30PM</p>
+      <p><i class="fa-solid fa-road"></i> Roadside 24/7</p>
+      <div class="utility-actions">
+        <%= render "shared/social_links" %>
+        <%= link_to "https://www.google.com/maps/search/?api=1&query=1260+Rockpebble+Ave,+North+Las+Vegas,+NV+89030", class: "social", target: "_blank", rel: "noopener noreferrer", aria: { label: "Shop location on Google Maps" } do %>
+          <%= image_tag "icons/map-pin.svg", alt: "" %>
+        <% end %>
+        <%= phone_link "Call Now (702) 333-2463", class: "btn-call btn-call-small" %>
       </div>
     </div>
+  </div>
 
-    <div class="navbar" data-controller="navbar">
-      <div class="nav-div1">
-        <%= link_to root_path, class: "navbar-brand" do %>
-          <%= image_tag "trucks_of_nevada_logo.png", class: "logo"%>
-        <% end %>
-      </div>
-
-      <button class="hamburger" data-action="click->navbar#toggle">
-        <i class="fa fa-bars"></i>
+  <header class="site-nav" data-controller="navbar">
+    <div class="wrap site-nav-inner">
+      <%= link_to root_path, class: "brand" do %>
+        <%= image_tag "trucks_of_nevada_logo.png", alt: "Trucks of Nevada", class: "brand-logo" %>
+      <% end %>
+      <button class="nav-toggle" type="button" data-action="navbar#toggle" aria-label="Open menu">
+        <i class="fa-solid fa-bars"></i>
       </button>
-
-      <div class="nav-div2" data-navbar-target="menu">
-        <%= link_to root_path, class: "#{'active' if current_page?(root_path)}" do %>
-          Home
-        <% end %>
-
-        <div class="subnav">
-          <%= link_to services_path, class: "#{'active' if current_page?(services_path)}" do %>
-           Services
-          <% end %>
-          <button class="subnavbtn">
-           <i class="fa fa-caret-down"></i>
+      <nav class="nav-links" data-navbar-target="menu">
+        <%= link_to "Home", root_path, class: ("is-active" if current_page?(root_path)) %>
+        <%= link_to "About Us", about_path, class: ("is-active" if current_page?(about_path)) %>
+        <div class="has-sub">
+          <%= link_to "Services", services_path, class: ("is-active" if current_page?(services_path)) %>
+          <button class="sub-toggle" type="button" data-action="navbar#toggleSub" aria-label="Show services">
+            <i class="fa-solid fa-chevron-down"></i>
           </button>
-          <div class="subnav-content" data-navbar-target="dropdown">
-            <%= link_to diagnostic_path, class: "#{'active' if current_page?(diagnostic_path)}" do %> Diagnostics & Inspection <% end%>
-            <%= link_to aftertreatment_path, class: "#{'active' if current_page?(aftertreatment_path)}" do %> Aftertreatment <% end%>
-            <%= link_to maintenance_path, class: "#{'active' if current_page?(maintenance_path)}" do %> Oil Change & Maintenance <% end%>
+          <div class="submenu" data-navbar-target="submenu">
+            <% SiteContent.services.each do |service| %>
+              <%= link_to service.name, public_send("#{service.slug.tr("-", "_")}_path") %>
+            <% end %>
           </div>
         </div>
-
-
-        <%= link_to roadside_assistance_path, class: "#{'active' if current_page?(roadside_assistance_path)}" do %>
-          Roadside Assistance
-        <% end%>
-
-        <%= link_to fleet_services_path, class: "#{'active' if current_page?(fleet_services_path)}" do %>
-          Fleet Services
-        <% end%>
-
-        <%= link_to about_path, class: "#{'active' if current_page?(about_path)}" do %>
-          About Us
-        <% end%>
-      </div>
-
+        <%= link_to "Reviews", reviews_path, class: ("is-active" if current_page?(reviews_path)) %>
+        <%= link_to "Service Areas", service_areas_path, class: ("is-active" if current_page?(service_areas_path)) %>
+        <%= link_to "Contact Us", contact_path, class: ("is-active" if current_page?(contact_path)) %>
+      </nav>
     </div>
+  </header>
 
-    <% if current_page?(diagnostic_path) || current_page?(aftertreatment_path) || current_page?(maintenance_path) %>
-      <div class="breadcrumb-section">
-        YOU ARE HERE:
-        <%= link_to "HOME", root_path %> /
-        <%= link_to "SERVICES", services_path %> /
-        <span class="active">
-          <% if current_page?(diagnostic_path) %> Diagnostics & Inspection <% end %>
-          <% if current_page?(aftertreatment_path) %> Aftertreatment <% end %>
-          <% if current_page?(maintenance_path) %> Oil Change & Maintenance <% end %>
-        </span>
-      </div>
-    <% end %>
+  <% if notice.present? %>
+    <p class="flash flash-notice"><%= notice %></p>
+  <% end %>
+  <% if alert.present? %>
+    <p class="flash flash-alert"><%= alert %></p>
+  <% end %>
 
-
+  <main>
     <%= yield %>
-      <div class="footer">
-        <div class="div">
-          <span>
-            <i class="fa-solid fa-map-location-dot"></i>
-            <a href="https://www.google.com/maps/search/?api=1&query=1260+Rockpebble+Ave,+North+Las+Vegas,+NV+89030" target="_blank">
-              North Las Vegas, NV 89030
-              <br>
-              1260 Rockpebble Ave.
-            </a>
-          </span>
-        </div>
-        <div class="div">
-          <span>
-            <i class="fa-solid fa-phone"></i>
-            <a href="tel:+17023332463" class="phone-number">Feel Free to Call Us
-              <br>
-              (702) 333-2463
-            </a>
-          </span>
-        </div>
-        <div class="div">
-        <span>
-          <i class="fa-solid fa-clock"></i>
-          Shop Hours Mon - Fri :
-          <br> 9:30am - 5:30pm
-        </span>
-        </div>
+  </main>
+
+  <%= render "shared/call_band",
+        title: "Truck Trouble? We're Ready to Help.",
+        text: "We understand that every hour of downtime matters. Our team provides prompt, professional semi-truck and trailer repair services, with same-day service when available and 24/7 roadside assistance for unexpected breakdowns." %>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <%= link_to root_path, class: "footer-logo-link" do %>
+          <%= image_tag "trucks_of_nevada_logo.png", alt: "Trucks of Nevada, home", class: "footer-logo" %>
+        <% end %>
+        <p>Truck and Trailer Repair in Las Vegas.</p>
       </div>
-  </body>
+      <div>
+        <h2>Visit</h2>
+        <p>
+          <a href="https://www.google.com/maps/search/?api=1&query=1260+Rockpebble+Ave,+North+Las+Vegas,+NV+89030" target="_blank" rel="noopener noreferrer">
+            1260 Rockpebble Ave<br>North Las Vegas, NV 89030
+          </a>
+        </p>
+        <p>Mon–Fri 8:30AM – 5:30PM<br>Roadside 24/7</p>
+      </div>
+      <div>
+        <h2>Call</h2>
+        <p><%= phone_link "(702) 333-2463" %></p>
+        <p><a href="mailto:info@trucksofnevada.com">info@trucksofnevada.com</a></p>
+        <p class="footer-social">
+          <%= render "shared/social_links" %>
+        </p>
+      </div>
+    </div>
+    <nav class="footer-legal wrap" aria-label="Legal">
+      <%= link_to "Privacy Policy", privacy_policy_path %>
+      <%= link_to "Cookie Policy", cookie_policy_path %>
+      <%= link_to "Terms of Service", terms_path %>
+      <button type="button" data-action="cookie-consent#openSettings">Cookie settings</button>
+      <button type="button" data-action="cookie-consent#optOutShare">Do not sell or share my personal information</button>
+    </nav>
+    <p class="footer-legal-status wrap" data-cookie-consent-target="status" role="status"></p>
+    <p class="footer-copy wrap">© <%= Time.current.year %> Trucks of Nevada</p>
+    <a class="built-by-heel" href="https://heeldigital.com" target="_blank" rel="noopener noreferrer">
+      <span>Built by</span>
+      <%= image_tag "heel-digital-logo.png", alt: "Heel Digital", class: "built-by-heel-logo" %>
+    </a>
+  </footer>
+
+  <%= render "shared/cookie_banner" %>
+
+  <div class="sticky-call">
+    <%= phone_link "Call Now (702) 333-2463", class: "btn-call" %>
+  </div>
+</body>
 </html>

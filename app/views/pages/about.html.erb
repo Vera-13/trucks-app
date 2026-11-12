@@ -1,85 +1,31 @@
-<% content_for :title, "About us | Trucks of Nevada" %>
-<% set_meta_tags title: "About us", description: "Our repair shop offers a variety of services for semi trucks and trailers in Las Vegas, NV." %>
-
-<section class="info-cards">
-
-  <div class="about_card">
-    <div class="icon">
-      <i class="fas fa-map-marker-alt"></i>
-    </div>
-    <h3>R&amp;P Repair Shop</h3>
-    <p> 1260 Rockpebble Ave. <br />
-       North Las Vegas, NV 89030<br />
-
-       <a href="https://www.google.com/maps/search/?api=1&query=1260+Rockpebble+Ave,+North+Las+Vegas,+NV+89030" target="_blank">
-       Display on Map
-       </a>
-    </p>
-  </div>
-
-  <div class="about_card">
-  <div class="icon">
-    <i class="fas fa-phone"></i>
-  </div>
-  <h3>Call Us Now</h3>
-  <p><a href="tel:+17023332463" class="phone-number">(702) 333-2463</a></p>
-</div>
-
-  <div class="about_card">
-    <div class="icon">
-      <i class="fas fa-tools"></i>
-    </div>
-    <h3>24/7 Assistance</h3>
-    <p>Flat tire, over-heated or any other breakdown left you stranded? Call our Roadside Assistance and we will get you back on the road in no time.</p>
+<% photo = page_photo("about") %>
+<section class="page-hero <%= "has-photo" if photo %>" <% if photo %>style="<%= hero_photo_style(photo) %>"<% end %>>
+  <div class="wrap">
+    <p class="eyebrow">Las Vegas</p>
+    <h1>Family owned and owner operated</h1>
+    <p class="lede">A truck and trailer shop in Las Vegas for owner-operators, fleets, and drivers passing through.</p>
   </div>
 </section>
 
-<section class="repair-section">
-  <h2>SEMI TRUCK REPAIR IN LAS VEGAS</h2>
-  <div class="underline"></div>
-  <p>
-    Our repair shop offers a variety of services for semi trucks and trailers.
-    <strong>Trucks of Nevada</strong> is servicing Las Vegas & Henderson, as well as all the Clark County area.
-  </p>
-</section>
-
-<section class="features-section">
-  <div class="features">
-    <div class="feature">
-      <div class="icon">
-      <i class="fa-solid fa-comments"></i>
-      </div>
-      <h3>COMMUNICATION IS THE KEY</h3>
-      <div class="underline"></div>
-      <p>
-        Customer service is our priority, with any service at our shop, you & your truck receive full attention by our staff and mechanics.
-      </p>
-    </div>
-    <div class="feature">
-      <div class="icon">
-      <i class="fa-solid fa-road"></i>
-      </div>
-      <h3>WE KEEP YOU ON THE ROAD</h3>
-      <div class="underline"></div>
-      <p>
-        Breakdowns happen, our main job is getting you back on the road quickly with a minimum of downtime.
-      </p>
-    </div>
-    <div class="feature">
-      <div class="icon">
-      <i class="fa-solid fa-people-group"></i>
-      </div>
-      <h3>GREAT TEAM</h3>
-      <div class="underline"></div>
-      <p>
-        Our certified semi truck mechanics rely on their knowledge and experience, so when you leave your truck with us, you leave it in good hands.
-      </p>
-    </div>
-  </div>
-  <div class="cta">
-
-      <%= link_to services_path, class: "cta-button" do %>
-        BROWSE OUR SERVICES
+<section class="band">
+  <div class="wrap split">
+    <div>
+      <h2>The shop</h2>
+      <% if (shop = shop_photo("about")) %>
+        <%= image_tag shop, alt: "Work in the Trucks of Nevada shop", class: "about-photo" %>
       <% end %>
+      <p>For more than ten years, we've taken care of drivers who need a clear diagnosis and, when the job can be finished, a truck back the same day.</p>
+      <p>Our mechanics are ASE certified. We work on Volvo, Freightliner, Kenworth, International, Peterbilt, Mack, box trucks, diesel-powered motorhomes, and cranes: engines, electrical, transmissions, trailers, aftertreatment, inspections, and maintenance.</p>
+      <p>We don't do tires, alignment, or body work. We'll tell you that on the phone, so you don't drive across town for a job we don't take.</p>
+      <%= phone_link "Call Now (702) 333-2463", class: "btn-call" %>
+    </div>
+    <ul class="check-list">
+      <li>Family owned and owner operated</li>
+      <li>ASE-certified mechanics</li>
+      <li>Same-day repairs when we can finish the job</li>
+      <li>24/7 roadside within about 100 miles</li>
+      <li>Shop hours Monday–Friday, 8:30am–5:30pm</li>
+      <li>1260 Rockpebble Ave, North Las Vegas</li>
+    </ul>
   </div>
 </section>

@@ -1,0 +1,59 @@
+<% photo = page_photo("reviews") %>
+<script type="application/ld+json">
+  <%= raw({
+    "@context" => "https://schema.org",
+    "@type" => "AutoRepair",
+    "@id" => "https://trucksofnevada.com/#shop",
+    "name" => "Trucks of Nevada",
+    "aggregateRating" => {
+      "@type" => "AggregateRating",
+      "ratingValue" => GoogleReviews::RATING.to_s,
+      "reviewCount" => GoogleReviews::COUNT.to_s,
+      "bestRating" => "5"
+    }
+  }.to_json) %>
+</script>
+<section class="page-hero <%= "has-photo" if photo %>" <% if photo %>style="<%= hero_photo_style(photo) %>"<% end %>>
+  <div class="wrap review-hero">
+    <div>
+      <p class="eyebrow">Google listing</p>
+      <h1><%= GoogleReviews::RATING %> on Google</h1>
+      <p class="star-row star-row-lg" aria-label="<%= GoogleReviews::RATING %> out of 5">
+        <% 4.times do %><span class="star" style="--fill: 100%"></span><% end %>
+        <span class="star" style="--fill: 80%"></span>
+      </p>
+      <p class="lede">Nearly 100 reviews and counting. See why drivers come back to Trucks of Nevada.</p>
+    </div>
+    <%= link_to GoogleReviews::PROFILE_URL, class: "google-cta", target: "_blank", rel: "noopener noreferrer" do %>
+      <%= image_tag "icons/google-g.svg", alt: "" %>
+      <span>
+        Leave a review
+        <small>On the shop’s Google listing</small>
+      </span>
+    <% end %>
+  </div>
+</section>
+
+<section class="band"
+  data-controller="reviews"
+  data-reviews-items-value="<%= GoogleReviews.reviews.to_json %>"
+  data-reviews-profile-value="<%= GoogleReviews::PROFILE_URL %>"
+  data-reviews-icon="<%= asset_path("icons/google-g.svg") %>">
+  <div class="wrap">
+    <div class="review-tools">
+      <label class="review-search">
+        <span class="visually-hidden">Search reviews</span>
+        <input type="search" placeholder="Search reviews" data-reviews-target="query" data-action="input->reviews#render">
+      </label>
+      <label class="review-sort">
+        <span class="visually-hidden">Sort reviews</span>
+        <select data-reviews-target="sort" data-action="change->reviews#render">
+          <option value="newest">Newest</option>
+          <option value="oldest">Oldest</option>
+        </select>
+      </label>
+    </div>
+    <p class="review-count" data-reviews-target="count"></p>
+    <div class="review-grid" data-reviews-target="list"></div>
+  </div>
+</section>
