@@ -48,7 +48,8 @@ h1, h2, h3, .call-band-title {
 a { color: $blue; }
 
 .wrap {
-  width: unquote("min(1120px, calc(100% - 2rem))");
+  width: 1120px;
+  max-width: calc(100% - 2rem);
   margin: 0 auto;
 }
 
@@ -174,7 +175,8 @@ a { color: $blue; }
   position: absolute;
   top: 100%;
   left: 0;
-  width: unquote("min(34rem, 80vw)");
+  width: 34rem;
+  max-width: 80vw;
   padding: 0.8rem;
   background: $sky-card;
   border: 1px solid $line;
