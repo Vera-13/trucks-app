@@ -24,7 +24,7 @@
       "@type": "AutoRepair",
       "@id": "https://trucksofnevada.com/#shop",
       "name": "Trucks of Nevada",
-      "image": "<%= public_asset("trucks_of_nevada_logo.png") %>",
+      "image": "<%= public_asset("trucks_of_nevada_badge.png") %>",
       "telephone": "+1-702-333-2463",
       "email": "info@trucksofnevada.com",
       "url": "https://trucksofnevada.com",
@@ -80,7 +80,7 @@
   <header class="site-nav" data-controller="navbar">
     <div class="wrap site-nav-inner">
       <%= link_to root_path, class: "brand" do %>
-        <%= image_tag "trucks_of_nevada_logo.png", alt: "Trucks of Nevada", class: "brand-logo" %>
+        <%= image_tag "trucks_of_nevada_badge.png", alt: "Trucks of Nevada", class: "brand-logo" %>
       <% end %>
       <button class="nav-toggle" type="button" data-action="navbar#toggle" aria-label="Open menu">
         <i class="fa-solid fa-bars"></i>
@@ -130,7 +130,7 @@
     <div class="wrap footer-grid">
       <div>
         <%= link_to root_path, class: "footer-logo-link" do %>
-          <%= image_tag "trucks_of_nevada_logo.png", alt: "Trucks of Nevada, home", class: "footer-logo" %>
+          <%= image_tag "trucks_of_nevada_badge.png", alt: "Trucks of Nevada, home", class: "footer-logo" %>
         <% end %>
         <p>Truck and Trailer Repair in Las Vegas.</p>
       </div>

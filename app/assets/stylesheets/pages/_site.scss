@@ -130,7 +130,7 @@ a { color: $blue; }
   line-height: 0;
 }
 
-.brand-logo { width: 10rem; height: auto; display: block; mix-blend-mode: multiply; }
+.brand-logo { width: 12rem; height: auto; display: block; }
 
 .nav-toggle {
   display: none;
@@ -584,7 +584,7 @@ a { color: $blue; }
 .footer-grid { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 1.5rem; }
 .footer-logo-link { display: inline-block; line-height: 0; }
 .footer-logo-link:hover { color: inherit; }
-.footer-logo { width: 10rem; height: auto; display: block; mix-blend-mode: multiply; }
+.footer-logo { width: 12rem; height: auto; display: block; }
 .footer-grid h2 { font-size: 1.8rem; color: $ink; margin: 0 0 0.4rem; }
 .footer-social { display: flex; gap: 0.5rem; }
 
