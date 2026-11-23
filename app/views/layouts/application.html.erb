@@ -94,8 +94,13 @@
             <i class="fa-solid fa-chevron-down"></i>
           </button>
           <div class="submenu" data-navbar-target="submenu">
-            <% SiteContent.services.each do |service| %>
-              <%= link_to service.name, public_send("#{service.slug.tr("-", "_")}_path") %>
+            <% SiteContent.menu.each do |label, services| %>
+              <div class="menu-col">
+                <p class="menu-label"><%= label %></p>
+                <% services.each do |service| %>
+                  <%= link_to service.name, public_send("#{service.slug.tr("-", "_")}_path") %>
+                <% end %>
+              </div>
             <% end %>
           </div>
         </div>
@@ -118,8 +123,8 @@
   </main>
 
   <%= render "shared/call_band",
-        title: "Truck Trouble? We're Ready to Help.",
-        text: "We understand that every hour of downtime matters. Our team provides prompt, professional semi-truck and trailer repair services, with same-day service when available and 24/7 roadside assistance for unexpected breakdowns." %>
+        title: @call_title.presence || "Truck Trouble? We're Ready to Help.",
+        text: @call_text.presence || "We understand that every hour of downtime matters. Our team provides prompt, professional semi-truck and trailer repair services, with same-day service when available and 24/7 roadside assistance for unexpected breakdowns." %>
 
   <footer class="site-footer">
     <div class="wrap footer-grid">

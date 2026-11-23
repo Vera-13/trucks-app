@@ -1,9 +1,11 @@
 class PagesController < ApplicationController
   def home
     set_meta_tags(
-      title: "Semi-Truck Repair in Las Vegas",
+      title: "Semi-Truck & Trailer Repair in Las Vegas",
       description: "Family-owned truck and trailer repair in Las Vegas. Same-day semi truck, trailer, and box truck repair, DPF cleaning, and 24/7 roadside. Call (702) 333-2463."
     )
+    @call_title = "Need Professional Semi-Truck Repair in Las Vegas?"
+    @call_text = "From complex diagnostics and engine repairs to electrical problems, aftertreatment systems, and commercial trailer services, Trucks of Nevada is ready to help."
   end
 
   def about
@@ -89,7 +91,9 @@ class PagesController < ApplicationController
 
   def service
     @service = SiteContent.find!(params[:slug])
-    set_meta_tags(title: @service.h1, description: @service.summary)
+    set_meta_tags(title: @service.seo_title.presence || @service.h1, description: @service.summary)
+    @call_title = @service.cta_title
+    @call_text = @service.cta_text
     @breadcrumbs = [
       ["Home", root_path],
       ["Services", services_path],

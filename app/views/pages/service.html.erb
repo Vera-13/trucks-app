@@ -3,37 +3,75 @@
   <div class="wrap">
     <p class="eyebrow"><%= link_to "Services", services_path %> / <%= @service.name %></p>
     <h1><%= @service.h1 %></h1>
-    <p class="lede"><%= @service.lede %></p>
-    <%= phone_link "Call Now (702) 333-2463", class: "btn-call" %>
+    <% Array(@service.lede).each do |paragraph| %>
+      <p class="lede"><%= paragraph %></p>
+    <% end %>
+    <%= phone_link (@service.button_label.presence || "Call Now (702) 333-2463"), class: "btn-call" %>
   </div>
 </section>
 
+<%= render "service_sections", sections: @service.lead_sections %>
+
 <% shop = shop_photo(@service.slug) %>
+<% if shop || @service.problems.present? || @service.included.present? %>
 <section class="band">
   <div class="wrap">
     <% if shop %>
-      <%= image_tag shop, alt: "#{@service.name} at Trucks of Nevada", class: "service-photo" %>
+      <%= image_tag shop, alt: (@service.photo_alt.presence || "#{@service.name} at Trucks of Nevada"), class: "service-photo" %>
     <% end %>
+    <% if @service.problems.present? || @service.included.present? %>
     <div class="split">
     <div>
-      <h2>What drivers call about</h2>
+      <h2><%= @service.problems_heading.presence || "What drivers call about" %></h2>
       <ul class="check-list">
-        <% @service.problems.each do |problem| %>
+        <% Array(@service.problems).each do |problem| %>
           <li><%= problem %></li>
         <% end %>
       </ul>
     </div>
     <div class="panel">
-      <h2>What we do</h2>
+      <h2><%= @service.included_heading.presence || "What we do" %></h2>
       <ul class="plain-list">
-        <% @service.included.each do |item| %>
+        <% Array(@service.included).each do |item| %>
           <li><%= item %></li>
         <% end %>
       </ul>
     </div>
     </div>
+    <% end %>
   </div>
 </section>
+<% end %>
+
+<% if @service.detail_heading.present? %>
+  <section class="band">
+    <div class="wrap narrow">
+      <h2><%= @service.detail_heading %></h2>
+      <% before = Array(@service.detail_body) %>
+      <% after = Array(@service.detail_after) %>
+      <% if @service.detail_items.present? && after.empty? %>
+        <% after = before.drop(1) %>
+        <% before = before.first(1) %>
+      <% end %>
+      <% before.each do |paragraph| %>
+        <p><%= paragraph %></p>
+      <% end %>
+      <% if @service.detail_items.present? %>
+        <p><%= @service.detail_list_label.presence || "Our technicians service:" %></p>
+        <ul class="check-list">
+          <% @service.detail_items.each do |item| %>
+            <li><%= item %></li>
+          <% end %>
+        </ul>
+      <% end %>
+      <% after.each do |paragraph| %>
+        <p><%= paragraph %></p>
+      <% end %>
+    </div>
+  </section>
+<% end %>
+
+<%= render "service_sections", sections: @service.sections %>
 
 <% if @service.steps.present? %>
   <section class="band band-dark">

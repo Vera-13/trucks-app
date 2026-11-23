@@ -2,28 +2,29 @@
 <% hero = take_photo("home", used_photos) %>
 <section class="hero <%= "has-photo" if hero %>" <% if hero %>style="<%= hero_photo_style(hero) %>"<% end %>>
   <div class="wrap hero-copy">
-    <h1>Your Trusted Truck &amp; Trailer Repair Shop in Las Vegas</h1>
-    <p class="lede">Fast Diagnostics, Experienced Technicians, Same-Day Service</p>
+    <h1>Semi-Truck &amp; Trailer Repair in Las Vegas</h1>
+    <p class="lede">Expert Heavy-Duty Diagnostics, Engine Repairs, Electrical Systems &amp; DPF/DEF Solutions.</p>
     <%= phone_link "Call Now (702) 333-2463", class: "btn-call" %>
   </div>
 </section>
 
 <section class="trust">
   <div class="wrap trust-grid">
-    <p><i class="fa-solid fa-users"></i> Family Owned</p>
-    <p><i class="fa-solid fa-certificate"></i> ASE-Certified Mechanics</p>
-    <p><i class="fa-solid fa-bolt"></i> Same-Day Repairs</p>
-    <p><i class="fa-solid fa-road"></i> 24/7 Roadside</p>
-    <p><i class="fa-solid fa-award"></i> 10+ years experience</p>
-    <p><%= link_to reviews_path do %><i class="fa-solid fa-comments"></i> Top Google Reviews<% end %></p>
+    <p><i class="fa-solid fa-users"></i> Heavy-Duty Specialists</p>
+    <p><i class="fa-solid fa-certificate"></i> ASE-Certified Technicians</p>
+    <p><i class="fa-solid fa-bolt"></i> Same-Day Service Available</p>
+    <p><i class="fa-solid fa-road"></i> 24/7 Roadside Assistance</p>
+    <p><i class="fa-solid fa-award"></i> 10+ Years of Experience</p>
+    <p><%= link_to reviews_path do %><i class="fa-solid fa-comments"></i> Customer-Rated Service<% end %></p>
   </div>
 </section>
 
 <section class="band">
   <div class="wrap">
     <div class="section-head">
-      <h2>Reliable Semi Truck and Trailer Repairs that get you back on the road</h2>
-      <p>From routine maintenance to complex repairs, Trucks of Nevada is your trusted partner in keeping your business moving. Our experienced technicians are committed to identifying problems accurately, delivering quality repairs, and getting your truck back on the road as quickly as possible.</p>
+      <h2>Heavy-Duty Repairs. Accurate Diagnostics. Less Downtime.</h2>
+      <p>At Trucks of Nevada, we understand that every hour your truck is out of service costs you money. Our experienced technicians specialize in commercial semi-truck and trailer repairs, from advanced engine diagnostics and electrical troubleshooting to major mechanical repairs and aftertreatment systems.</p>
+      <p>We serve owner-operators and commercial fleets throughout Las Vegas, focusing on accurate diagnosis, quality workmanship, and getting your equipment back on the road as efficiently as possible.</p>
     </div>
     <div class="card-grid">
       <% SiteContent.featured.each do |service| %>
@@ -35,8 +36,8 @@
             <span class="card-icon"><i class="<%= service.icon %>"></i></span>
           <% end %>
           <span class="card-body">
-            <strong><%= service.name %></strong>
-            <em>See this repair</em>
+            <strong><%= service.card_name.presence || service.name %></strong>
+            <em>Learn More</em>
           </span>
         <% end %>
       <% end %>
@@ -61,21 +62,21 @@
 </section>
 
 <%= render "shared/call_band",
-      title: "Broke down on the side of the road?",
-      text: "Call us. Roadside help is available 24/7 on I-15, US-95, and US-93, and across Las Vegas, Henderson, and North Las Vegas." %>
+      title: "Semi-Truck Breakdown? Call for Roadside Assistance.",
+      text: "Unexpected breakdowns can disrupt your deliveries and cost valuable time. Trucks of Nevada provides commercial truck roadside assistance throughout Las Vegas, Henderson, North Las Vegas, and surrounding highways, including I-15, US-95, and US-93." %>
 
 <section class="band band-dark">
   <div class="wrap split">
     <div>
-      <h2>Get Your Truck Back on the Road Today!</h2>
-      <p>We proudly serve owner-operators and fleets with reliable truck and trailer repair services. We specialize in advanced diagnostics, diesel engine repairs, electrical systems, aftertreatment, and truck and trailer maintenance. With over 10 years experience, we focus on honest service, quality repairs, and keeping your trucks moving.</p>
-      <%= link_to "About the shop", about_path, class: "text-link" %>
+      <h2>Why Truck Owners Choose Trucks of Nevada</h2>
+      <p>At Trucks of Nevada, we believe quality repairs begin with accurate diagnostics. Our team works to identify the root cause of mechanical, electrical, and aftertreatment problems rather than simply replacing parts and hoping for the best.</p>
+      <p>We provide professional repair solutions for owner-operators and commercial fleets, with a focus on dependable workmanship, clear communication, and minimizing unnecessary downtime.</p>
     </div>
     <ul class="check-list">
-      <li>Major Commercial Truck Brands: Volvo, Freightliner, Kenworth, International, Peterbilt, Mack &amp; More</li>
-      <li>Additional Vehicles Serviced: Commercial Box Trucks, Diesel-Powered Motorhomes, Cranes, More</li>
-      <li>Efficient Turnaround: Same-day repairs available when service requirements and parts availability allow.</li>
-      <li>Mobile Repair Services: On-site assistance available within approximately 100 miles of our shop.</li>
+      <li>Advanced Diagnostics — Electrical, engine, transmission, and aftertreatment troubleshooting.</li>
+      <li>Commercial Truck Specialists — Freightliner, Volvo, Kenworth, Peterbilt, International, Mack, and more.</li>
+      <li>Fleet &amp; Owner-Operator Support — Repairs, inspections, and preventive maintenance.</li>
+      <li>Efficient Turnaround — Same-day service when scheduling, repair requirements, and parts availability permit.</li>
     </ul>
   </div>
 </section>
@@ -100,7 +101,7 @@
       <% end %>
     </div>
     <div class="quote-stage" data-quote-cycle-target="stage">
-      <% GoogleReviews.reviews.select { |review| ["Taras Yevtushyk", "Constantin Cascaval", "Melford Maxie"].include?(review[:author]) }.each_with_index do |review, index| %>
+      <% GoogleReviews.reviews.select { |review| ["Constantin Cascaval", "Romeo Lun", "Taras Yevtushyk"].include?(review[:author]) }.each_with_index do |review, index| %>
         <blockquote class="quote-slide <%= "is-on" if index.zero? %>" data-quote-cycle-target="slide" <%= "aria-hidden=true" unless index.zero? %>>
           <p><%= review[:body] %></p>
           <footer>
@@ -110,12 +111,14 @@
         </blockquote>
       <% end %>
     </div>
-    <%= link_to "Read the Google reviews", reviews_path, class: "text-link" %>
+    <%= link_to "Read Our Google Reviews", reviews_path, class: "btn-call" %>
   </div>
 </section>
 
 <section class="makes">
   <div class="wrap">
+    <h2>Commercial Truck Brands We Service</h2>
+    <p class="makes-note">Independent repair services for major heavy-duty truck manufacturers.</p>
     <ul class="make-logos">
       <% [
         ["Volvo", "brands/volvo.svg"],

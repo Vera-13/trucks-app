@@ -175,8 +175,8 @@ a { color: $blue; }
   position: absolute;
   top: 100%;
   left: 0;
-  width: 34rem;
-  max-width: 80vw;
+  width: 44rem;
+  max-width: 92vw;
   padding: 0.8rem;
   background: $sky-card;
   border: 1px solid $line;
@@ -191,6 +191,17 @@ a { color: $blue; }
     padding: 0.35rem 0.2rem;
     font-size: 0.92rem;
     &:hover { color: $blue; }
+  }
+
+  .menu-col { display: flex; flex-direction: column; min-width: 0; }
+  .menu-label {
+    margin: 0.15rem 0 0.2rem;
+    padding: 0 0.2rem;
+    color: #5c6b7a;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
   }
 }
 
@@ -208,7 +219,7 @@ a { color: $blue; }
   background-position: center;
 
   h1 { font-size: unquote("clamp(2.8rem, 6vw, 4.6rem)"); max-width: 16ch; margin: 0 0 1rem; }
-  .lede { font-size: 1.12rem; line-height: 1.6; max-width: 36rem; color: #e7ebf0; }
+  .lede { font-size: 1.12rem; line-height: 1.6; max-width: 40rem; color: #e7ebf0; margin: 0 0 0.85rem; }
   .eyebrow, .eyebrow a { color: #9ec5ff; text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.78rem; font-weight: 700; text-decoration: none; }
 }
 
@@ -334,6 +345,7 @@ a { color: $blue; }
 
 .split { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 3.5rem; align-items: start; }
 .band h2, .panel h2 { font-size: unquote("clamp(2.1rem, 4vw, 3.05rem)"); margin-bottom: 1rem; }
+.band h3 { font-size: 1.35rem; margin: 1.5rem 0 0.55rem; }
 .check-list, .plain-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.85rem; }
 .check-list li, .plain-list li { position: relative; padding: 0 0 0 1.25rem; line-height: 1.45; }
 .check-list li::before { content: ""; position: absolute; left: 0; top: 0.45rem; width: 0.42rem; height: 0.42rem; background: $blue; }
@@ -460,6 +472,8 @@ a { color: $blue; }
 
 .makes { background: $ink; color: #fff; padding: 0 0 2.2rem; }
 .makes .wrap { border-top: 1px solid rgba(255, 255, 255, 0.14); padding-top: 1.35rem; }
+.makes h2 { margin: 0 0 0.35rem; text-align: center; font-size: 1.7rem; }
+.makes .makes-note:first-of-type { margin-top: 0; margin-bottom: 1rem; }
 .make-logos {
   display: flex;
   flex-wrap: nowrap;
@@ -704,7 +718,7 @@ a { color: $blue; }
   }
   .nav-links.is-open { display: flex; }
   .has-sub { flex-wrap: wrap; width: 100%; }
-  .submenu { position: static; width: 100%; box-shadow: none; display: none; }
+  .submenu { position: static; width: 100%; max-width: none; box-shadow: none; display: none; grid-template-columns: 1fr; }
   .submenu.is-open { display: grid; }
   .has-sub:hover .submenu { display: none; }
   .has-sub:hover .submenu.is-open, .submenu.is-open { display: grid; }

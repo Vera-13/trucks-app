@@ -1,0 +1,32 @@
+<% Array(sections).each do |section| %>
+  <section class="band">
+    <div class="wrap narrow">
+      <% if section["heading"].present? %>
+        <h2><%= section["heading"] %></h2>
+      <% end %>
+      <% Array(section["paragraphs"]).each do |paragraph| %>
+        <p><%= paragraph %></p>
+      <% end %>
+      <% if section["items"].present? %>
+        <%= render "service_section_list", section: section %>
+      <% end %>
+      <% Array(section["blocks"]).each do |block| %>
+        <% if block["heading"].present? %>
+          <h3><%= block["heading"] %></h3>
+        <% end %>
+        <% Array(block["paragraphs"]).each do |paragraph| %>
+          <p><%= paragraph %></p>
+        <% end %>
+        <% if block["items"].present? %>
+          <%= render "service_section_list", section: block %>
+        <% end %>
+        <% Array(block["after"]).each do |paragraph| %>
+          <p><%= paragraph %></p>
+        <% end %>
+      <% end %>
+      <% Array(section["after"]).each do |paragraph| %>
+        <p><%= paragraph %></p>
+      <% end %>
+    </div>
+  </section>
+<% end %>

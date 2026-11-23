@@ -15,6 +15,9 @@ Rails.application.routes.draw do
     get service.slug, to: "pages#service", defaults: { slug: service.slug }, as: service.slug.tr("-", "_")
   end
 
+  get "brake-adjustment-inspection", to: redirect("/brake-repair", status: 301)
+  get "crane-repair", to: redirect("/specialty-vehicle-repair", status: 301)
+  get "motor-home-repair", to: redirect("/specialty-vehicle-repair", status: 301)
   get "aftertreatment", to: redirect("/dpf-cleaning", status: 301)
   get "maintenance", to: redirect("/preventive-maintenance", status: 301)
   get "diagnostic", to: redirect("/dot-inspections", status: 301)

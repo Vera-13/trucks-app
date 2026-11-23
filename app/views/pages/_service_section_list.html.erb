@@ -1,0 +1,13 @@
+<% if section["numbered"] %>
+  <ol class="steps">
+    <% section["items"].each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+  </ol>
+<% else %>
+  <ul class="check-list">
+    <% section["items"].each do |item| %>
+      <li><%= item %></li>
+    <% end %>
+  </ul>
+<% end %>

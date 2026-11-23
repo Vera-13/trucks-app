@@ -1,9 +1,27 @@
 class SiteContent
   Service = Struct.new(
-    :slug, :name, :summary, :h1, :lede, :icon,
-    :problems, :included, :faqs, :fleets, :steps, :showcase,
+    :slug, :name, :card_name, :summary, :h1, :seo_title, :lede, :icon,
+    :problems, :problems_heading, :included, :included_heading,
+    :faqs, :fleets, :steps, :showcase,
+    :detail_heading, :detail_body, :detail_after, :detail_items, :detail_list_label,
+    :cta_title, :cta_text, :photo_alt, :button_label,
+    :lead_sections, :sections,
     keyword_init: true
   )
+
+  def self.menu
+    {
+      "Truck & Trailer Repair" => %w[
+        semi-truck-repair engine-repair transmission-repair
+        electrical-battery-repair suspension-repair trailer-repair
+        brake-repair ac-repair box-truck-repair
+      ],
+      "Maintenance & Specialty Services" => %w[
+        dpf-cleaning preventive-maintenance dot-inspections
+        carb-inspections roadside-assistance specialty-vehicle-repair
+      ]
+    }.transform_values { |slugs| slugs.map { |slug| find!(slug) } }
+  end
 
   def self.services
     SERVICES
@@ -24,21 +42,25 @@ class SiteContent
   SERVICES = [
     Service.new(
       slug: "semi-truck-repair",
-      name: "Semi Truck Repair",
+      name: "Semi-Truck Repair",
       icon: "fa-solid fa-truck",
       showcase: true,
       h1: "Semi Truck Repair in Las Vegas",
       summary: "Same-day semi truck repair in Las Vegas for owner-operators and fleets. Engine, electrical, transmission, trailer, DOT, and roadside.",
-      lede: "Bring the truck to the shop in Las Vegas, or call if it's already down. Trucks of Nevada is a family-owned, owner-operated truck and trailer shop for owner-operators, fleets, and drivers passing through who need the truck moving today.",
+      lede: [
+        "Keep your truck moving with expert diagnostics and dependable repairs at Trucks of Nevada. We service commercial semi-trucks and trailers, specializing in engine problems, electrical failures, DPF/DEF/SCR systems, transmission issues, and preventive maintenance.",
+        "Whether you're a local owner-operator, managing a fleet, or passing through Las Vegas, our experienced technicians are ready to help minimize downtime."
+      ],
+      problems_heading: "Common Semi-Truck Problems We Repair",
       problems: [
-        "The truck lost power, derated, or will not start",
-        "A check-engine light came on before a pickup",
-        "The transmission is slipping, missing a gear, or will not shift",
-        "Lights, batteries, or wiring failed overnight",
-        "The trailer has an air leak, bad brakes, or a dead circuit",
-        "A DOT or CARB inspection is due",
-        "The A/C quit before a desert run",
-        "The truck is sitting on I-15, US-95, or US-93"
+        "Check engine lights, fault codes, and engine performance issues",
+        "Loss of power, engine derates, and no-start conditions",
+        "DPF, DEF, SCR, and emissions system problems",
+        "Transmission shifting problems and clutch issues",
+        "Electrical faults, wiring, batteries, and charging systems",
+        "Air brake, suspension, and trailer system failures",
+        "Cooling system problems and A/C repairs",
+        "DOT inspections and preventive maintenance"
       ],
       included: [
         "Diagnosis before parts get thrown at the truck",
@@ -58,247 +80,580 @@ class SiteContent
     ),
     Service.new(
       slug: "dpf-cleaning",
-      name: "DPF Cleaning",
+      name: "DPF Cleaning & Aftertreatment Repair",
+      card_name: "DPF & Aftertreatment Services",
       icon: "fa-solid fa-filter",
-      h1: "DPF Cleaning in Las Vegas",
-      summary: "DPF removal, cleaning, and reinstallation in Las Vegas, plus derate diagnostics for DEF, SCR, EGR, and NOx faults.",
-      lede: "A forced regen is not a DPF cleaning. Trucks of Nevada removes, cleans, and reinstalls the filter, then looks for the reason it clogged, so the same light does not come back on the next grade outside Las Vegas.",
+      h1: "DPF Cleaning & Aftertreatment Repair in Las Vegas",
+      seo_title: "DPF Cleaning & Aftertreatment Repair Las Vegas",
+      summary: "Professional DPF cleaning, DEF, SCR, EGR and NOx sensor repairs for semi-trucks in Las Vegas. Expert diagnostics and derate troubleshooting. Call (702) 333-2463.",
+      lede: [
+        "Professional DPF Cleaning, DEF & SCR System Repairs for Heavy-Duty Semi-Trucks",
+        "A clogged DPF, failed regeneration, or DEF system fault can quickly lead to reduced engine power, warning lights, and costly downtime.",
+        "At Trucks of Nevada, we specialize in heavy-duty diesel aftertreatment diagnostics, DPF cleaning, and emissions system repairs for commercial semi-trucks in Las Vegas.",
+        "From DPF restrictions and failed regenerations to SCR efficiency faults, NOx sensor failures, and engine derates, our technicians use advanced diagnostic equipment to identify the problem and perform the necessary repairs.",
+        "We don't just clear fault codes. We diagnose the underlying issue, repair the affected components, and verify system operation to help prevent recurring problems."
+      ],
+      problems_heading: "Common DPF & Aftertreatment Problems We Diagnose",
       problems: [
-        "The DPF is clogged or full of soot",
-        "Regeneration keeps failing or will not start",
-        "The truck is in derate or low-power mode",
-        "DEF, SCR, NOx, or EGR faults are on the dash",
-        "The filter clogs again a short time after the last cleaning",
-        "You need to know if the DPF can be cleaned or has to be replaced"
+        "DPF warning light or excessive soot accumulation",
+        "Failed, incomplete, or frequent regenerations",
+        "Engine derate, reduced power, or speed limitations",
+        "DEF system faults and poor DEF dosing",
+        "SCR efficiency and NOx conversion faults",
+        "Failed NOx sensors or exhaust temperature sensors",
+        "EGR system faults and excessive soot production",
+        "Check engine lights related to emissions systems",
+        "DPF restrictions that return shortly after regeneration or cleaning"
       ],
-      steps: [
-        "Diagnose the clog, the regen history, and the fault codes before anything comes off the truck.",
-        "Run a forced (parked) regeneration only when that is actually the right fix.",
-        "Remove the DPF, clean out ash and deposits a regen cannot burn off, and reinstall it.",
-        "Check the DEF system, SCR, NOx sensors, and EGR when something else is causing the problem.",
-        "Tell you whether the filter can go back on the truck or whether it is too far gone to clean."
-      ],
+      included_heading: "Our DPF Cleaning & Aftertreatment Services",
       included: [
-        "Complete DPF service: removal, professional cleaning, and reinstallation",
-        "Forced regenerations and clogged-filter diagnostics",
-        "Engine derate and check-engine-light troubleshooting",
-        "DEF, SCR, EGR, and NOx sensor diagnostics and repairs",
-        "Finding the cause, so the filter doesn't clog again right away"
+        "Professional DPF cleaning",
+        "DPF removal and reinstallation",
+        "DPF replacement",
+        "DOC cleaning and replacement",
+        "Forced and parked regenerations",
+        "DPF differential pressure testing",
+        "Soot-load diagnostics and regeneration history analysis",
+        "Diagnosis of recurring DPF restrictions"
+      ],
+      sections: [
+        {
+          "heading" => "DPF Cleaning, Regeneration & Filter Replacement",
+          "paragraphs" => [
+            "A diesel particulate filter (DPF) captures soot from engine exhaust. Over time, accumulated soot and ash can restrict exhaust flow and affect engine performance.",
+            "DPF cleaning and forced regeneration are not the same service. Regeneration burns accumulated soot under appropriate operating conditions, while professional DPF cleaning addresses deposits, including ash, that regeneration cannot remove.",
+            "We evaluate the filter's condition and related engine systems to determine the appropriate service."
+          ]
+        },
+        {
+          "heading" => "DEF, SCR, EGR & Emissions System Repairs",
+          "paragraphs" => [
+            "Modern diesel aftertreatment systems rely on multiple components working together to control emissions and maintain proper engine operation.",
+            "A failure in one component can trigger warning lights, reduced power, or engine derate conditions.",
+            "Our aftertreatment repair services include:"
+          ],
+          "items" => [
+            "DEF pump, doser, and injector diagnostics and repairs",
+            "DEF tank, heater, and quality sensor repairs",
+            "SCR catalyst diagnostics and replacement",
+            "Inlet and outlet NOx sensor replacement",
+            "EGR valve and cooler repairs",
+            "DOC and exhaust temperature sensor diagnostics",
+            "Aftertreatment wiring and electrical repairs",
+            "SCR efficiency and NOx conversion testing",
+            "Engine derate and speed-limit troubleshooting",
+            "Post-repair calibrations, resets, and system verification"
+          ],
+          "after" => [
+            "Using heavy-duty OEM diagnostic software, we evaluate fault codes, live operating data, and component performance to identify the cause of aftertreatment failures.",
+            "Our goal is to correct the underlying problem rather than temporarily eliminate a warning light."
+          ]
+        },
+        {
+          "heading" => "Our DPF & Aftertreatment Diagnostic Process",
+          "numbered" => true,
+          "items" => [
+            "Comprehensive System Diagnostics. We retrieve active and stored fault codes, review regeneration history, and evaluate aftertreatment system performance using heavy-duty diagnostic equipment.",
+            "Identify the Root Cause. We inspect relevant components, including the DPF, DOC, DEF dosing system, SCR catalyst, NOx sensors, EGR system, and related electrical circuits, as indicated by the diagnostic findings.",
+            "Recommend the Appropriate Repair. Depending on the condition of the system, service may involve professional DPF cleaning, regeneration, component repair, or replacement.",
+            "Complete the Necessary Service. Our technicians perform the required repairs, cleaning-related removal and reinstallation, or component replacement.",
+            "Verify System Operation. When applicable, we complete required resets and calibrations, review operating data, and verify aftertreatment performance before returning the truck to service."
+          ]
+        }
       ],
       faqs: [
-        ["Can you remove, clean, and reinstall my DPF?", "Yes. Cleaning here includes taking the filter off, cleaning it, and putting it back on."],
-        ["Is DPF cleaning the same as a forced regeneration?", "No. Regeneration burns soot. A professional cleaning also removes ash and other deposits that a regen leaves behind."],
-        ["Why does my DPF keep clogging?", "Repeat clogs often come from how the engine is running, a bad sensor, a regen that never finishes, or another aftertreatment fault. We look for that cause before we recommend the repair."],
-        ["Can you fix my truck if it is in derate?", "Yes. We diagnose and repair the common causes, including DPF, DEF, SCR, and NOx sensor problems."],
-        ["Can you perform a forced regeneration?", "Yes, when it is the right next step. A forced regen will not fix a filter packed with ash, or a mechanical problem upstream of the DPF."],
-        ["How long does DPF cleaning take?", "It depends on the filter and on any other repairs the diagnosis turns up. You get an estimated finish time after we evaluate the truck."],
-        ["Will cleaning the DPF turn off the check engine light?", "Not by itself, if the light is from a bad sensor, the DEF system, or another engine fault. Those need their own diagnosis."],
-        ["Do I need to replace the DPF, or can it be cleaned?", "Many filters can be cleaned and reused. A cracked or worn-out filter may need replacement. We look at the filter before we tell you which one it is."]
-      ]
+        ["Is DPF cleaning the same as a forced regeneration?", "No. A forced regeneration uses elevated exhaust temperatures to burn accumulated soot. Professional DPF cleaning addresses soot and ash deposits, including material that regeneration cannot remove. The appropriate service depends on the filter's condition and diagnostic results."],
+        ["Can you remove, clean, and reinstall my DPF?", "Yes. Trucks of Nevada provides complete DPF service, including removal, professional cleaning, and reinstallation for heavy-duty semi-trucks."],
+        ["Why does my DPF keep clogging?", "Recurring DPF restrictions may result from excessive engine soot production, incomplete regenerations, EGR problems, faulty sensors, or other engine and aftertreatment issues. We diagnose the underlying cause rather than repeatedly treating the restriction alone."],
+        ["Can you repair a truck that is in engine derate?", "Yes. We diagnose engine derate conditions related to DPF, DEF, SCR, NOx sensor, and other aftertreatment system faults. The required repair depends on the diagnostic findings and the condition of the affected components."],
+        ["Do you repair DEF and SCR systems?", "Yes. We diagnose and repair DEF pumps, dosing components, tank heaters, quality sensors, SCR catalysts, NOx sensors, and related electrical systems on commercial semi-trucks."],
+        ["Can you perform a forced regeneration?", "Yes. We perform forced or parked regenerations when appropriate. Before proceeding, we evaluate relevant fault codes and system conditions to determine whether regeneration is suitable."],
+        ["How long does DPF cleaning take?", "Service time depends on the filter's condition, removal and installation requirements, and whether additional repairs are necessary. Contact us to discuss your truck and current scheduling availability."],
+        ["Will DPF cleaning turn off my check engine light?", "It depends on the cause of the fault. Cleaning may resolve a restriction-related problem, but warning lights caused by failed sensors, DEF dosing faults, SCR issues, or other system malfunctions require additional diagnosis and repair."],
+        ["Should I clean or replace my DPF?", "Not every restricted DPF requires replacement. We evaluate the filter's condition to determine whether cleaning is appropriate or replacement is necessary."],
+        ["What diesel trucks do you service?", "We provide DPF cleaning, aftertreatment diagnostics, and emissions system repairs for commercial heavy-duty semi-trucks, including owner-operator and fleet vehicles."]
+      ],
+      cta_title: "DPF Problems? Get Your Semi-Truck Back on the Road.",
+      cta_text: "A DPF warning light, failed regeneration, or engine derate can disrupt deliveries and create costly downtime. At Trucks of Nevada, we provide professional heavy-duty DPF cleaning, DEF and SCR repairs, and advanced aftertreatment diagnostics to help get your truck operating properly again."
     ),
     Service.new(
       slug: "trailer-repair",
-      name: "Trailer Repair",
+      name: "Commercial Trailer Repair",
       icon: "fa-solid fa-truck-moving",
-      h1: "Trailer Repair in Las Vegas",
-      summary: "Dry van, reefer, flatbed, and step deck repairs in Las Vegas: brakes, suspension, air, and electrical.",
-      lede: "Most trailer calls are brakes, air leaks, lights, or a suspension that started eating tires. We service dry vans, reefers, flatbeds, and step decks at the shop, and we can come to a breakdown around Las Vegas.",
+      h1: "Commercial Trailer Repair in Las Vegas",
+      summary: "Commercial trailer repair in Las Vegas, including trailer brake repair, trailer suspension repair, reefer repair, trailer ABS repair, and DOT trailer inspections.",
+      photo_alt: "Commercial trailer brake and suspension repair at Trucks of Nevada in Las Vegas",
+      lede: "Keep your trailers road-ready with professional repair and maintenance services from Trucks of Nevada. We specialize in commercial trailer brake systems, suspension, ABS diagnostics, electrical repairs, reefer systems, and DOT inspections. From routine maintenance to unexpected breakdowns, we help owner-operators and fleets minimize downtime and get back on the road.",
+      problems_heading: "Common Trailer Problems We Repair",
       problems: [
-        "The trailer pulls, hops, or feels loose under the load",
-        "Air is leaking and the brakes will not hold a set",
-        "Lights, ABS, or the seven-way cord failed",
-        "Brake drums or pads are due before a DOT stop",
-        "A reefer, flatbed, or step deck needs work before the next dispatch"
+        "Brake problems, ABS warning lights, or worn brake components",
+        "Air suspension failures, damaged airbags, or uneven trailer ride height",
+        "Wheel bearing problems, leaking wheel seals, or axle damage",
+        "Malfunctioning trailer lights, wiring faults, or electrical issues",
+        "Reefer cooling failures, engine problems, or refrigeration faults",
+        "Damaged roof or side panels",
+        "Landing gear problems or suspension wear",
+        "Trailers requiring DOT inspections or preventive maintenance"
       ],
+      included_heading: "Our Trailer Repair Services",
       included: [
-        "Brake adjustments, inspections, drums, and pads",
-        "Suspension repairs that keep the trailer tracking straight",
-        "Air line and electrical repairs",
-        "Work on dry van, reefer, flatbed, and step deck trailers"
+        "Brake Systems: Brake chambers, slack adjusters, drums, shoes, pads, and ABS diagnostics and repairs.",
+        "Suspension & Axles: Airbags, leaf springs, shocks, hangers, axle alignment, axle repairs, and wheel bearings.",
+        "Electrical Systems: Wiring harnesses, marker lights, LED lighting, and ABS electrical troubleshooting.",
+        "Reefer Repairs: Refrigeration system repairs, reefer engine service, electrical troubleshooting, and trailer chassis maintenance.",
+        "Additional Repairs: Landing gear, liftgate electrical and hydraulic systems, roof and side-panel repairs.",
+        "Maintenance & Inspections: Annual DOT inspections, preventive maintenance, lubrication, and fleet inspections."
       ],
+      detail_heading: "Commercial Trailers We Service",
+      detail_body: [
+        "At Trucks of Nevada, we provide repair and maintenance services for a wide range of commercial trailers operating throughout Las Vegas and surrounding areas.",
+        "Whether you operate a single trailer or manage an entire fleet, we provide professional diagnostics, repairs, and maintenance to help keep your equipment safe, reliable, and ready for the road."
+      ],
+      detail_items: [
+        "Dry van trailers",
+        "Refrigerated trailers (reefers)",
+        "Flatbed trailers",
+        "Step deck trailers",
+        "Lowboy and equipment trailers",
+        "Car hauler trailers",
+        "Tank trailers",
+        "Dump trailers"
+      ],
+      cta_title: "Need Commercial Trailer Repair in Las Vegas?",
+      cta_text: "Don't let trailer problems delay your next delivery. From brake and suspension repairs to reefer diagnostics and emergency roadside assistance, Trucks of Nevada provides dependable commercial trailer service for owner-operators and fleets. Visit our Las Vegas repair facility or contact us to arrange mobile service.",
       faqs: [
-        ["Do you come to the trailer, or does it need to come in?", "Both. Yard and roadside calls are available. Bigger brake and suspension jobs are easier in the shop."],
-        ["How long is a trailer brake inspection?", "A straightforward inspection is often done in a short shop visit. We will say so after we see the axles."]
+        ["What types of commercial trailers do you repair?", "We service dry vans, refrigerated trailers, flatbeds, step decks, lowboys, car haulers, tank trailers, and dump trailers. Our services include brake repairs, suspension, electrical systems, reefer repairs, and preventive maintenance."],
+        ["Do you provide mobile trailer repair in Las Vegas?", "Yes. Trucks of Nevada offers mobile trailer repair and 24/7 roadside assistance for commercial trailers in the Las Vegas area. Service availability depends on the location, type of repair, and technician availability."],
+        ["Can you perform DOT inspections on commercial trailers?", "Yes. We provide annual DOT trailer inspections, pre-trip inspections, and fleet maintenance inspections. We can also identify and repair mechanical issues found during an inspection."],
+        ["Do you repair refrigerated trailers and reefer units?", "Yes. We provide refrigerated trailer repairs, including reefer engine and refrigeration system repairs, electrical troubleshooting, brake repairs, and suspension maintenance."]
       ]
     ),
     Service.new(
       slug: "transmission-repair",
       name: "Transmission Repair",
       icon: "fa-solid fa-gears",
-      h1: "Transmission Repair in Las Vegas",
-      summary: "Heavy-duty transmission diagnosis and repair for semis and box trucks in Las Vegas.",
-      lede: "Slipping, a gear that will not catch, or a transmission that falls out of a range will park a truck faster than almost anything else. We diagnose the complaint on the truck before we open it up.",
-      problems: [
-        "It slips under load or will not hold a gear",
-        "It will not go into high range or low range",
-        "There is a grind, a whine, or a delay going into gear",
-        "Fluid is low, burnt, or leaking onto the ground",
-        "The truck was just derated and the transmission is part of the complaint"
+      h1: "Heavy-Duty Truck Transmission Repair in Las Vegas",
+      seo_title: "Heavy-Duty Truck Transmission Repair Las Vegas",
+      summary: "Heavy-duty truck transmission repair in Las Vegas. Manual and automated transmission diagnostics, clutch repairs, calibration and replacement. Call today.",
+      lede: [
+        "At Trucks of Nevada, we provide comprehensive transmission diagnostics, repairs, rebuilding, and replacements for commercial semi-trucks and heavy-duty vehicles.",
+        "From manual and automated transmission failures to clutch problems, shifting issues, and electronic faults, our technicians handle everything from advanced troubleshooting to complete internal transmission repairs. We focus on accurate diagnostics, dependable repairs and minimizing costly downtime."
       ],
+      problems_heading: "Common Transmission Problems",
+      problems: [
+        "Hard shifting, slipping, or gears not engaging",
+        "Transmission fault codes, warning lights, or derates",
+        "Clutch slipping, overheating, or engagement problems",
+        "Grinding noises, vibrations, or internal transmission damage",
+        "Transmission fluid leaks or complete transmission failure"
+      ],
+      included_heading: "Our Transmission Repair Services",
       included: [
-        "Road test and fault-code diagnosis",
-        "Leak, clutch, and linkage checks",
-        "Repairs to get the truck back out on a run"
+        "Manual and automated transmission diagnostics and repairs",
+        "Internal transmission rebuilding and component replacement",
+        "Clutch, actuator, and transmission control system repairs",
+        "Transmission programming, calibration, and troubleshooting",
+        "Complete transmission removal, installation, and replacement"
       ],
       faqs: [
-        ["Do you work on automated manuals?", "Yes. We diagnose both automated and manual heavy-duty transmissions and tell you what actually failed."],
-        ["Can you look at it the same day?", "Call before you roll in. If a bay is open, same-day diagnosis is the goal."]
+        ["Do you repair automated manual transmissions?", "Yes. We diagnose and repair heavy-duty automated manual transmissions, including Detroit DT12, Volvo I-Shift, and Eaton automated systems. Services include clutch repairs, electronic troubleshooting, actuator repairs, and transmission calibration."],
+        ["Do you rebuild or replace heavy-duty truck transmissions?", "Yes. Trucks of Nevada provides internal transmission rebuilding, mechanical repairs, and complete transmission replacements. We evaluate the transmission's condition and recommend the most practical repair solution."],
+        ["Can you diagnose transmission problems without replacing the entire transmission?", "Absolutely. Shifting problems can be caused by electronic controls, clutch components, actuators, sensors, or internal mechanical failures. Our technicians identify the underlying problem before recommending repairs."]
       ]
     ),
     Service.new(
       slug: "electrical-battery-repair",
-      name: "Electrical & Battery Repair",
+      name: "Electrical Diagnostics & Repair",
       icon: "fa-solid fa-car-battery",
-      h1: "Truck Electrical and Battery Repair in Las Vegas",
-      summary: "No-starts, charging faults, wiring, and battery repairs for semis, trailers, and box trucks in Las Vegas.",
-      lede: "A truck that clicks once and then goes dark is usually batteries, cables, or a charging problem. We trace the draw, the connections, and the charging system so it starts the next morning too.",
+      h1: "Semi-Truck Electrical & Battery Repair in Las Vegas",
+      summary: "Semi-truck electrical diagnostics, ECM programming, wiring repairs, and battery and charging service in Las Vegas.",
+      lede: [
+        "Modern commercial trucks rely on complex electrical systems and electronic control modules to operate efficiently. When electrical faults, communication failures, or module problems occur, accurate diagnostics are essential to prevent unnecessary repairs and costly downtime.",
+        "At Trucks of Nevada, we specialize in advanced semi-truck electrical diagnostics, ECM programming, electronic control module replacement, parameter configuration, wiring repairs, and battery and charging system services.",
+        "Our technicians use professional diagnostic equipment and manufacturer-specific software to troubleshoot electrical and electronic systems on Volvo, Freightliner, Kenworth, Peterbilt, International, Mack, and other heavy-duty commercial trucks.",
+        "From intermittent electrical faults to complex module communication issues, we focus on identifying the root cause and delivering reliable repairs that keep your truck moving."
+      ],
+      problems_heading: "Common Semi-Truck Electrical Problems We Diagnose",
       problems: [
-        "Slow crank or a single click and nothing",
-        "Batteries go dead while the truck sits",
-        "The alternator is not charging",
-        "Trailer lights, ABS, or liftgate power is out",
-        "A repair somewhere else left wires twisted together"
+        "No-Start & Intermittent Starting Problems — Truck won't crank, starts intermittently, or experiences unexpected electrical shutdowns.",
+        "Battery & Charging System Failures — Dead batteries, alternator problems, low charging voltage, and excessive battery drain.",
+        "Electrical Warning Lights & Fault Codes — Dashboard warnings, communication errors, and electronic system malfunctions.",
+        "ECM & Electronic Control Module Problems — Module communication failures, programming issues, incorrect parameter settings, and electronic control system faults.",
+        "CAN Bus & Vehicle Network Faults — Communication problems between electronic control modules and vehicle systems.",
+        "Wiring Harness & Connector Failures — Damaged wiring, corroded terminals, poor grounds, short circuits, and open circuits.",
+        "Trailer Electrical & ABS Problems — Inoperative trailer lights, ABS warning lights, damaged wiring, and seven-way connector faults.",
+        "Intermittent Electrical Failures — Electrical problems that appear and disappear, requiring advanced troubleshooting to identify the underlying cause."
       ],
+      included_heading: "Our Heavy-Duty Electrical & Electronic Repair Services",
       included: [
-        "Battery, cable, and ground testing",
-        "Charging-system diagnosis",
-        "Wiring repairs on the tractor and the trailer",
-        "Starting and no-crank diagnosis"
+        "Advanced Semi-Truck Electrical Diagnostics",
+        "ECM & ECU Programming",
+        "Electronic Control Module Replacement & Programming",
+        "Vehicle Parameter Configuration & Calibration",
+        "CAN Bus & Vehicle Communication Network Diagnostics",
+        "Wiring Harness & Electrical Circuit Repairs",
+        "Sensor & Electronic Control System Troubleshooting",
+        "Battery Testing & Replacement",
+        "Alternator & Charging System Diagnostics",
+        "Starter & No-Crank Troubleshooting",
+        "Short Circuit & Parasitic Battery Drain Diagnostics",
+        "Truck & Trailer Lighting and ABS Electrical Repairs"
       ],
+      detail_heading: "Semi-Truck ECM Programming & Electronic Module Services",
+      detail_body: [
+        "Modern heavy-duty trucks depend on multiple electronic control modules to manage engine performance, transmission operation, emissions systems, and other critical vehicle functions.",
+        "At Trucks of Nevada, we provide professional ECM and ECU diagnostics, electronic control module replacement, programming, and vehicle parameter configuration for commercial semi-trucks."
+      ],
+      detail_list_label: "Our services include:",
+      detail_items: [
+        "ECM and ECU Programming",
+        "Electronic Control Module Replacement & Setup",
+        "Vehicle Parameter Configuration",
+        "Module Communication Diagnostics",
+        "CAN Bus Network Troubleshooting",
+        "Electronic System Calibration & Configuration",
+        "Advanced Fault Code Diagnostics"
+      ],
+      detail_after: [
+        "Using professional diagnostic software and specialized equipment, our technicians identify electronic system faults and perform the necessary programming or configuration to restore proper operation.",
+        "Professional diagnostics. Accurate programming. Reliable repairs."
+      ],
+      cta_title: "Electrical Problems Keeping Your Truck Off the Road?",
+      cta_text: "Don't waste time and money replacing parts without knowing the cause of the problem. At Trucks of Nevada, we focus on accurate electrical diagnostics and dependable repairs for commercial semi-trucks and trailers. Whether you're dealing with a no-start condition, charging system failure, wiring problem, or complex electronic fault, our team is ready to help.",
       faqs: [
-        ["Will you just sell me batteries?", "Only if the batteries are the failure. We test the charging system and the cables first, because new batteries on a bad alternator are wasted money."],
-        ["Do you chase wiring problems?", "Yes. Intermittent lights and parasitic draws are normal work here."]
+        ["Do you provide ECM programming for semi-trucks?", "Yes. Trucks of Nevada provides ECM and ECU programming, electronic control module replacement, and vehicle parameter configuration for commercial heavy-duty trucks. Contact us with your truck's make, model, and year to discuss the programming services required."],
+        ["Can you program a replacement electronic control module?", "Yes. We provide electronic control module replacement and programming services, including configuration and setup when supported by the vehicle and diagnostic software."],
+        ["Can you diagnose complicated or intermittent electrical problems?", "Yes. Our technicians troubleshoot complex electrical faults, wiring problems, CAN Bus communication failures, and electronic control module issues using professional diagnostic equipment."],
+        ["Why does my semi-truck keep draining its batteries?", "Repeated battery discharge may be caused by failing batteries, charging system problems, parasitic electrical draws, poor connections, or wiring faults. We perform electrical testing to identify the underlying problem before recommending repairs."]
       ]
     ),
     Service.new(
       slug: "engine-repair",
-      name: "Engine Repair",
+      name: "Heavy-Duty Engine Repair",
       icon: "fa-solid fa-gauge-high",
-      h1: "Diesel Engine Repair in Las Vegas",
-      summary: "Diesel engine diagnosis and repair for Volvo, Freightliner, Kenworth, Peterbilt, International, and Mack trucks in Las Vegas.",
-      lede: "Low power, a knock, a fuel fault, or a light that will not stay off all start the same way. We find the cause, then we tell you how long the repair will take. The shop runs heavy-duty diagnostic software, including Volvo PTT and Cummins coverage, across a wide range of model years.",
-      problems: [
-        "Low power on grades outside Las Vegas",
-        "Fuel pressure or injector faults",
-        "Oil, coolant, or fuel leaks in the bay",
-        "A misfire, knock, or rough idle",
-        "Fault codes that were cleared and came right back"
+      h1: "Heavy-Duty Diesel Engine Repair in Las Vegas",
+      seo_title: "Heavy-Duty Diesel Engine Repair Las Vegas",
+      summary: "Heavy-duty diesel engine repair in Las Vegas. Semi-truck diagnostics, cylinder heads, injectors, turbochargers and cooling system repairs. Call Trucks of Nevada.",
+      lede: [
+        "From check engine lights and performance issues to complete engine overhauls, Trucks of Nevada provides comprehensive diesel engine diagnostics and repairs for commercial semi-trucks and heavy-duty vehicles.",
+        "Our experienced technicians handle everything from fuel injection and turbocharger repairs to cylinder head replacement, in-frame engine overhauls, and complete engine replacements. Using advanced diagnostic equipment, we identify the root cause of failures and deliver reliable repairs that help minimize downtime and keep your truck on the road."
       ],
+      problems_heading: "Common Diesel Engine Problems",
+      problems: [
+        "Check engine lights, fault codes, and engine derates",
+        "Loss of power, rough idle, misfires, or excessive smoke",
+        "Hard starting, fuel pressure, and injector problems",
+        "Engine overheating and coolant leaks",
+        "Low oil pressure, oil leaks, and excessive oil consumption",
+        "Turbocharger failures and boost pressure problems",
+        "Cylinder head, head gasket, and internal engine damage"
+      ],
+      included_heading: "Our Heavy-Duty Engine Repair Services",
       included: [
-        "Electronic diagnosis, not a code clear",
-        "Fuel, air, and cooling system repairs",
-        "Aftertreatment faults that show up as an engine complaint",
-        "A clear answer on whether we can finish it the same day"
+        "Complete In-Frame Engine Overhauls",
+        "Diesel Engine Replacement",
+        "Cylinder Head & Head Gasket Replacement",
+        "Advanced Engine Diagnostics & Troubleshooting",
+        "Fuel Injector, Fuel Pump & Fuel System Repairs",
+        "Turbocharger & Air Intake System Repairs",
+        "Cooling System & Lubrication System Repairs",
+        "Internal Engine Component Repairs"
       ],
       faqs: [
-        ["Which engines do you diagnose?", "Most heavy-duty engines in Volvo, Freightliner, Kenworth, International, Peterbilt, and Mack trucks, including Cummins-powered trucks."],
-        ["Do you clear codes and send the truck out?", "No. If the code is a symptom, clearing it does not fix the truck. We look for the cause."]
+        ["What heavy-duty diesel engines do you service?", "We diagnose and repair commercial diesel engines, including Cummins, Detroit Diesel, Volvo, and Mack applications."],
+        ["Do you perform complete diesel engine overhauls and replacements?", "Yes. Trucks of Nevada performs in-frame diesel engine overhauls, complete engine replacements, cylinder head repairs, and internal engine component repairs for commercial heavy-duty trucks."],
+        ["How do I know if my diesel engine needs an overhaul or replacement?", "Excessive oil consumption, low oil pressure, engine knocking, loss of compression, and significant internal damage can indicate the need for major engine repairs. Our technicians perform diagnostics and mechanical inspections to determine the most appropriate repair option."]
       ]
     ),
     Service.new(
       slug: "suspension-repair",
       name: "Suspension Repair",
       icon: "fa-solid fa-up-down",
-      h1: "Truck Suspension Repair in Las Vegas",
-      summary: "Air ride, leaf, and trailer suspension repairs that stop wandering, tire damage, and DOT write-ups.",
-      lede: "A truck or trailer that wanders, leans, or wears out a set of tires usually has a bushing, air bag, or hanger that has failed. We repair the suspension so the truck tracks straight and is ready for the next inspection.",
-      problems: [
-        "The truck wanders or dives under braking",
-        "An air bag will not hold height",
-        "A trailer leans or hops when it is loaded",
-        "Bushings, hangers, or torque rods are worn",
-        "Tires are wearing because the suspension is loose"
+      h1: "Semi-Truck & Trailer Suspension Repair in Las Vegas",
+      summary: "Semi-truck and trailer suspension repair in Las Vegas. Air bags, kingpins, torque rods, steering linkage, and fifth-wheel repairs.",
+      lede: [
+        "A properly functioning suspension and steering system is essential for vehicle stability, load distribution, handling, and safe operation. Worn or damaged components can cause uneven tire wear, poor steering response, excessive vibration, and costly downtime.",
+        "At Trucks of Nevada, we specialize in heavy-duty suspension, steering, and chassis repairs for commercial semi-trucks and trailers.",
+        "From leaking air bags, worn bushings, torque rods, and leaf springs to kingpin replacement, steering linkage repairs, and fifth-wheel components, our experienced technicians diagnose problems accurately and perform dependable repairs."
       ],
+      problems_heading: "Common Signs of Suspension & Steering Problems",
+      problems: [
+        "Truck Pulling or Wandering — Difficulty maintaining a straight path, excessive steering correction, or unstable handling.",
+        "Uneven or Premature Tire Wear — Worn suspension, steering, or kingpin components contributing to irregular tire wear.",
+        "Air Suspension Leaks — Air bags losing pressure, uneven ride height, or suspension dropping overnight.",
+        "Excessive Steering Play — Worn kingpins, tie rods, drag links, or other steering components affecting vehicle control.",
+        "Rough Ride or Excessive Vibration — Worn shocks, bushings, leaf springs, or other suspension components.",
+        "Clunking or Knocking Noises — Damaged torque rods, bushings, hangers, or mounting hardware.",
+        "Trailer Leaning or Hopping — Suspension problems affecting stability, ride height, or load distribution.",
+        "Fifth-Wheel Problems — Excessive movement, worn components, or coupling and locking concerns.",
+        "DOT Inspection Violations — Suspension or steering defects identified during a DOT inspection, including damaged springs, worn components, loose mounting hardware, or excessive steering play."
+      ],
+      included_heading: "Our Suspension, Steering & Chassis Services",
       included: [
-        "Air-ride and leaf-spring repairs on tractors",
-        "Trailer suspension repairs",
-        "Height-control and air-leak checks",
-        "A look at related brake and frame hardware while it is in the bay"
+        "Air Suspension Diagnostics & Air Bag Replacement",
+        "Leaf Spring & Shock Absorber Replacement",
+        "Torque Rod, Bushing & Hanger Repairs",
+        "Height Control Valves & Suspension Air Leak Repairs",
+        "Kingpin Inspection & Replacement",
+        "Tie Rod, Drag Link & Steering Linkage Repairs",
+        "Fifth-Wheel Inspection & Component Repairs",
+        "Truck & Trailer Suspension Repairs",
+        "DOT-Related Suspension & Steering Repairs"
+      ],
+      detail_heading: "Heavy-Duty Truck & Trailer Suspension Specialists",
+      detail_body: [
+        "Commercial trucks and trailers operate under demanding conditions, carrying heavy loads over thousands of miles. Their suspension systems must maintain stability, distribute weight properly, and withstand constant road stress.",
+        "At Trucks of Nevada, we service both air-ride and mechanical suspension systems on heavy-duty commercial trucks and trailers.",
+        "Whether your semi-truck has a leaking air spring, worn torque rod bushings, damaged suspension components, or a ride-height problem, our technicians perform thorough inspections to determine the necessary repairs.",
+        "We work with owner-operators and commercial fleets, helping minimize downtime through accurate diagnostics, quality workmanship, and dependable service.",
+        "Serving Las Vegas, North Las Vegas, Henderson, and surrounding areas."
       ],
       faqs: [
-        ["Can a bad suspension fail a DOT inspection?", "Yes. Worn bushings, leaking bags, and loose components are common out-of-service items. We fix those, and we do the inspection itself if you need it."],
-        ["Is this a tire or alignment shop?", "No. We don't do tires, alignment, or body work. If a bad suspension is wearing the tires out, we can fix that."]
+        ["Can a bad suspension cause my semi-truck to fail a DOT inspection?", "Yes. Damaged or improperly secured suspension components, broken springs, defective mounting hardware, and other suspension-related safety issues may result in DOT inspection violations. Trucks of Nevada provides suspension inspections and repairs to address these problems."],
+        ["Why does my semi-truck air suspension lose pressure overnight?", "Air suspension pressure loss can result from leaking air bags, damaged air lines, faulty fittings, or malfunctioning height control valves. Our technicians inspect and diagnose the system to identify the source of the leak."],
+        ["Can worn suspension components cause uneven tire wear?", "Yes. Worn bushings, torque rods, shocks, and other suspension components can affect vehicle stability and contribute to irregular tire wear. Identifying these issues early may help prevent additional damage and operating expenses."],
+        ["Do you repair both semi-truck and trailer suspensions?", "Yes. Trucks of Nevada provides suspension diagnostics and repairs for heavy-duty semi-trucks and commercial trailers, including air-ride and mechanical suspension systems."],
+        ["Do you offer tire replacement or wheel alignment services?", "No. We specialize in commercial truck and trailer mechanical repairs, including suspension diagnostics and component replacement. We do not provide tire replacement or wheel alignment services."]
       ]
     ),
     Service.new(
       slug: "preventive-maintenance",
-      name: "Preventive Maintenance",
+      name: "Truck Preventive Maintenance",
       icon: "fa-solid fa-oil-can",
-      h1: "Truck Preventive Maintenance in Las Vegas",
-      summary: "Oil changes and scheduled maintenance for semis, box trucks, and fleets at our Las Vegas shop.",
-      lede: "A maintenance visit is the time to catch a leak, a loose suspension, or a filter before it puts the truck in derate. We handle oil changes and the other service that keeps a Las Vegas route from turning into a roadside call.",
-      problems: [
-        "The oil service is due and the truck cannot sit for a day",
-        "A fleet needs trucks in and out on a schedule",
-        "Small leaks and loose parts keep showing up on the road",
-        "You want maintenance and an inspection in one stop"
+      h1: "Semi-Truck Preventive Maintenance in Las Vegas",
+      seo_title: "Semi-Truck Preventive Maintenance Las Vegas",
+      summary: "Semi-truck preventive maintenance in Las Vegas. Oil changes, fluid service, inspections and fleet PM programs.",
+      lede: [
+        "Keep Your Trucks Running. Keep Your Business Moving.",
+        "Unexpected breakdowns cost more than repairs. They disrupt deliveries, delay schedules, and take revenue-producing equipment off the road.",
+        "At Trucks of Nevada, we provide comprehensive preventive maintenance for heavy-duty semi-trucks, medium-duty commercial vehicles, and trailers. From routine oil changes and fluid services to detailed mechanical inspections and electronic diagnostics, our maintenance services are designed to identify developing problems before they become expensive breakdowns.",
+        "Whether you're an independent owner-operator or managing an entire fleet, we help you maintain reliable equipment, reduce avoidable downtime, and stay ahead of scheduled service requirements.",
+        "Professional Maintenance. Reliable Equipment. Less Downtime."
       ],
-      included: [
-        "Oil and filter service",
-        "A visual check of leaks, lights, belts, and air system",
-        "Maintenance scheduled around your dispatch, not a week-long stay",
-        "Repairs started the same visit if we find something that shouldn't wait"
+      sections: [
+        {
+          "heading" => "Complete Preventive Maintenance Services for Commercial Trucks",
+          "paragraphs" => [
+            "Routine maintenance is one of the most effective ways to protect your investment and extend the service life of your equipment.",
+            "Our preventive maintenance services address critical engine, drivetrain, cooling, and lubrication systems to help keep your trucks operating efficiently and reliably."
+          ],
+          "blocks" => [
+            {
+              "heading" => "Oil, Filter & Fluid Maintenance",
+              "items" => [
+                "Engine Oil & Filter Changes. Routine oil service to support proper lubrication and engine protection.",
+                "Fuel Filter Replacement. Maintain clean fuel delivery and help protect sensitive fuel system components.",
+                "Engine Air Filter Replacement. Support proper airflow and engine performance.",
+                "Transmission Fluid Service. Maintain transmission lubrication and operating performance.",
+                "Differential & Axle Fluid Service. Help protect drivetrain components against premature wear.",
+                "Cooling System Service. Coolant testing and replacement to support temperature control and engine protection.",
+                "Power Steering Fluid Service. Maintain proper lubrication and hydraulic system performance.",
+                "Chassis Lubrication & Greasing. Service critical lubrication points to reduce friction and component wear."
+              ],
+              "after" => [
+                "We perform maintenance according to applicable manufacturer recommendations and the operating requirements of your equipment."
+              ]
+            },
+            {
+              "heading" => "Comprehensive Truck Inspections & System Diagnostics",
+              "paragraphs" => [
+                "A preventive maintenance appointment should involve more than changing oil and filters.",
+                "At Trucks of Nevada, we inspect critical mechanical and electrical systems to identify wear, leaks, developing faults, and potential safety concerns before they lead to unexpected downtime.",
+                "Our Preventive Maintenance Inspections Include:"
+              ],
+              "items" => [
+                "Brake System Inspections & Adjustments. Evaluate brake components and make necessary adjustments.",
+                "Air System Inspections. Check air system components and investigate air leaks.",
+                "Steering & Suspension Inspections. Identify worn or damaged components that may affect handling and vehicle stability.",
+                "Cooling System Inspections. Examine belts, hoses, and cooling system components for wear and potential failures.",
+                "Battery & Charging System Testing. Evaluate batteries, alternators, and charging system performance.",
+                "Electrical & Lighting Inspections. Check lighting and electrical systems for proper operation.",
+                "Fluid Leak Inspections. Identify potential engine, transmission, cooling, and drivetrain fluid leaks.",
+                "Electronic Diagnostic Scanning. Check for stored fault codes and developing electronic system concerns.",
+                "DPF, DEF & Aftertreatment System Checks. Evaluate emissions-related system concerns that may lead to regeneration problems or engine derates.",
+                "Wheel Bearing & Seal Inspections. Identify potential lubrication leaks, wear, and component concerns."
+              ],
+              "after" => [
+                "When maintenance reveals a problem, our technicians can discuss the recommended repair and, when practical, address minor issues during the same appointment."
+              ]
+            }
+          ]
+        },
+        {
+          "heading" => "Fleet Preventive Maintenance Programs",
+          "paragraphs" => [
+            "Consistent Maintenance. Fewer Surprises. Better Fleet Management.",
+            "Managing commercial vehicles requires more than responding to breakdowns. A structured preventive maintenance program helps keep equipment service-ready while supporting predictable maintenance scheduling.",
+            "Trucks of Nevada provides preventive maintenance solutions for individual owner-operators and commercial fleets throughout the Las Vegas area.",
+            "Our maintenance programs can include:"
+          ],
+          "items" => [
+            "Mileage-based preventive maintenance intervals",
+            "Engine-hour-based maintenance schedules",
+            "Manufacturer-recommended service intervals",
+            "Coordinated maintenance appointments for fleet vehicles",
+            "Preventive maintenance combined with annual DOT inspections",
+            "Maintenance records and inspection reports",
+            "Mobile and on-site preventive maintenance services",
+            "Same-day maintenance appointments when available"
+          ],
+          "after" => [
+            "We work with fleet managers and owner-operators to coordinate maintenance around operational demands and help minimize unnecessary time out of service.",
+            "From one truck to an entire fleet, dependable maintenance starts with a consistent plan."
+          ]
+        },
+        {
+          "heading" => "Our Preventive Maintenance Process",
+          "numbered" => true,
+          "items" => [
+            "Review Your Equipment & Maintenance Requirements. We begin by reviewing the vehicle's maintenance needs, service intervals, and any concerns reported by the driver or fleet manager.",
+            "Perform Scheduled Maintenance. Our technicians complete the applicable oil, filter, fluid, and lubrication services based on the vehicle's maintenance requirements.",
+            "Inspect Critical Vehicle Systems. We evaluate relevant mechanical, electrical, braking, steering, suspension, and cooling system components to identify developing concerns.",
+            "Identify & Communicate Recommended Repairs. If we discover worn components, leaks, or other issues requiring attention, we explain our findings and discuss recommended repairs before proceeding with additional work.",
+            "Document Service & Plan Future Maintenance. We provide maintenance documentation and help determine appropriate future service intervals based on mileage, engine hours, or manufacturer recommendations."
+          ]
+        }
       ],
       faqs: [
-        ["Can you combine a PM with a DOT inspection?", "Yes. Tell us when you call and we will plan the bay time for both."],
-        ["Do you offer same-day oil service?", "Often, if you call ahead with the truck's ETA. Walk-ins are welcome when a bay is open."]
-      ]
+        ["How often should a semi-truck receive preventive maintenance?", "Preventive maintenance intervals depend on the truck manufacturer, engine model, mileage, engine hours, operating conditions, and type of service. We help determine appropriate maintenance intervals based on your equipment's requirements."],
+        ["What is included in a semi-truck preventive maintenance service?", "Depending on the vehicle's maintenance schedule, service may include engine oil and filter changes, fuel and air filter replacement, fluid inspections, chassis lubrication, brake inspections, cooling system checks, electrical inspections, and electronic diagnostics."],
+        ["Do you offer preventive maintenance for commercial fleets?", "Yes. Trucks of Nevada provides preventive maintenance programs for commercial fleets, including scheduled service intervals, inspections, maintenance documentation, and coordinated maintenance appointments."],
+        ["Can I combine preventive maintenance with an annual DOT inspection?", "Yes. We perform annual DOT inspections and can coordinate them with preventive maintenance services to help reduce the number of separate shop visits."],
+        ["Do you provide same-day preventive maintenance?", "Same-day service may be available depending on the maintenance required, technician availability, and current shop workload. Contact us to discuss scheduling."],
+        ["Do you offer mobile or on-site preventive maintenance?", "Yes. We offer mobile and on-site preventive maintenance for commercial vehicles. Service availability depends on the location and work required."],
+        ["Do you service commercial trailers?", "Yes. In addition to heavy-duty and medium-duty trucks, we provide preventive maintenance and inspections for commercial trailers."],
+        ["Can you identify mechanical problems during routine maintenance?", "Yes. Our inspections can identify developing concerns such as fluid leaks, worn suspension components, air system leaks, electrical faults, and cooling system issues. When additional repairs are recommended, we explain our findings before proceeding."]
+      ],
+      cta_title: "Schedule Your Preventive Maintenance Service Today.",
+      cta_text: "Every mile matters when your business depends on reliable equipment. At Trucks of Nevada, we help owner-operators and fleet managers stay ahead of maintenance requirements with professional inspections, routine service, and experienced heavy-duty truck diagnostics. Don't wait for a breakdown to discover a preventable problem."
     ),
     Service.new(
       slug: "dot-inspections",
       name: "DOT Inspections",
       icon: "fa-solid fa-clipboard-check",
-      h1: "DOT Inspections in Las Vegas",
-      summary: "Annual DOT inspections for tractors and trailers in Las Vegas, most of them finished in under an hour.",
-      lede: "An annual inspection is where brakes, suspension, lights, air, and steering get caught before a scale house does. Most tractor and trailer inspections here are finished in less than an hour, and you leave knowing exactly what failed.",
-      problems: [
-        "The annual inspection is due before the next load",
-        "A roadside inspection wrote the truck up",
-        "You want the tractor and the trailer inspected together",
-        "Lights, air leaks, or brakes are already a known problem"
+      h1: "Annual DOT Truck & Trailer Inspections in Las Vegas",
+      summary: "Need an annual DOT inspection in Las Vegas? Trucks of Nevada provides commercial semi-truck and trailer inspections, safety checks, and mechanical repairs. Call today.",
+      lede: [
+        "Keep your commercial truck or trailer compliant, safe, and ready for the road with professional annual DOT inspections at Trucks of Nevada.",
+        "We perform annual DOT inspections for semi-trucks, tractors, and commercial trailers, checking critical safety components including brakes, steering, suspension, lighting, tires, and other required systems.",
+        "Whether you're an owner-operator preparing for your annual inspection or a fleet manager maintaining multiple vehicles, our team provides thorough inspections, clear results, and repairs when needed.",
+        "Most routine inspections can be completed in under an hour, depending on vehicle condition and shop availability."
       ],
+      problems: [
+        "Annual DOT inspection is due or about to expire",
+        "Tractor and trailer need annual inspections",
+        "Preparing a truck for an upcoming DOT inspection",
+        "Vehicle received violations during a roadside inspection",
+        "Brake, suspension, steering, or lighting issues need attention",
+        "Fleet vehicles need scheduled annual safety inspections"
+      ],
+      included_heading: "Our DOT Inspection Services",
       included: [
-        "Tractor and trailer annual inspections",
-        "Brakes, suspension, steering, lights, air system, glass, and warning devices",
-        "A clear list of failures, and the repairs if you want them done here",
-        "Most inspections completed in under an hour"
+        "Annual DOT Inspections for Semi-Trucks & Commercial Trailers",
+        "Brake System & Air Brake Inspections",
+        "Steering & Suspension Component Inspections",
+        "Tires, Wheels & Wheel-End Safety Checks",
+        "Lighting, Reflectors & Electrical System Inspections",
+        "Frame, Coupling Devices & Fifth-Wheel Inspections",
+        "Required Safety Equipment & Vehicle Component Checks",
+        "Inspection Documentation & Identification of Defects",
+        "Repairs for DOT-Related Mechanical Violations"
       ],
       faqs: [
-        ["Do I need an appointment?", "No. Calling with an ETA lets a tech be ready when you arrive."],
-        ["What if it fails?", "We tell you what failed and we can repair brakes, lights, suspension, and electrical here. We do not do tires, alignment, or body work."]
+        ["How often is a DOT inspection required?", "Most commercial motor vehicles subject to federal annual inspection requirements must undergo a DOT inspection at least once every 12 months."],
+        ["How long does an annual DOT inspection take?", "Most routine inspections can be completed in under an hour, depending on the vehicle's condition and shop availability. Additional time may be needed if defects are discovered."],
+        ["What happens if my truck or trailer fails the inspection?", "Our technicians will explain the defects identified during the inspection and recommend the necessary repairs. Trucks of Nevada can perform many mechanical repairs on-site to help bring your equipment into compliance."],
+        ["Can you inspect both my semi-truck and trailer?", "Yes. We provide annual DOT inspections for commercial tractors and trailers, making it convenient for owner-operators and fleets to have both inspected at one location."]
       ]
     ),
     Service.new(
       slug: "carb-inspections",
-      name: "CARB Inspections",
+      name: "CARB Clean Truck Check Testing",
       icon: "fa-solid fa-leaf",
-      h1: "CARB Inspections in Las Vegas",
-      summary: "CARB clean-truck inspections for carriers running from Las Vegas into California.",
-      lede: "If the truck runs into California, a CARB problem can stop the trip. We inspect the emissions equipment California checks, and we repair the DPF, DEF, and related faults that would cause a failure.",
-      problems: [
-        "A California-bound truck needs a clean-truck inspection",
-        "The truck failed a CARB check and has to be cleared",
-        "Emissions equipment was tampered with or removed by a previous owner",
-        "DPF or DEF faults will show up the moment it is tested"
+      h1: "CARB Clean Truck Check Testing in Las Vegas",
+      seo_title: "CARB Clean Truck Check Testing Las Vegas",
+      summary: "CARB Clean Truck Check testing in Las Vegas for semi-trucks and fleets. OBD and smoke opacity testing, CARB reporting and emissions repairs. Call today.",
+      button_label: "Schedule CARB Testing",
+      lede: [
+        "Need a CARB Clean Truck Check test for your semi-truck or commercial diesel vehicle? Trucks of Nevada is a CARB-approved testing facility in North Las Vegas, offering OBD testing, smoke opacity testing, and visual emissions inspections. We submit test results directly to CARB and provide testing documentation.",
+        "Whether you received a compliance notification or need testing for your commercial fleet, we're here to help."
       ],
+      problems_heading: "When You Need CARB Testing",
+      problems: [
+        "You received a CARB Clean Truck Check compliance notification.",
+        "Your semi-truck needs scheduled emissions compliance testing.",
+        "Your vehicle is registered outside California but operates in the state.",
+        "Your truck failed a previous Clean Truck Check test and needs retesting.",
+        "You need CARB testing for multiple commercial fleet vehicles.",
+        "You need documentation confirming completed emissions testing."
+      ],
+      included_heading: "What We Do",
       included: [
-        "Inspection of the emissions equipment CARB looks for",
-        "Diagnosis of DPF, DEF, SCR, and related faults before the trip",
-        "Repairs when the inspection finds a real failure",
-        "A direct answer if the truck is not ready for California"
+        "CARB Clean Truck Check OBD testing",
+        "Smoke opacity testing",
+        "Visual emissions equipment inspections",
+        "Direct submission of test results to CARB",
+        "Testing documentation for your records",
+        "Retesting after a failed compliance test",
+        "Mobile, on-site, and fleet testing appointments"
+      ],
+      sections: [
+        {
+          "heading" => "How Our CARB Clean Truck Check Testing Works",
+          "numbered" => true,
+          "items" => [
+            "Schedule Your Test. Call to schedule an appointment at our North Las Vegas facility. Walk-in and same-day testing may also be available. We offer mobile and on-site testing.",
+            "Verify Your Vehicle Information. We review your vehicle information and identify the applicable testing procedure.",
+            "Perform the Required Test. Our team performs the appropriate OBD test, smoke opacity test, and applicable visual emissions inspection.",
+            "Submit Results to CARB. We submit the completed test results directly to CARB and provide documentation for your records.",
+            "Diagnose and Repair Problems When Needed. If your vehicle fails, we can diagnose and repair DPF, DEF, SCR, NOx sensor, EGR, and related aftertreatment problems before applicable retesting."
+          ]
+        },
+        {
+          "heading" => "Failed a CARB Test? We Can Help With Emissions Repairs.",
+          "paragraphs" => [
+            "At Trucks of Nevada, our services go beyond compliance testing. We also provide heavy-duty emissions diagnostics and repairs to help identify and correct problems that may cause a vehicle to fail.",
+            "Our repair capabilities include:"
+          ],
+          "items" => [
+            "DPF diagnostics and repairs",
+            "DEF system diagnostics and repairs",
+            "SCR catalyst and NOx sensor diagnostics and repairs",
+            "EGR system diagnostics and repairs",
+            "Engine derate and speed-limit troubleshooting",
+            "Aftertreatment wiring and electrical repairs",
+            "Repairs following a failed Clean Truck Check test"
+          ],
+          "after" => [
+            "Testing verifies compliance. Repairs address the underlying problem. Our technicians can help with both services."
+          ]
+        }
       ],
       faqs: [
-        ["Do you only inspect, or do you fix what fails?", "Both. The point of doing it here is that the same shop can repair the aftertreatment problem the inspection finds."],
-        ["Is this the same as a DPF cleaning?", "No. An inspection tells you where you stand. Cleaning or a repair is the next step if the filter or the sensors are the reason it would fail."]
-      ]
+        ["What is CARB Clean Truck Check testing?", "CARB Clean Truck Check is a California emissions compliance program for covered heavy-duty vehicles. Depending on the vehicle and applicable requirements, compliance testing may involve OBD testing or smoke opacity testing."],
+        ["Does my truck need CARB testing if it is registered outside California?", "It may. Qualifying vehicles operating in California can be subject to Clean Truck Check requirements even when registered in another state."],
+        ["Is Trucks of Nevada a CARB-approved testing facility?", "Yes. Trucks of Nevada provides CARB Clean Truck Check testing through its approved testing operation in North Las Vegas."],
+        ["Do you submit the test results directly to CARB?", "Yes. We submit completed test results through the applicable CARB reporting system and provide testing documentation."],
+        ["Can you test my truck if I received a CARB notification?", "Yes. Contact us to schedule the applicable compliance test for your vehicle."],
+        ["What happens if my truck fails the test?", "We can diagnose and repair DPF, DEF, SCR, NOx sensor, EGR, and other aftertreatment problems. Once the necessary repairs are completed, we can perform applicable retesting."],
+        ["Do you offer mobile CARB Clean Truck Check testing?", "Yes. We provide mobile and on-site testing, including testing appointments for commercial fleets."],
+        ["Can I get CARB testing the same day?", "Same-day and walk-in testing may be available. We recommend calling ahead to confirm availability."]
+      ],
+      cta_title: "Need CARB Clean Truck Check Testing? Schedule Today.",
+      cta_text: "Received a CARB compliance notification? Need emissions testing before your next California trip? Trucks of Nevada provides CARB Clean Truck Check testing for semi-trucks, commercial diesel vehicles, and fleets, with direct CARB result submission and emissions repair services when needed."
     ),
     Service.new(
       slug: "ac-repair",
-      name: "A/C Repair",
+      name: "Truck A/C Repair",
       icon: "fa-solid fa-snowflake",
-      h1: "Truck A/C Repair in Las Vegas",
-      summary: "Cab air conditioning repair for semis and box trucks before a Las Vegas summer dispatch.",
-      lede: "In this heat, a cab that won't cool can shut a truck down for the day. We find the leak, the compressor problem, or the electrical fault and get cold air back in the cab.",
+      h1: "Semi-Truck A/C Repair in Las Vegas",
+      summary: "Semi-truck A/C repair in Las Vegas. Trucks of Nevada provides compressor repairs, refrigerant leak detection, A/C diagnostics, and recharges. Call today.",
+      lede: [
+        "When temperatures climb in Las Vegas, a properly functioning air conditioning system is essential for driver comfort and safety.",
+        "At Trucks of Nevada, we provide professional A/C diagnostics, maintenance, and repairs for commercial semi-trucks and heavy-duty vehicles. From refrigerant leaks and failing compressors to electrical faults and poor cooling performance, our technicians identify the cause and recommend the right repair.",
+        "Whether your A/C has stopped cooling completely or isn't keeping up with the desert heat, we'll help get your cab comfortable again."
+      ],
+      problems_heading: "Common A/C System Issues",
       problems: [
         "The cab blows warm air",
         "The compressor cycles or will not kick on",
@@ -311,130 +666,309 @@ class SiteContent
         "Electrical faults that keep the system from powering up"
       ],
       faqs: [
-        ["Can you look at it before a summer dispatch?", "Yes. Call with the truck's ETA. A/C jobs that do not need back-ordered parts are scheduled as same-day work whenever a bay is open."],
-        ["Do you just recharge the system?", "No. We find out why the charge was lost before the truck goes back into 110-degree heat."]
+        ["Why is my semi-truck A/C blowing warm air?", "Common causes include low refrigerant, leaks, compressor failures, condenser problems, or electrical faults. Our technicians diagnose the system to identify the actual problem before recommending repairs."],
+        ["Can you recharge my truck's A/C system?", "Yes. We provide refrigerant recovery, evacuation, and recharge services. If the system is low on refrigerant, we recommend checking for leaks to prevent the same problem from returning."],
+        ["Can you repair an A/C system that only works while driving?", "Yes. Poor cooling at idle can result from condenser airflow problems, fan operation, compressor performance, or other system faults. We inspect the system to determine the cause."],
+        ["Do you service A/C systems on different semi-truck brands?", "Yes. We service A/C systems on major commercial truck brands, including Freightliner, Volvo, Kenworth, Peterbilt, International, and Mack."]
       ]
     ),
     Service.new(
-      slug: "brake-adjustment-inspection",
-      name: "Brake Adjustment & Inspection",
+      slug: "brake-repair",
+      name: "Brake Repair & Inspection",
       icon: "fa-solid fa-circle-dot",
-      h1: "Truck Brake Adjustment and Inspection in Las Vegas",
-      summary: "Brake adjustments and inspections for tractors and trailers, before a DOT stop writes you up.",
-      lede: "Brakes out of adjustment are one of the fastest ways to get parked at a scale. We adjust and inspect tractor and trailer brakes, and we tell you when an adjustment is no longer enough and the drums or pads need work.",
-      problems: [
-        "The brakes are out of adjustment",
-        "A trailer pulls or the stroke is too long",
-        "You want the brakes checked before a DOT inspection",
-        "There is an air leak at a chamber or valve"
+      h1: "Semi-Truck & Trailer Brake Repair in Las Vegas",
+      summary: "Semi-truck and trailer brake repair in Las Vegas. Air brakes, ABS diagnostics, compressors, brake chambers, and DOT violation repairs. Call Trucks of Nevada.",
+      lede: [
+        "Reliable brakes are essential for safety, performance, and DOT compliance. At Trucks of Nevada, we provide comprehensive brake diagnostics, inspections, and repairs for commercial semi-trucks and trailers.",
+        "From air leaks and worn brake components to ABS faults, air compressor failures, and braking performance issues, our technicians diagnose and repair mechanical, pneumatic, and electronic brake systems.",
+        "Whether you're dealing with a DOT violation, preparing for an inspection, or experiencing brake problems on the road, we help get your equipment safely back in service."
       ],
+      problems_heading: "Common Brake Problems We Fix",
+      problems: [
+        "Weak, uneven, dragging, or overheating brakes",
+        "Air pressure loss, slow air buildup, or air leaks",
+        "ABS warning lights and electronic brake system faults",
+        "Worn brake pads, shoes, drums, or rotors",
+        "Faulty brake chambers, valves, or slack adjusters",
+        "Air compressor or air dryer malfunctions",
+        "Out-of-adjustment brakes and DOT brake violations"
+      ],
+      included_heading: "Our Brake Repair Services",
       included: [
-        "Brake adjustment on tractors and trailers",
-        "Stroke and component inspection",
-        "Air-leak checks at the chambers and lines",
-        "Drum and pad repairs when an adjustment will not hold"
+        "Semi-Truck & Trailer Brake Inspections and Repairs",
+        "Air Brake System Diagnostics & Repairs",
+        "Brake Pad, Shoe, Drum, Rotor & Caliper Replacement",
+        "Brake Chamber, Slack Adjuster & Brake Valve Repairs",
+        "Air Compressor, Air Dryer & Air Line Repairs",
+        "ABS Diagnostics, Modulator, Sensor & Wiring Repairs",
+        "Brake Adjustment & Pushrod Stroke Inspections",
+        "DOT Brake Violation Repairs & Compliance Checks"
       ],
       faqs: [
-        ["Is an adjustment going to hide a bad brake?", "No. If the lining or the drum is the problem, we say so. Adjusting a worn-out brake just sends you back to the scale."],
-        ["Can you do this with a DOT inspection?", "Yes. Ask for both when you call."]
+        ["What are the signs that my semi-truck brakes need repair?", "Common signs include weak braking, air pressure loss, unusual noises, overheating, ABS warning lights, or excessive air compressor cycling. Our technicians diagnose the cause and recommend the appropriate repairs."],
+        ["Can you repair DOT brake violations?", "Yes. We diagnose and repair brake-related DOT violations, including excessive pushrod stroke, air leaks, defective brake components, and ABS system faults."],
+        ["Do you repair air brake systems and ABS problems?", "Yes. We service complete commercial air brake systems, including air compressors, air dryers, brake chambers, valves, ABS modulators, sensors, and electrical components."],
+        ["Do you repair brakes on both semi-trucks and trailers?", "Yes. We provide brake inspections, diagnostics, adjustments, and repairs for commercial tractors and trailers, serving both owner-operators and fleets."]
       ]
     ),
     Service.new(
       slug: "box-truck-repair",
-      name: "Box Truck Repair",
+      name: "Commercial Box Truck Repair",
       icon: "fa-solid fa-truck",
-      h1: "Box Truck Repair in Las Vegas",
-      summary: "Box truck repair, maintenance, and diagnostics for commercial delivery trucks in Las Vegas.",
-      lede: "Delivery trucks break down the same way semis do, on a tighter schedule. We diagnose and repair diesel box trucks: engines, electrical, brakes, A/C, and the maintenance that keeps a route running.",
-      problems: [
-        "A route truck will not start at the warehouse",
-        "It lost power or threw a light mid-shift",
-        "The brakes, charging system, or A/C need work",
-        "Oil service is overdue and the truck cannot sit all week"
+      h1: "Commercial Box Truck Repair in Las Vegas",
+      seo_title: "Commercial Box Truck Repair Las Vegas",
+      summary: "Commercial diesel box truck repair in Las Vegas. Engine diagnostics, DPF, brakes, electrical, transmission repairs and fleet maintenance. Call Trucks of Nevada.",
+      lede: [
+        "Keep your deliveries on schedule with professional box truck diagnostics, maintenance, and repairs at Trucks of Nevada.",
+        "We service commercial diesel box trucks, including engine and transmission problems, electrical faults, brake systems, suspension, A/C, and emissions-related issues. Whether you operate a single delivery truck or manage an entire fleet, our technicians work to minimize downtime and keep your vehicles operating reliably."
       ],
+      problems_heading: "Common Box Truck Problems We Fix",
+      problems: [
+        "Engine warning lights, power loss, and starting problems",
+        "DPF, DEF, and emissions system faults",
+        "Brake problems, air leaks, and ABS warning lights",
+        "Transmission and shifting issues",
+        "Electrical, battery, and charging system failures",
+        "A/C, cooling system, and overheating problems",
+        "Suspension wear and DOT inspection violations"
+      ],
+      included_heading: "Our Box Truck Repair Services",
       included: [
-        "Engine and electrical diagnosis",
-        "Brake inspection and adjustment",
-        "A/C and charging repairs",
-        "Preventive maintenance for box trucks that work every day"
+        "Diesel Engine Diagnostics & Repair",
+        "Transmission Diagnostics & Repair",
+        "DPF, DEF & Aftertreatment System Repairs",
+        "Brake, ABS & Suspension Repairs",
+        "Electrical, Battery & Charging System Repairs",
+        "Cooling System & Air Conditioning Repairs",
+        "Preventive Maintenance & Oil Changes",
+        "DOT Inspections & Fleet Maintenance"
       ],
       faqs: [
-        ["Do you only work on semis?", "No. Box trucks are a regular part of the shop, along with semis, trailers, motor homes, and cranes."],
-        ["Can you turn a delivery truck around the same day?", "That is the goal for diagnosis, maintenance, and repairs we can finish in a bay. Call with the truck's size and the symptom."]
+        ["Do you repair commercial box trucks or only semi-trucks?", "We repair both commercial diesel box trucks and semi-trucks. Our services include engine diagnostics, electrical repairs, brakes, transmissions, emissions systems, and preventive maintenance."],
+        ["Do you service box truck fleets?", "Yes. We work with individual owner-operators and commercial fleets, providing scheduled maintenance, diagnostics, and repairs to help reduce unexpected downtime."],
+        ["Can you diagnose check engine lights and DPF problems?", "Yes. We diagnose engine fault codes, DPF regeneration problems, DEF system faults, and other emissions-related issues using professional diagnostic equipment."],
+        ["Can you complete box truck repairs the same day?", "Same-day service may be available depending on the repair, parts availability, and shop workload. Contact us to discuss your vehicle's problem and scheduling."]
       ]
     ),
     Service.new(
-      slug: "motor-home-repair",
-      name: "Motor Home Repair",
-      icon: "fa-solid fa-caravan",
-      h1: "Motor Home Repair in Las Vegas",
-      summary: "Diesel motor home repairs, diagnostics, and maintenance for coaches passing through Las Vegas.",
-      lede: "A diesel motor home that quits in Las Vegas needs a heavy-duty shop, not a car garage. We diagnose and repair the same systems we work on in commercial trucks: engine, electrical, brakes, suspension, A/C, and aftertreatment.",
-      problems: [
-        "The coach derated or will not regen on a trip",
-        "It overheated, lost power, or will not start",
-        "The living area is fine, and the chassis is the problem",
-        "Brakes, suspension, or A/C need work before you leave town"
-      ],
-      included: [
-        "Diesel engine and aftertreatment diagnosis",
-        "Electrical, charging, and no-start repairs",
-        "Brake, suspension, and A/C work on the chassis",
-        "An estimate after we see the coach"
-      ],
-      faqs: [
-        ["Do you repair the living quarters?", "We repair the diesel chassis: engine, electrical, brakes, suspension, A/C, and aftertreatment. We do not do body work or interior remodeling."],
-        ["Can you clean a motor home DPF?", "Yes. DPF removal, cleaning, reinstallation, and the diagnosis around it are the same service we do on commercial trucks."]
-      ]
-    ),
-    Service.new(
-      slug: "crane-repair",
-      name: "Crane Repair",
+      slug: "specialty-vehicle-repair",
+      name: "Specialty Vehicle Repair",
       icon: "fa-solid fa-truck",
-      h1: "Crane Repair in Las Vegas",
-      summary: "Mechanical repair for crane trucks in Las Vegas. Engine, electrical, brakes, and the maintenance that keeps the truck working.",
-      lede: "We service the trucks that carry cranes, in the shop and on a call within about 100 miles. That covers the engine, electrical, brakes, and maintenance. We do not do body work.",
+      h1: "Specialty Diesel & Commercial Vehicle Repair in Las Vegas",
+      seo_title: "Specialty & Commercial Vehicle Repair Las Vegas",
+      summary: "Specialty diesel vehicle repair in Las Vegas. We service RVs, motorhomes, food trucks, tool trucks, buses and vocational trucks. Call Trucks of Nevada.",
+      lede: [
+        "Not every commercial vehicle is a semi-truck, but they all depend on reliable engines, electrical systems, and mechanical components to stay operational.",
+        "At Trucks of Nevada, we provide professional diagnostics, maintenance, and repairs for specialty diesel and commercial vehicles, including motorhomes, RVs, food trucks, mobile tool trucks, buses, crane trucks, and vocational equipment.",
+        "From engine and transmission problems to electrical faults, cooling systems, brakes, suspension, and emissions-related issues, our technicians service the mechanical systems that keep your vehicle running and your business moving."
+      ],
+      lead_sections: [
+        {
+          "heading" => "Specialty & Commercial Vehicles We Service",
+          "blocks" => [
+            {
+              "heading" => "Diesel Motorhomes & RVs",
+              "paragraphs" => [
+                "Diesel engine, chassis, transmission, electrical, cooling system, and air conditioning repairs for motorhomes and RVs. We focus on the vehicle's mechanical and drivetrain systems."
+              ]
+            },
+            {
+              "heading" => "Food Trucks & Mobile Kitchens",
+              "paragraphs" => [
+                "Commercial vehicle diagnostics and repairs for food trucks, including engine performance, starting and charging systems, cooling, brakes, suspension, and preventive maintenance. Keep your mobile business operating reliably."
+              ]
+            },
+            {
+              "heading" => "Tool Trucks & Mobile Sales Vehicles",
+              "paragraphs" => [
+                "Mechanical and electrical repairs for commercial tool trucks and mobile sales vehicles. We service engines, transmissions, batteries, charging systems, brakes, and other vehicle components that support daily business operations."
+              ]
+            },
+            {
+              "heading" => "Commercial Buses",
+              "paragraphs" => [
+                "Diesel engine diagnostics, transmission repairs, electrical troubleshooting, braking systems, suspension, cooling systems, and scheduled maintenance for commercial buses."
+              ]
+            },
+            {
+              "heading" => "Crane Trucks & Vocational Vehicles",
+              "paragraphs" => [
+                "Engine, transmission, electrical, braking, and chassis-related repairs for crane trucks, dump trucks, and other specialized commercial vehicles."
+              ]
+            },
+            {
+              "heading" => "Other Specialty Commercial Vehicles",
+              "paragraphs" => [
+                "We also service applicable diesel-powered utility trucks, service vehicles, and vocational equipment with commercial truck chassis and drivetrains."
+              ]
+            }
+          ]
+        }
+      ],
+      problems_heading: "Common Specialty Vehicle Problems We Fix",
       problems: [
-        "The crane truck will not start or lost power",
-        "A warning light came on before a job",
-        "Brakes, charging, or an air leak need attention",
-        "The truck is due for service and cannot sit all week"
+        "Check engine lights, starting problems, and loss of power",
+        "Transmission faults and shifting problems",
+        "Electrical, battery, and charging system failures",
+        "Engine overheating and cooling system problems",
+        "Brake, steering, and suspension issues",
+        "DPF, DEF, SCR, and emissions system faults",
+        "Air conditioning problems and mechanical breakdowns"
       ],
+      included_heading: "Our Specialty Vehicle Repair Services",
       included: [
-        "Engine and electrical diagnosis",
-        "Brake inspection and adjustment",
-        "Charging and no-start repairs",
-        "Maintenance on crane trucks that work every day"
-      ],
-      faqs: [
-        ["Do you rebuild the crane itself?", "We repair the truck: engine, electrical, brakes, and maintenance. We do not do body work."],
-        ["Can you take it the same day?", "Same-day repairs are available when the job and the parts allow. Call with the truck and the symptom."]
+        "Advanced Diesel Engine Diagnostics & Repair",
+        "Transmission & Drivetrain Repairs",
+        "Electrical, Battery & Charging System Diagnostics",
+        "Brake, Steering & Suspension Repairs",
+        "Cooling System & Vehicle A/C Repairs",
+        "DPF, DEF, SCR & Aftertreatment Repairs",
+        "Preventive Maintenance & Fluid Services",
+        "Commercial Vehicle Inspections"
       ]
     ),
     Service.new(
       slug: "roadside-assistance",
-      name: "Roadside Assistance",
+      name: "24/7 Roadside Assistance",
+      card_name: "Semi-Truck Roadside Assistance",
       icon: "fa-solid fa-road",
-      h1: "24/7 Truck Roadside Assistance in Las Vegas",
-      summary: "24/7 mobile truck and trailer repair around Las Vegas, Henderson, North Las Vegas, Boulder City, and Pahrump.",
-      lede: "If the truck is on the shoulder, call. We dispatch around the clock for commercial trucks on I-15, US-95, and US-93, and through the Las Vegas valley out to about 100 miles from the shop.",
-      problems: [
-        "The truck died on I-15, US-95, or US-93",
-        "It will not start in a yard in Henderson or North Las Vegas",
-        "An air leak, electrical fault, or derate stranded the driver",
-        "You need someone on the way before the load appointment"
+      h1: "24/7 Semi-Truck Roadside Assistance in Las Vegas",
+      summary: "24/7 semi-truck roadside assistance in Las Vegas. Mobile diagnostics, jump-starts, air brake repairs, engine derates and emergency truck repairs. Call today.",
+      lede: [
+        "Emergency Mobile Truck Repair & Diagnostics. Day or Night.",
+        "A breakdown doesn't wait for business hours, and neither should your roadside assistance.",
+        "At Trucks of Nevada, we provide 24/7 roadside assistance for commercial semi-trucks, medium-duty trucks, and trailers throughout the Las Vegas Valley and surrounding highways.",
+        "From engine fault codes and no-start conditions to air brake problems, cooling system failures, and engine derates, our mobile technicians diagnose problems and perform roadside repairs whenever possible.",
+        "Whether you're stranded along I-15, US-95, US-93, or elsewhere in the Las Vegas Valley, call our team for assistance. Service availability depends on your location, distance, and technician availability."
       ],
+      problems_heading: "When You Need Roadside Assistance",
+      problems: [
+        "Your semi-truck broke down and you're stranded on the highway.",
+        "Your truck won't start because of a dead battery, starter, or charging system problem.",
+        "An air leak or air brake malfunction is preventing you from operating safely.",
+        "A check engine light, fault code, or engine derate has interrupted your trip.",
+        "Your DEF, DPF, or aftertreatment system is causing performance problems.",
+        "Your engine is overheating or you've experienced a cooling system failure.",
+        "A broken belt, damaged hose, or mechanical problem has left your truck disabled.",
+        "Your truck has a fuel system or transmission problem that needs professional diagnostics."
+      ],
+      included_heading: "Common Roadside Emergencies We Handle",
       included: [
-        "24/7 dispatch",
-        "Typical response of 30–45 minutes in Las Vegas and Henderson",
-        "Typical response of 35–50 minutes in North Las Vegas",
-        "Typical response of 60–90 minutes in Boulder City and Pahrump, depending on the call",
-        "Mobile diagnosis, with a tow to the shop only when the repair cannot be finished on the shoulder"
+        "24/7 Roadside Dispatch. Call any time to request emergency assistance.",
+        "Mobile Truck Diagnostics. Engine diagnostics, fault-code troubleshooting, and system testing.",
+        "Battery & Starting System Service. Jump-starts, battery replacement, and starter repairs.",
+        "Alternator Repairs. Diagnosis and repair of alternator and charging system problems.",
+        "Air Leak & Air Brake Repairs. Troubleshooting and repairs for commercial truck air systems.",
+        "Cooling System Repairs. Overheating diagnostics and cooling system repairs.",
+        "Belts, Hoses & Minor Mechanical Repairs. Roadside repairs when the work can be completed safely on-site.",
+        "DEF, DPF & Aftertreatment Troubleshooting. Diagnosis of emissions system faults and engine derates.",
+        "Fuel System Diagnostics. Investigation of fuel-related engine performance and operating problems.",
+        "Transmission Troubleshooting. Diagnosis of transmission faults and shifting concerns."
+      ],
+      sections: [
+        {
+          "heading" => "Emergency Mobile Truck Repair Services",
+          "paragraphs" => [
+            "Our goal is simple: identify the problem, determine the safest repair approach, and help minimize your downtime."
+          ],
+          "blocks" => [
+            {
+              "heading" => "Engine Diagnostics & Fault-Code Troubleshooting",
+              "paragraphs" => [
+                "Modern commercial trucks rely on complex electronic engine management systems. When warning lights, fault codes, or unexpected shutdowns interrupt your trip, our technicians provide mobile diagnostics to help identify the underlying problem.",
+                "We troubleshoot engine performance concerns, operating faults, and other conditions that can leave a truck stranded."
+              ]
+            },
+            {
+              "heading" => "Battery Replacement, Jump-Starts & Starting System Repairs",
+              "paragraphs" => [
+                "A failed battery, starter, or alternator can bring your truck to a stop without warning.",
+                "Our roadside services include battery replacement, jump-starts, alternator repairs, and starter repairs to address starting and charging system problems."
+              ]
+            },
+            {
+              "heading" => "Air Leak & Air Brake Repairs",
+              "paragraphs" => [
+                "Air system problems can prevent a commercial truck from operating safely.",
+                "We diagnose and repair air leaks and air brake system problems, with repairs performed according to the condition of the vehicle and the safety of the roadside location."
+              ]
+            },
+            {
+              "heading" => "Cooling System & Overheating Repairs",
+              "paragraphs" => [
+                "An overheating engine can quickly turn a roadside delay into a major mechanical problem.",
+                "Our technicians troubleshoot cooling system failures and perform applicable roadside repairs, including belt, hose, and related minor mechanical repairs."
+              ]
+            },
+            {
+              "heading" => "DEF, DPF & Engine Derate Troubleshooting",
+              "paragraphs" => [
+                "Aftertreatment system problems can trigger warning lights, reduced engine power, and operating restrictions.",
+                "We provide mobile diagnostics for DEF, DPF, and related emissions system faults, including engine derate troubleshooting.",
+                "Our technicians work to identify the cause of the problem and determine whether a roadside repair is possible or additional shop work is necessary."
+              ]
+            },
+            {
+              "heading" => "Fuel System & Transmission Diagnostics",
+              "paragraphs" => [
+                "Fuel delivery and transmission problems can affect engine performance, shifting, and overall vehicle operation.",
+                "We provide roadside fuel system diagnostics and transmission troubleshooting to help identify faults and determine the appropriate repair approach."
+              ]
+            }
+          ]
+        },
+        {
+          "heading" => "How Our 24/7 Roadside Assistance Works",
+          "numbered" => true,
+          "items" => [
+            "Call Our 24/7 Dispatch Number. Contact Trucks of Nevada at (702) 333-2463 and explain the breakdown. Provide your location, vehicle information, and a description of the problem.",
+            "We Review Your Location & Service Needs. Our team evaluates your location and the type of assistance required. Roadside response is available 24/7, subject to technician availability, distance, and road conditions.",
+            "A Mobile Technician Responds. When a technician is available, we arrange roadside service at your location. Our technician assesses the vehicle and performs the appropriate diagnostic procedures.",
+            "We Perform Roadside Repairs When Possible. If the problem can be repaired safely with available equipment and parts, we work to complete the repair on-site.",
+            "We Recommend the Next Step When Shop Repairs Are Necessary. Some breakdowns require extensive repairs or specialized shop equipment. If roadside repair is not practical, we explain the findings and recommend the appropriate next steps."
+          ]
+        },
+        {
+          "heading" => "Roadside Assistance for Commercial Trucks & Trailers",
+          "paragraphs" => [
+            "Trucks of Nevada provides emergency roadside assistance for:"
+          ],
+          "items" => [
+            "Class 8 Semi-Trucks. Heavy-duty commercial trucks experiencing mechanical or operating problems.",
+            "Medium-Duty Commercial Trucks. Commercial vehicles requiring mobile diagnostics and applicable mechanical repairs.",
+            "Commercial Trailers. Roadside assessment and applicable repairs involving trailer air brake and related mechanical systems."
+          ],
+          "blocks" => [
+            {
+              "paragraphs" => [
+                "We serve commercial drivers, owner-operators, and fleet operators throughout the Las Vegas Valley."
+              ]
+            },
+            {
+              "heading" => "Las Vegas Valley & Surrounding Highway Coverage",
+              "paragraphs" => [
+                "Our roadside service area includes Las Vegas, North Las Vegas, Henderson, and surrounding highways, depending on distance and technician availability.",
+                "Whether your breakdown occurs at a truck stop, commercial parking area, or along a highway, contact us to confirm roadside service availability for your location."
+              ]
+            }
+          ]
+        }
       ],
       faqs: [
-        ["Are you really 24 hours?", "Roadside dispatch is 24/7. The shop itself is open Monday through Friday, 8:30am to 5:30pm."],
-        ["How far do you go?", "About 100 miles from 1260 Rockpebble Ave in North Las Vegas, including the valley and the main highways."]
-      ]
+        ["Is your semi-truck roadside assistance available 24/7?", "Yes. Trucks of Nevada offers 24/7 roadside dispatch and technician response, subject to availability. Call (702) 333-2463 to request assistance."],
+        ["What areas do you cover?", "We provide roadside assistance throughout the Las Vegas Valley and surrounding highways, depending on distance, road conditions, and technician availability."],
+        ["Can you repair my semi-truck on the roadside?", "Many breakdowns can be diagnosed and repaired on-site. The type of repair depends on the problem, available parts and equipment, and whether the work can be completed safely at your location."],
+        ["Can you jump-start a semi-truck or replace its batteries?", "Yes. We provide commercial truck jump-starts, battery replacement, and related starting system repairs."],
+        ["Do you repair truck air leaks and air brake problems?", "Yes. We diagnose and repair air leaks and air brake system problems on commercial trucks, when the repair can be performed safely at the roadside."],
+        ["Can you help with a DEF fault or engine derate?", "Yes. Our technicians provide mobile diagnostics for DEF, DPF, and aftertreatment system problems, including engine derate troubleshooting."],
+        ["Do you offer roadside cooling system repairs?", "Yes. We troubleshoot overheating and cooling system problems and perform applicable roadside repairs, including belts, hoses, and minor mechanical components."],
+        ["Can you diagnose transmission problems on the road?", "Yes. We provide mobile transmission troubleshooting to identify faults and determine whether further repairs are needed."],
+        ["Do you provide roadside assistance for commercial trailers?", "Yes. We assist with applicable commercial trailer breakdowns, including air brake and related mechanical problems."],
+        ["How quickly can a technician arrive?", "Response time varies depending on your location, traffic, distance, and technician availability. Call our dispatch number for an estimated response time."],
+        ["What should I do if my truck breaks down on the highway?", "Move to a safe location if possible, activate your hazard lights, and follow applicable roadside safety procedures. Once you are safely stopped, call Trucks of Nevada at (702) 333-2463 and provide your location and a description of the problem."]
+      ],
+      cta_title: "Semi-Truck Broken Down? We're Available 24/7.",
+      cta_text: "Don't let an unexpected breakdown keep your truck off the road longer than necessary. Whether you're dealing with a no-start condition, air brake problem, overheating engine, or aftertreatment fault, Trucks of Nevada provides mobile diagnostics and roadside repairs for commercial trucks and trailers. Call our 24/7 dispatch team to request assistance and confirm technician availability."
     )
   ].freeze
 end

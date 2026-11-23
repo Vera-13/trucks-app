@@ -22,30 +22,32 @@ module ApplicationHelper
     "dot-inspections" => "shop/maria/white-truck-front.jpg",
     "carb-inspections" => "shop/maria/yellow-engine-bay.jpg",
     "ac-repair" => "shop/maria/blue-truck-front.jpg",
-    "brake-adjustment-inspection" => "shop/maria/techs-on-axle.jpg",
+    "brake-repair" => "shop/maria/techs-on-axle.jpg",
     "box-truck-repair" => "shop/maria/box-open.jpg",
     "motor-home-repair" => "shop/maria/motorhome-front.jpg",
     "crane-repair" => "shop/maria/crane-boom.jpg",
+    "specialty-vehicle-repair" => "shop/maria/motorhome-front.jpg",
     "roadside-assistance" => "shop/maria/yellow-truck-side.jpg"
   }.freeze
 
   SHOP_PHOTOS = {
     "about" => "shop/maria/shop-machine.jpg",
-    "semi-truck-repair" => "shop/maria/semi-red-front.jpg",
+    "semi-truck-repair" => "shop/maria/mechanics-green-truck.jpg",
     "dpf-cleaning" => "shop/maria/engine-in-chassis.jpg",
-    "engine-repair" => "shop/maria/engine-stand-tech.jpg",
-    "trailer-repair" => "shop/maria/car-hauler.jpg",
-    "transmission-repair" => "shop/maria/engine-cart.jpg",
+    "engine-repair" => "shop/maria/camshafts-stand.jpg",
+    "trailer-repair" => "shop/maria/trailer-axle-top.jpg",
+    "transmission-repair" => "shop/maria/transmission-on-cart.jpg",
     "electrical-battery-repair" => "shop/maria/tech-red-bay.jpg",
-    "suspension-repair" => "shop/maria/techs-on-axle.jpg",
+    "suspension-repair" => "shop/maria/air-suspension.jpg",
     "preventive-maintenance" => "shop/maria/tech-red-side.jpg",
     "dot-inspections" => "shop/maria/semi-black-front.jpg",
     "carb-inspections" => "shop/maria/tech-in-engine.jpg",
-    "ac-repair" => "shop/maria/blue-engine-bay.jpg",
-    "brake-adjustment-inspection" => "shop/maria/tech-red-door.jpg",
-    "box-truck-repair" => "shop/maria/box-rear-doors.jpg",
+    "ac-repair" => "shop/maria/ac-machine.jpg",
+    "brake-repair" => "shop/maria/brake-drums.jpg",
+    "box-truck-repair" => "shop/maria/box-truck-white.jpg",
     "motor-home-repair" => "shop/maria/motorhome-green.jpg",
     "crane-repair" => "shop/maria/crane-yellow.jpg",
+    "specialty-vehicle-repair" => "shop/maria/crane-yellow.jpg",
     "roadside-assistance" => "shop/maria/semi-blue.jpg"
   }.freeze
 
@@ -90,7 +92,15 @@ module ApplicationHelper
     ["shop/maria/red-engine-bay.jpg", "Open engine bay on a red truck"],
     ["shop/maria/blue-engine-bay.jpg", "Open engine bay on a blue truck"],
     ["shop/maria/shop-machine.jpg", "Machine in the Trucks of Nevada shop"],
-    ["shop/maria/parts-rack.jpg", "Parts laid out in the shop"]
+    ["shop/maria/parts-rack.jpg", "Parts laid out in the shop"],
+    ["shop/maria/mechanics-green-truck.jpg", "Two technicians working at the back of a green truck"],
+    ["shop/maria/camshafts-stand.jpg", "Camshaft work on a stand in the shop"],
+    ["shop/maria/transmission-on-cart.jpg", "Technician rebuilding a transmission on a cart"],
+    ["shop/maria/ac-machine.jpg", "A/C service on a truck with the hood open"],
+    ["shop/maria/box-truck-white.jpg", "White box truck in the yard"],
+    ["shop/maria/brake-drums.jpg", "Brake drums and shoes during a brake repair"],
+    ["shop/maria/air-suspension.jpg", "Air suspension bag and torque rod under a truck"],
+    ["shop/maria/trailer-axle-top.jpg", "Commercial trailer brake and suspension repair at Trucks of Nevada in Las Vegas"]
   ].freeze
 
   # First call on a page claims the photo. Later calls on that same page skip it.
